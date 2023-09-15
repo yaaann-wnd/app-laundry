@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,6 @@ Route::get('/register', function () {
     return view('member/register');
 });
 
+Route::post('admin', [adminController::class, 'admin'])->name('admin');
+Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
 Route::post('daftar', [registerController::class, 'register'])->name('register');

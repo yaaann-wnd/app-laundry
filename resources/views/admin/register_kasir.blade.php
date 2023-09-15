@@ -7,17 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>PolluxUI Admin</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="../../vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="{{ asset('vendors/typicons/typicons.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
-  <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 </head>
 
 <body>
@@ -26,8 +26,8 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../images/logo.svg" alt="logo"/></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo"/></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="typcn typcn-th-menu"></span>
           </button>
@@ -38,7 +38,7 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="../../images/faces/face5.jpg" alt="profile"/>
-              <span class="nav-profile-name">Eugenia Mullins</span>
+              <span class="nav-profile-name">Admin</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -345,96 +345,30 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
+              <span class="menu-title">Register</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Admin</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Kasir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Kurir</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="typcn typcn-film menu-icon"></i>
-              <span class="menu-title">Form elements</span>
+              <span class="menu-title">Laporan</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.html">Basic Elements</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.html">Laporan Transaksi Masuk</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.html">Laporan Status Kurir</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.html">Laporan Transaksi Selesai</a></li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="typcn typcn-chart-pie-outline menu-icon"></i>
-              <span class="menu-title">Charts</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/charts/chartjs.html">ChartJs</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="typcn typcn-th-small-outline menu-icon"></i>
-              <span class="menu-title">Tables</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/tables/basic-table.html">Basic table</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-              <i class="typcn typcn-compass menu-icon"></i>
-              <span class="menu-title">Icons</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="icons">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/icons/mdi.html">Mdi icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="typcn typcn-user-add-outline menu-icon"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
-              <i class="typcn typcn-globe-outline menu-icon"></i>
-              <span class="menu-title">Error pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="error">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://bootstrapdash.com/demo/polluxui-free/docs/documentation.html">
-              <i class="typcn typcn-mortar-board menu-icon"></i>
-              <span class="menu-title">Documentation</span>
-            </a>
           </li>
         </ul>
       </nav>
@@ -1160,23 +1094,23 @@
   </div>
   <!-- container-scroller -->
   <!-- base:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script src="{{ asset('js/off-canvas.js') }}"></script>
+  <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
+  <script src="{{ asset('js/template.js') }}"></script>
+  <script src="{{ asset('js/settings.js') }}"></script>
+  <script src="{{ asset('js/todolist.js') }}"></script>
   <!-- endinject -->
   <!-- plugin js for this page -->
-  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
-  <script src="../../vendors/select2/select2.min.js"></script>
+  <script src="{{ asset('vendors/typeahead.js/typeahead.bundle.min.js') }}"></script>
+  <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
-  <script src="../../js/file-upload.js"></script>
-  <script src="../../js/typeahead.js"></script>
-  <script src="../../js/select2.js"></script>
+  <script src="{{ asset('js/file-upload.js') }}"></script>
+  <script src="{{ asset('js/typeahead.js') }}"></script>
+  <script src="{{ asset('js/select2.js') }}"></script>
   <!-- End custom js for this page-->
 </body>
 
