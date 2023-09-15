@@ -305,9 +305,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Admin</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Kasir</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Kurir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Admin</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Kasir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Kurir</a></li>
               </ul>
             </div>
           </li>
