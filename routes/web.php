@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/register', function () {
-    return view('autenticate/register');
+    return view('member/register');
 });
 
 Route::post('daftar', [registerController::class, 'register'])->name('register');
