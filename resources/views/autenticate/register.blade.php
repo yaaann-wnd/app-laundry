@@ -28,31 +28,31 @@
                             <div class="brand-logo">
                                 <img src="{{ asset('images/logo-dark.svg') }}" alt="logo">
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form class="pt-3">
+                            <h4>Halo, Selamat Datang!</h4>
+                            <h6 class="font-weight-light">Daftar dulu ya guys!</h6>
+                            <form class="pt-3" action="{{ route('register') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Username">
+                                    <input type="text" class="form-control form-control-lg" id="nama"
+                                        placeholder="Masukkan Nama" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg"
+                                        id="alamat" placeholder="Masukkan Alamat" name="alamat">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg"
+                                        id="Masukkan Nomor Telepon" placeholder="Masukkan Nomor Telepon" name="no_telp">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg"
-                                        id="exampleInputPassword1" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <select name="jabatan" class="form-control form-control-lg" id="jabatan">
-                                        <option value="">Pilih Jabatan</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="kurir">Kurir</option>
-                                        <option value="kasir">Kasir</option>
-                                    </select>
+                                        id="Masukkan Password" placeholder="Masukkan Password" name="password">
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                        href="{{ asset('index.html') }}">SIGN IN</a>
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">DAFTAR</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="/register" class="text-primary">Create</a>
+                                    Sudah punya akun? <a href="/" class="text-primary">Login</a>
                                 </div>
                             </form>
                         </div>

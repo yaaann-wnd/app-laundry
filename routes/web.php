@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('autenticate/login');
 });
+
+Route::get('/register', function () {
+    return view('autenticate/register');
+});
+
+Route::post('daftar', [registerController::class, 'register'])->name('register');
