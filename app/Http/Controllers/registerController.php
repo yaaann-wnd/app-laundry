@@ -9,6 +9,13 @@ class registerController extends Controller
 {
     public function register(Request $request) {
         // dd($request->all());
-        // Member::create($request->)
+        Member::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'password' => $request->no_telp,
+        ]);
+
+        // return redirect('/');
     }
 }

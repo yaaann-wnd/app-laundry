@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="nama"
-                                        placeholder="Masukkan Nama" name="name">
+                                        placeholder="Masukkan Nama" name="nama">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg"
