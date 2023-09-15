@@ -16,11 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/login', function () {
     return view('autenticate/login');
 });
 
 Route::get('/register', function () {
     return view('member/register');
+});
+
+Route::get('member/home', function () {
+    return view('layouts.sidebar');
 });
 
 Route::post('admin', [adminController::class, 'admin'])->name('admin');

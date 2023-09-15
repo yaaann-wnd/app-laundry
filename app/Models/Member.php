@@ -10,5 +10,5 @@ class Member extends Model
     use HasFactory;
 
     protected $table = 'member';
-    protected $guarded = 'id';
+    protected $guarded = ['id'];
 }

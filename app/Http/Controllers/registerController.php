@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class registerController extends Controller
 {
     public function register(Request $request) {
         // dd($request->all());
-        Member::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
-            'password' => $request->no_telp,
-        ]);
+        // Member::create([
+        //     'nama' => $request->nama,
+        //     'alamat' => $request->alamat,
+        //     'no_telp' => $request->no_telp,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
-        // return redirect('/');
+        return redirect('member/home');
     }
 }
