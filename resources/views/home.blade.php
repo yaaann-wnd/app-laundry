@@ -17,6 +17,8 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('navbar-assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
 
     <title>Website Menu #4</title>
 </head>
@@ -72,12 +74,12 @@
 
                             <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
                             {{-- <li> --}}
-                                <a href="/login" class="nav-link">
-                                    <button type="button" class="btn btn-outline-primary">Masuk</button>
-                                </a>
-                                <a href="/register" class="nav-link">
-                                    <button type="button" class="btn btn-primary">Daftar</button>
-                                </a>
+                            <a href="/login" class="nav-link">
+                                <button type="button" class="btn btn-outline-primary">Masuk</button>
+                            </a>
+                            <a href="/register" class="nav-link">
+                                <button type="button" class="btn btn-primary">Daftar</button>
+                            </a>
                             {{-- </li> --}}
                         </ul>
                     </nav>
@@ -92,12 +94,28 @@
         </div>
 
     </header>
+    {{-- <div class="slider-wrapper">
+        <div><img src="{{ asset('images/gambar-slider/1.jpg') }}" alt=""></div>
+        <div><img src="{{ asset('images/gambar-slider/2.jpg') }}" alt=""></div>
+        <div><img src="{{ asset('images/gambar-slider/3.jpg') }}" alt=""></div>
+    </div> --}}
 
     <script src="{{ asset('navbar-assets/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/main.js') }}"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $('.slider-wrapper').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        })
+    </script>
+
 </body>
 
 </html>
