@@ -338,31 +338,46 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Register Admin</h4>
+                  <h4 class="card-title">Tambah Jasa</h4>
                   <p class="card-description">
                     Basic form elements
                   </p>
                   <form class="forms-sample" action="{{ route('simpan_admin') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                      <label for="exampleInputName1">Nama</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Name">
+                      <label for="exampleInputName1">Nama Jasa</label>
+                      <input type="text" class="form-control" name="jenis_jasa" id="jenis_jasa" placeholder="Nama Jasa">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail3">Alamat</label>
-                      <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
+                      <label for="exampleInputEmail3">Harga Per KG</label>
+                      <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga Per KG">
+                    </div>
+                    <button type="submit" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Edit Jasa</h4>
+                  <p class="card-description">
+                    Basic form elements
+                  </p>
+                  <form class="forms-sample" action="{{ route('simpan_admin') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                      <label for="exampleInputName1">Nama Jasa</label>
+                      <select name="jenis_jasa" class="form-control" id="jenis_jasa">
+                        <option value="">Jasa 1</option>
+                        <option value="">Jasa 2</option>
+                        <option value="">Jasa 3</option>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Nomer Telepon</label>
-                      <input type="text" class="form-control" name="no_telp" id="no_telp" placeholder="Nomer Telepon">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleSelectGender">Username</label>
-                      <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleSelectGender">Password</label>
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                      <label for="exampleInputEmail3">Harga Per KG</label>
+                      <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga Per KG">
                     </div>
                     <button type="submit" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>

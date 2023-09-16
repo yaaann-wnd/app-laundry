@@ -26,6 +26,7 @@ Route::get('/login', function () {
 });
 
 Route::post('login_admin', [adminController::class, 'login_admin'])->name('login_admin');
+Route::get('harga_jasa', [adminController::class, 'harga_jasa'])->name('harga_jasa');
 Route::post('simpan_admin', [adminController::class, 'simpan_admin'])->name('simpan_admin');
 Route::post('simpan_kasir', [adminController::class, 'simpan_kasir'])->name('simpan_kasir');
 Route::post('simpan_kurir', [adminController::class, 'simpan_kurir'])->name('simpan_kurir');

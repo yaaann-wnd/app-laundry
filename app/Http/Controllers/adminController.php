@@ -13,6 +13,10 @@ class adminController extends Controller
         $users = DB::table('users')->where('jabatan', 'admin')->get();
         return view('admin/register_admin',['users' => $users]);
     }
+    public function harga_jasa(Request $request) {
+        $users = DB::table('users')->where('jabatan', 'admin')->get();
+        return view('admin/harga_jasa',['users' => $users]);
+    }
     public function register_admin(Request $request) {
         $users = DB::table('users')->where('jabatan', 'admin')->get();
         return view('admin/register_admin',['users' => $users]);
