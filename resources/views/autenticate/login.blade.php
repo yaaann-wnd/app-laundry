@@ -53,7 +53,7 @@
                                         >SIGN IN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Member baru? <a href="{{ route('register') }}" class="text-primary">Daftar</a>
+                                    Login sebagai pelanggan? <a href="{{ route('login') }}" class="text-primary">Klik di sini</a>
                                 </div>
                             </form>
                         </div>

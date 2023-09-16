@@ -25,10 +25,6 @@ Route::get('/login', function () {
     return view('autenticate/login');
 });
 
-Route::get('member/home', function () {
-    return view('layouts.sidebar');
-});
-
 Route::post('login_admin', [adminController::class, 'login_admin'])->name('login_admin');
 Route::post('simpan_admin', [adminController::class, 'simpan_admin'])->name('simpan_admin');
 Route::post('simpan_kasir', [adminController::class, 'simpan_kasir'])->name('simpan_kasir');
@@ -50,3 +46,13 @@ Route::post('registerProses', [registerController::class, 'registerProses'])->na
 // login member
 Route::get('login-member', [registerController::class, 'login'])->name('login');
 Route::post('login-member-proses', [registerController::class, 'loginProses'])->name('loginProses');
+
+// logout member
+Route::get('logout', [registerController::class, 'logout'])->name('logout');
+
+// Autentikasi ketika user sudah login
+Route::middleware(['auth'])->group(function () {
+    Route::get('member/home', function () {
+        return view('layouts.sidebar');
+    });
+});

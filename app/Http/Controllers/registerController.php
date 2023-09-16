@@ -6,15 +6,21 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class registerController extends Controller
 {
-    public function register() {
+    public function register()
+    {
+        if (Auth::check()) {
+            return redirect('/member/home');
+        }
         return view('member.register');
     }
 
 
-    public function registerProses(Request $request) {
+    public function registerProses(Request $request)
+    {
         $request->validate([
             'nama' => 'required|unique:member',
             'alamat' => 'required|min:5',
@@ -36,11 +42,16 @@ class registerController extends Controller
         return redirect(route('login'))->with('success', 'Registrasi berhasil, silahkan Login!');
     }
 
-    public function login() {
+    public function login()
+    {
+        if (Auth::check()) {
+            return redirect('/member/home');
+        }
         return view('member.login');
     }
 
-    public function loginProses(Request $request) {
+    public function loginProses(Request $request)
+    {
         $request->validate([
             'nama' => 'required',
             'password' => 'required'
@@ -49,9 +60,19 @@ class registerController extends Controller
         $credentials = $request->only('nama', 'password');
 
         if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
             return redirect()->intended('/member/home');
         }
 
         return redirect(route('login'))->with('error', 'Nama atau Password yang anda masukkan salah!');
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return redirect('/');
     }
 }

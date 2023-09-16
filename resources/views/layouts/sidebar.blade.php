@@ -46,7 +46,7 @@
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="{{ route('logout') }}">
                                 <i class="typcn typcn-eject text-primary"></i>
                                 Logout
                             </a>
@@ -495,7 +495,7 @@
                 <div class="content-wrapper">
 
                     <div class="card">
-                        
+
                     </div>
 
                 </div>
