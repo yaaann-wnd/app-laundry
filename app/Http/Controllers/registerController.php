@@ -39,7 +39,7 @@ class registerController extends Controller
             return redirect(route('register'))->with('error', 'Registrasi Gagal!');
         }
 
-        return redirect(route('login'))->with('success', 'Registrasi berhasil, silahkan Login!');
+        return redirect(route('login'))->with('success', 'Berhasil membuat akun, silahkan Login!');
     }
 
     public function login()

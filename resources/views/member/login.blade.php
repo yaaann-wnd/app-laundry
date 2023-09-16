@@ -7,6 +7,15 @@
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert"
+                                    style="font-size: .8rem !important;">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
                             @if (session()->has('error'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert"
                                     style="font-size: .8rem !important;">
