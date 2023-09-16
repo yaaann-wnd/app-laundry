@@ -7,24 +7,24 @@
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            @if (session()->has('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                                    style="font-size: .8rem !important;">
+                                    {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="brand-logo">
                                 <img src="{{ asset('images/logo-dark.svg') }}" alt="logo">
                             </div>
                             <h4>Halo, Selamat Datang!</h4>
-                            <h6 class="font-weight-light">Daftar dulu ya guys!</h6>
-                            <form class="pt-3" action="{{ route('registerProses') }}" method="POST">
+                            <h6 class="font-weight-light">Silahkan login untuk melanjutkan!</h6>
+                            <form class="pt-3" action="{{ route('loginProses') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="nama"
                                         placeholder="Masukkan Nama" name="nama">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="alamat"
-                                        placeholder="Masukkan Alamat" name="alamat">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="Masukkan Nomor Telepon"
-                                        placeholder="Masukkan Nomor Telepon" name="no_telp">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" id="Masukkan Password"
@@ -32,10 +32,10 @@
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">DAFTAR</button>
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Sudah punya akun? <a href="/" class="text-primary">Login</a>
+                                    Member baru? <a href="/" class="text-primary">Daftar</a>
                                 </div>
                             </form>
                         </div>

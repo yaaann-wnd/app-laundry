@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class registerController extends Controller
@@ -16,20 +16,42 @@ class registerController extends Controller
 
     public function registerProses(Request $request) {
         $request->validate([
-            'nama' => ['required', 'unique:member'],
-            'alamat' => ['required', 'min:5'],
-            'no_telp' => ['required', 'max:13', 'numeric'],
-            'password' => ['required', 'min:5']
-        ])
+            'nama' => 'required|unique:member',
+            'alamat' => 'required|min:5',
+            'no_telp' => 'required|unique:member',
+            'password' => 'required|min:5'
+        ]);
 
-        User::create([
+        $tambahMember = Member::create([
             'nama' => $request->nama,
-            'alamat' => $request->nama,
-            'notlp' => $request->nama,
-            'password' => $request->nama,
-            '' => $request->nama,
-        ])
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'password' => Hash::make($request->password)
+        ]);
 
-        return redirect('member/home');
+        if (!$tambahMember) {
+            return redirect(route('register'))->with('error', 'Registrasi Gagal!');
+        }
+
+        return redirect(route('login'))->with('success', 'Registrasi berhasil, silahkan Login!');
+    }
+
+    public function login() {
+        return view('member.login');
+    }
+
+    public function loginProses(Request $request) {
+        $request->validate([
+            'nama' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credentials = $request->only('nama', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/member/home');
+        }
+
+        return redirect(route('login'))->with('error', 'Nama atau Password yang anda masukkan salah!');
     }
 }

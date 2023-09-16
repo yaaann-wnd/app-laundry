@@ -53,7 +53,7 @@
                                         >SIGN IN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="/register" class="text-primary">Create</a>
+                                    Member baru? <a href="{{ route('register') }}" class="text-primary">Daftar</a>
                                 </div>
                             </form>
                         </div>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\kasirController;
+use App\Http\Controllers\kurirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +39,11 @@ Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('
 
 Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
-Route::post('register', [registerController::class, 'regtister'])->name('register');
+
+// register member
+Route::get('register', [registerController::class, 'register'])->name('register');
 Route::post('registerProses', [registerController::class, 'registerProses'])->name('registerProses');
+
+// login member
+Route::get('login-member', [registerController::class, 'login'])->name('login');
+Route::post('login-member-proses', [registerController::class, 'loginProses'])->name('loginProses');
