@@ -35,7 +35,7 @@
                                         class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">DAFTAR</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Sudah punya akun? <a href="/" class="text-primary">Login</a>
+                                    Sudah punya akun? <a href="{{ route('login') }}" class="text-primary">Login</a>
                                 </div>
                             </form>
                         </div>

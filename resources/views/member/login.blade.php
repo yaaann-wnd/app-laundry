@@ -35,7 +35,7 @@
                                         class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Member baru? <a href="/" class="text-primary">Daftar</a>
+                                    Member baru? <a href="/register" class="text-primary">Daftar</a>
                                 </div>
                             </form>
                         </div>
