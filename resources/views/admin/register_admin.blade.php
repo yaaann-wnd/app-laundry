@@ -342,28 +342,29 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" action="{{ route('simpan_admin') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                       <label for="exampleInputName1">Nama</label>
-                      <input type="text" class="form-control" id="nama" placeholder="Name">
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Name">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Alamat</label>
-                      <input type="text" class="form-control" id="alamat" placeholder="Alamat">
+                      <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword4">Nomer Telepon</label>
-                      <input type="text" class="form-control" id="notlp" placeholder="Nomer Telepon">
+                      <input type="text" class="form-control" name="no_telp" id="no_telp" placeholder="Nomer Telepon">
                     </div>
                     <div class="form-group">
                       <label for="exampleSelectGender">Username</label>
-                      <input type="text" class="form-control" id="username" placeholder="Username">
+                      <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                     </div>
                     <div class="form-group">
                       <label for="exampleSelectGender">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password">
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     </div>
-                    <button type="button" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -380,16 +381,20 @@
                           <th>Nama</th>
                           <th>Alamat</th>
                           <th>Nomer Telepon</th>
+                          <th>Jabatan</th>
                           <th>Username</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($users as $p)
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td>{{ $p->nama }}</td>
+                          <td>{{ $p->alamat }}</td>
+                          <td>{{ $p->no_telp }}</td>
+                          <td>{{ $p->jabatan }}</td>
+                          <td>{{ $p->username }}</td>
                         </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -409,30 +414,7 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script>
-    $("#simpan_admin").click(function() {
-      var nama_customer = $("#nama_customer").val();
-      var id_customer = $("#id_customer").val();
-      var nomer_telepon = $("#nomer_telepon").val();
-      var jarak_tempuh = $("#jarak_tempuh").val();
-      var potongan = $("#potongan").val();
-      var harga = $("#harga").val();
-      alert(nama_customer);
-      $.ajax({
-        url: "{{ route('simpan_admin') }}",
-        type: "post",
-        data: {
-          nama_customer: nama_customer,
-          id_customer: id_customer,
-          jarak_tempuh: jarak_tempuh,
-          nomer_telepon: nomer_telepon,
-          potongan: potongan,
-          harga: harga
-        },
-        success: function(data) {
-          console.log(data);
-        }
-      });
-    });
+
   </script>
   <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
