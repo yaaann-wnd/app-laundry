@@ -342,44 +342,22 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample" action="{{ route('simpan_admin') }}" method="POST">
+                  <form class="forms-sample" action="{{ route('simpan_jasa') }}" method="POST">
                     @csrf
                     <div class="form-group">
                       <label for="exampleInputName1">Nama Jasa</label>
                       <input type="text" class="form-control" name="jenis_jasa" id="jenis_jasa" placeholder="Nama Jasa">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail3">Harga Per KG</label>
-                      <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga Per KG">
-                    </div>
-                    <button type="submit" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Edit Jasa</h4>
-                  <p class="card-description">
-                    Basic form elements
-                  </p>
-                  <form class="forms-sample" action="{{ route('simpan_admin') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                      <label for="exampleInputName1">Nama Jasa</label>
-                      <select name="jenis_jasa" class="form-control" id="jenis_jasa">
-                        <option value="">Jasa 1</option>
-                        <option value="">Jasa 2</option>
-                        <option value="">Jasa 3</option>
-                      </select>
+                      <label for="exampleInputEmail3">Id</label>
+                      <input type="text" readonly="" class="form-control" name="id" id="id" placeholder="Harga Per KG">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Harga Per KG</label>
-                      <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga Per KG">
+                      <input type="text" class="form-control" name="harga_perkg" id="harga_perkg" placeholder="Harga Per KG">
                     </div>
-                    <button type="submit" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" id="simpan_jasa" class="btn btn-primary mr-2">Submit</button>
+                    <button type="button" id="edit_jasa" class="btn btn-primary mr-2">Edit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -393,21 +371,21 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>Nama</th>
-                          <th>Alamat</th>
-                          <th>Nomer Telepon</th>
-                          <th>Jabatan</th>
-                          <th>Username</th>
+                          <th>Id</th>
+                          <th>Nama Jasa</th>
+                          <th>Harga Per KG</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach($users as $p)
                         <tr>
-                          <td>{{ $p->nama }}</td>
-                          <td>{{ $p->alamat }}</td>
-                          <td>{{ $p->no_telp }}</td>
-                          <td>{{ $p->jabatan }}</td>
-                          <td>{{ $p->username }}</td>
+                          <td class="id">{{ $p->id }}</td>
+                          <td class="jenis_jasa">{{ $p->jenis_jasa }}</td>
+                          <td class="harga_perkg">{{ $p->harga_perkg }}</td>
+                          <td>
+                            <button type="button" class="btn btn-success alf edit_show">Detail</button>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -429,7 +407,49 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script>
-
+    $(".edit_show").click(function() {
+      jenis_jasa = $(this).closest('tr').find('.jenis_jasa').text();
+      harga_perkg = $(this).closest('tr').find('.harga_perkg').text();
+      id = $(this).closest('tr').find('.id').text();
+      $('#jenis_jasa').val(jenis_jasa);
+      $('#harga_perkg').val(harga_perkg);
+      $('#id').val(id);
+      
+      // alert(jenis_jasa);
+    });
+    $("#edit_jasa").click(function(){
+      jenis_jasa = $(this).closest('tr').find('.jenis_jasa').text();
+      harga_perkg = $(this).closest('tr').find('.harga_perkg').text();
+      id = $(this).closest('tr').find('.id').text();
+      $.ajax({
+        url: "{{ route('edit_jasa') }}",
+        type: "post",
+        dataType:'JSON',
+        data: {jenis_jasa : jenis_jasa , harga_perkg : harga_perkg , id : id},
+        success : function(data){
+          console.log(data);
+          var dat;
+          if (data.kurir.length != 0) {
+            for (var i = 0; i < data.kurir.length; i++) {
+              dat = dat + "<tr>\
+              <td >"+data.kurir[i]['nama_customer']+"</td>\
+              <td >"+data.kurir[i]['id_customer']+"</td>\
+              <td>"+data.kurir[i]['nomer_telepon']+"</td>\
+              <td>"+data.kurir[i]['jarak_tempuh']+"</td>\
+              <td>"+data.kurir[i]['potongan']+"</td>\
+              <td>"+data.kurir[i]['harga']+"</td>\
+              <td> <button type='button' class='btn btn-success alf edit_show'>Edit</button></td>\
+              </tr>"
+            }
+            $('#hehe').html(dat);
+          }
+          else{
+            $('#hehe').html('');
+          }
+        }
+      });
+      alert(nama_customer);
+    });
   </script>
   <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
