@@ -309,9 +309,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Admin</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Kasir</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Kurir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('register_admin') }}">Admin</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('register_kasir') }}">Kasir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('register_kurir') }}">Kurir</a></li>
               </ul>
             </div>
           </li>
@@ -410,7 +410,28 @@
   <!-- base:js -->
   <script>
     $("#simpan_admin").click(function() {
-      alert('nama_customer');
+      var nama_customer = $("#nama_customer").val();
+      var id_customer = $("#id_customer").val();
+      var nomer_telepon = $("#nomer_telepon").val();
+      var jarak_tempuh = $("#jarak_tempuh").val();
+      var potongan = $("#potongan").val();
+      var harga = $("#harga").val();
+      alert(nama_customer);
+      $.ajax({
+        url: "{{ route('simpan_admin') }}",
+        type: "post",
+        data: {
+          nama_customer: nama_customer,
+          id_customer: id_customer,
+          jarak_tempuh: jarak_tempuh,
+          nomer_telepon: nomer_telepon,
+          potongan: potongan,
+          harga: harga
+        },
+        success: function(data) {
+          console.log(data);
+        }
+      });
     });
   </script>
   <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
