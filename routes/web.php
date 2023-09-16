@@ -33,7 +33,10 @@ Route::get('register_admin', [adminController::class, 'register_admin'])->name('
 Route::get('register_kasir', [adminController::class, 'register_kasir'])->name('register_kasir');
 Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('register_kurir');
 
+
+Route::get('login_kasir', [kasirController::class, 'login_kasir'])->name('login_kasir');
 Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
+
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
 
 // register member
