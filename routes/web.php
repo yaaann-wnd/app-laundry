@@ -54,6 +54,6 @@ Route::get('logout', [registerController::class, 'logout'])->name('logout');
 // Autentikasi ketika user sudah login
 Route::middleware(['auth'])->group(function () {
     Route::get('member/home', function () {
-        return view('layouts.sidebar');
+        return view('member.home');
     });
 });

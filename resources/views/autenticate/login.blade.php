@@ -31,7 +31,7 @@
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form class="pt-3" action="{{ route('login_admin') }}" method="POST">
-                              @csrf
+                                @csrf
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
                                         placeholder="Username">
@@ -49,11 +49,13 @@
                                     </select>
                                 </div>
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                        >SIGN IN</button>
+                                    <button type="submit"
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN
+                                        IN</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Login sebagai pelanggan? <a href="{{ route('login') }}" class="text-primary">Klik di sini</a>
+                                    Login sebagai pelanggan? <a href="{{ route('login') }}" class="text-primary">Klik di
+                                        sini</a>
                                 </div>
                             </form>
                         </div>
