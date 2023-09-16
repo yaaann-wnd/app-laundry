@@ -342,7 +342,8 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" action="{{ route('login_admin') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                       <label for="exampleInputName1">Nama</label>
                       <input type="text" class="form-control" id="nama" placeholder="Name">
@@ -363,7 +364,7 @@
                       <label for="exampleSelectGender">Password</label>
                       <input type="password" class="form-control" id="password" placeholder="Password">
                     </div>
-                    <button type="button" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -409,30 +410,7 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script>
-    $("#simpan_admin").click(function() {
-      var nama_customer = $("#nama_customer").val();
-      var id_customer = $("#id_customer").val();
-      var nomer_telepon = $("#nomer_telepon").val();
-      var jarak_tempuh = $("#jarak_tempuh").val();
-      var potongan = $("#potongan").val();
-      var harga = $("#harga").val();
-      alert(nama_customer);
-      $.ajax({
-        url: "{{ route('simpan_admin') }}",
-        type: "post",
-        data: {
-          nama_customer: nama_customer,
-          id_customer: id_customer,
-          jarak_tempuh: jarak_tempuh,
-          nomer_telepon: nomer_telepon,
-          potongan: potongan,
-          harga: harga
-        },
-        success: function(data) {
-          console.log(data);
-        }
-      });
-    });
+
   </script>
   <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
