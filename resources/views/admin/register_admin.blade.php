@@ -19,8 +19,8 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
   <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,8 +29,8 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo"/></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="typcn typcn-th-menu"></span>
           </button>
@@ -40,7 +40,7 @@
         <ul class="navbar-nav mr-lg-2">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../../images/faces/face5.jpg" alt="profile"/>
+              <img src="../../images/faces/face5.jpg" alt="profile" />
               <span class="nav-profile-name">Admin</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -92,7 +92,7 @@
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-info">
-                    <i class="typcn typcn-user mx-0"></i> 
+                    <i class="typcn typcn-user mx-0"></i>
                   </div>
                 </div>
                 <div class="preview-item-content">
@@ -124,8 +124,12 @@
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close typcn typcn-times"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+          </div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+          </div>
           <p class="settings-heading mt-2">HEADER SKINS</p>
           <div class="color-tiles mx-0 px-4">
             <div class="tiles success"></div>
@@ -305,9 +309,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Admin</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Kasir</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Kurir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('register_admin') }}">Admin</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('register_kasir') }}">Kasir</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('register_kurir') }}">Kurir</a></li>
               </ul>
             </div>
           </li>
@@ -328,7 +332,7 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">        
+      <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-12 grid-margin stretch-card">
@@ -354,17 +358,18 @@
                     <div class="form-group">
                       <label for="exampleSelectGender">Username</label>
                       <input type="text" class="form-control" id="username" placeholder="Username">
-                      </div>
+                    </div>
                     <div class="form-group">
                       <label for="exampleSelectGender">Password</label>
                       <input type="password" class="form-control" id="password" placeholder="Password">
-                      </div>
+                    </div>
                     <button type="button" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
-            </div><div class="col-lg-12 grid-margin stretch-card">
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Striped Table</h4>
@@ -404,13 +409,11 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script>
-$(document).ready(function(){
-  $("#simpan_admin").click(function(){
-    alert("The paragraph was clicked.");
-  });
-});
-</script>
-<script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
+    $("#simpan_admin").click(function() {
+      alert('nama_customer');
+    });
+  </script>
+  <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- inject:js -->
