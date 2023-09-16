@@ -32,12 +32,17 @@ class adminController extends Controller
     }
     public function edit_jasa(Request $request) {
         // dd($request->all());
-        ProdukJasa::create([
-            'jenis_jasa' => $request->jenis_jasa,
-            'harga_perkg' => $request->harga_perkg,
-        ]);
+        $id = $request->id;
+        $jenis_jasa = $request->jenis_jasa;
+        $harga_perkg = $request->harga_perkg;
+        
+		$data = array(
+			'jenis_jasa' =>$jenis_jasa,
+			'harga_perkg' =>$harga_perkg,
+		);
+        $ProdukJasa = ProdukJasa::find($id)->update($data);
 
-        return redirect(route('harga_jasa'));
+		echo json_encode($data);
     }
     public function simpan_jasa(Request $request) {
         // dd($request->all());
