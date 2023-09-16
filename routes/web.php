@@ -31,7 +31,7 @@ Route::get('member/home', function () {
     return view('layouts.sidebar');
 });
 
-Route::post('login_admin', [adminController::class, 'register_admin'])->name('register_admin');
+Route::post('login_admin', [adminController::class, 'login_admin'])->name('login_admin');
 Route::get('register_admin', [adminController::class, 'register_admin'])->name('register_admin');
 Route::get('register_kasir', [adminController::class, 'register_kasir'])->name('register_kasir');
 Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('register_kurir');
