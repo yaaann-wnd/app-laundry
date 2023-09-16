@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class adminController extends Controller
 {
@@ -19,6 +21,15 @@ class adminController extends Controller
         return view('admin/register_kurir');
     }
     public function simpan_admin(Request $request) {
-       
+        User::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'notelp' => $request->notlp,
+            'password' => Hash::make($request->password),
+            'username' => $request->username,
+            'jabatan' => 'admin',
+        ]);
+
+        return redirect(route('register_admin'));
     }
 }
