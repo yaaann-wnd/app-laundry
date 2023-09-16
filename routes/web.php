@@ -16,15 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('/login');
 });
 
 Route::get('/login', function () {
     return view('autenticate/login');
-});
-
-Route::get('/register', function () {
-    return view('member/register');
 });
 
 Route::get('member/home', function () {
@@ -38,4 +34,5 @@ Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('
 
 Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
-Route::post('daftar', [registerController::class, 'register'])->name('register');
+Route::post('register', [registerController::class, 'regtister'])->name('register');
+Route::post('registerProses', [registerController::class, 'registerProses'])->name('registerProses');

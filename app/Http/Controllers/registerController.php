@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class registerController extends Controller
 {
-    public function register(Request $request) {
+    public function register() {
+        return view('member.register');
+    }
+
+
+    public function registerProses(Request $request) {
         // dd($request->all());
         // Member::create([
         //     'nama' => $request->nama,

@@ -30,7 +30,7 @@
                             </div>
                             <h4>Halo, Selamat Datang!</h4>
                             <h6 class="font-weight-light">Daftar dulu ya guys!</h6>
-                            <form class="pt-3" action="{{ route('register') }}" method="POST">
+                            <form class="pt-3" action="{{ route('registerProses') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="nama"
