@@ -418,9 +418,9 @@
       // alert(jenis_jasa);
     });
     $("#edit_jasa").click(function(){
-      jenis_jasa = $(this).closest('tr').find('.jenis_jasa').text();
-      harga_perkg = $(this).closest('tr').find('.harga_perkg').text();
-      id = $(this).closest('tr').find('.id').text();
+      var id = $("#id").val();
+      var jenis_jasa = $("#jenis_jasa").val();
+      var harga_perkg = $("#harga_perkg").val();
       $.ajax({
         url: "{{ route('edit_jasa') }}",
         type: "post",
@@ -428,27 +428,8 @@
         data: {jenis_jasa : jenis_jasa , harga_perkg : harga_perkg , id : id},
         success : function(data){
           console.log(data);
-          var dat;
-          if (data.kurir.length != 0) {
-            for (var i = 0; i < data.kurir.length; i++) {
-              dat = dat + "<tr>\
-              <td >"+data.kurir[i]['nama_customer']+"</td>\
-              <td >"+data.kurir[i]['id_customer']+"</td>\
-              <td>"+data.kurir[i]['nomer_telepon']+"</td>\
-              <td>"+data.kurir[i]['jarak_tempuh']+"</td>\
-              <td>"+data.kurir[i]['potongan']+"</td>\
-              <td>"+data.kurir[i]['harga']+"</td>\
-              <td> <button type='button' class='btn btn-success alf edit_show'>Edit</button></td>\
-              </tr>"
-            }
-            $('#hehe').html(dat);
-          }
-          else{
-            $('#hehe').html('');
-          }
         }
       });
-      alert(nama_customer);
     });
   </script>
   <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
