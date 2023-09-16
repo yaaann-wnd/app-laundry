@@ -18,4 +18,7 @@ class adminController extends Controller
     public function register_kurir(Request $request) {
         return view('admin/register_kurir');
     }
+    public function simpan_admin(Request $request) {
+       
+    }
 }
