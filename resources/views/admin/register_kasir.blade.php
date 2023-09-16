@@ -19,8 +19,8 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
   <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,8 +29,8 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo"/></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="typcn typcn-th-menu"></span>
           </button>
@@ -40,7 +40,7 @@
         <ul class="navbar-nav mr-lg-2">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../../images/faces/face5.jpg" alt="profile"/>
+              <img src="../../images/faces/face5.jpg" alt="profile" />
               <span class="nav-profile-name">Admin</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -92,7 +92,7 @@
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-info">
-                    <i class="typcn typcn-user mx-0"></i> 
+                    <i class="typcn typcn-user mx-0"></i>
                   </div>
                 </div>
                 <div class="preview-item-content">
@@ -124,8 +124,12 @@
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close typcn typcn-times"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+          </div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+          </div>
           <p class="settings-heading mt-2">HEADER SKINS</p>
           <div class="color-tiles mx-0 px-4">
             <div class="tiles success"></div>
@@ -328,7 +332,7 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">        
+      <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-12 grid-margin stretch-card">
@@ -338,33 +342,35 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" action="{{ route('simpan_kasir') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                       <label for="exampleInputName1">Nama</label>
-                      <input type="text" class="form-control" id="nama" placeholder="Name">
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Name">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Alamat</label>
-                      <input type="text" class="form-control" id="alamat" placeholder="Alamat">
+                      <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword4">Nomer Telepon</label>
-                      <input type="text" class="form-control" id="notlp" placeholder="Nomer Telepon">
+                      <input type="text" class="form-control" name="no_telp" id="no_telp" placeholder="Nomer Telepon">
                     </div>
                     <div class="form-group">
                       <label for="exampleSelectGender">Username</label>
-                      <input type="text" class="form-control" id="username" placeholder="Username">
-                      </div>
+                      <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    </div>
                     <div class="form-group">
                       <label for="exampleSelectGender">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password">
-                      </div>
-                    <button type="button" id="simpan_admin" class="btn btn-primary mr-2">Submit</button>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                    <button type="submit" id="simpan_kasir" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
-            </div><div class="col-lg-12 grid-margin stretch-card">
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Striped Table</h4>
@@ -375,16 +381,20 @@
                           <th>Nama</th>
                           <th>Alamat</th>
                           <th>Nomer Telepon</th>
+                          <th>Jabatan</th>
                           <th>Username</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($users as $p)
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td>{{ $p->nama }}</td>
+                          <td>{{ $p->alamat }}</td>
+                          <td>{{ $p->no_telp }}</td>
+                          <td>{{ $p->jabatan }}</td>
+                          <td>{{ $p->username }}</td>
                         </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -404,13 +414,13 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script>
-$(document).ready(function(){
-  $("#simpan_admin").click(function(){
-    alert("The paragraph was clicked.");
-  });
-});
-</script>
-<script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
+    $(document).ready(function() {
+      $("#simpan_admin").click(function() {
+        alert("The paragraph was clicked.");
+      });
+    });
+  </script>
+  <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- inject:js -->
