@@ -55,9 +55,14 @@ Route::post('login-member-proses', [registerController::class, 'loginProses'])->
 // logout member
 Route::get('logout', [registerController::class, 'logout'])->name('logout');
 
+// logout user
+Route::get('logout_user', [adminController::class, 'logout'])->name('logout_user');
+
 // Autentikasi ketika user sudah login
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:member'])->group(function () {
     Route::get('member/home', function () {
         return view('member.home');
     });
 });
+
+// Route::middleware(['auth'])->group()->func

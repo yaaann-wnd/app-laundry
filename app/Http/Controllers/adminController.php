@@ -8,10 +8,12 @@ use App\Models\ProdukJasa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class adminController extends Controller
 {
     public function login_admin(Request $request) {
+        // dd($request->all());
         $request->validate([
             'username' => 'required',
             'password' => 'required',
@@ -23,12 +25,12 @@ class adminController extends Controller
         if (Auth::attempt($credentials)) {
             $users = User::where('jabatan', 'admin')->get();
 
-            return redirect()->intended(view('admin/register_admin', ['users' => $users]));
+            return redirect()->intended('register_admin');
         }
 
         return redirect('/')->with('error', 'Data yang anda masukkan salah!');
     }
-    
+
     public function admin_home(Request $request) {
         $users = DB::table('users')->where('jabatan', 'admin')->get();
         return view('admin/register_admin',['users' => $users]);
@@ -122,5 +124,13 @@ class adminController extends Controller
         ]);
 
         return redirect(route('register_kurir'));
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return redirect('/');
     }
 }

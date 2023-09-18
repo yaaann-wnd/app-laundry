@@ -57,10 +57,9 @@ class registerController extends Controller
             'password' => 'required'
         ]);
 
-        $credentials = $request->only('nama', 'password');
+        $credentials2 = $request->only('nama', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        if (Auth::guard('member')->attempt($credentials2)) {
 
             return redirect()->intended('/member/home');
         }

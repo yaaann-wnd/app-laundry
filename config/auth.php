@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'member',
+        ],
     ],
 
     /*
@@ -66,8 +70,8 @@ return [
         ],
 
         'member' => [
-            'driver' => 'database',
-            'table' => 'member',
+            'driver' => 'eloquent',
+            'model' => App\Models\Member::class,
         ],
     ],
 
@@ -94,6 +98,12 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'member' => [
+            'provider' => 'member',
+            'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
