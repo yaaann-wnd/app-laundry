@@ -61,9 +61,18 @@ class adminController extends Controller
 			'jenis_jasa' =>$jenis_jasa,
 			'harga_perkg' =>$harga_perkg,
 		);
-        $ProdukJasa = ProdukJasa::find($id)->update($data);
-
-		echo json_encode($data);
+        $ProdukJasa = ProdukJasa::find($id);
+        $ProdukJasa->update($data);
+     
+        return response()->json($data);
+    }
+    public function delete_jasa(Request $request) {
+        // dd($request->all());
+        $id = $request->id;
+        $ProdukJasa = ProdukJasa::find($id);
+        $ProdukJasa->delete();
+     
+        return response()->json($id);
     }
     public function simpan_jasa(Request $request) {
         // dd($request->all());
@@ -82,6 +91,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'password' => Hash::make($request->password),
             'username' => $request->username,
+            'status' => '',
             'jabatan' => 'admin',
         ]);
 
@@ -95,6 +105,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'password' => Hash::make($request->password),
             'username' => $request->username,
+            'status' => '',
             'jabatan' => 'kasir',
         ]);
 
@@ -108,6 +119,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'password' => Hash::make($request->password),
             'username' => $request->username,
+            'status' => '',
             'jabatan' => 'kurir',
         ]);
 
