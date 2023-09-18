@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="{{ asset('vendors/typicons/typicons.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
@@ -50,15 +46,7 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="../../images/faces/face5.jpg" alt="profile" />
-                            @if (Auth::user()->jabatan == 'admin')
-                                <span class="nav-profile-name">Admin</span>
-                            @elseif (Auth::user()->jabatan == 'kasir')
-                                <span class="nav-profile-name">Kasir</span>
-                            @elseif (Auth::user()->jabatan == 'kurir')
-                                <span class="nav-profile-name">Kurir</span>
-                            @else
-                                <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
-                            @endif
+                            <span class="nav-profile-name">Kasir</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
@@ -66,8 +54,7 @@
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>
-                            <a class="dropdown-item"
-                                href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
+                            <a class="dropdown-item" href="{{ route('logout') }}">
                                 <i class="typcn typcn-eject text-primary"></i>
                                 Logout
                             </a>
@@ -126,8 +113,7 @@
                         </div>
                     </li>
                     <li class="nav-item nav-date dropdown">
-                        <a class="nav-link d-flex justify-content-center align-items-center"
-                            href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
+                        <a class="nav-link d-flex justify-content-center align-items-center" href="javascript:;">
                             <h6 class="date mb-0">Logout</h6>
                             <i class="bi bi-box-arrow-right"></i>
                         </a>
@@ -331,47 +317,16 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('harga_jasa') }}">
+                        <a class="nav-link" href="{{ route('login_kasir') }}">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
-                            <div class="badge badge-danger">new</div>
                         </a>
                     </li>
-                    <li class="nav-item {{ Auth::user()->jabatan == 'admin' ? '' : 'd-none' }}">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="typcn typcn-document-text menu-icon"></i>
-                            <span class="menu-title">Register</span>
-                            <i class="menu-arrow"></i>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('kasir_data') }}">
+                            <i class="typcn typcn-device-desktop menu-icon"></i>
+                            <span class="menu-title">Data</span>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_admin') }}">Admin</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_kasir') }}">Kasir</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_kurir') }}">Kurir</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item {{ !Auth::user()->jabatan ? 'd-none' : '' }}">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="typcn typcn-film menu-icon"></i>
-                            <span class="menu-title">Laporan</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Transaksi Masuk</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Status Kurir</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Transaksi Selesai</a></li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </nav>
@@ -391,20 +346,14 @@
     <!-- container-scroller -->
 
     <!-- base:js -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
-    @yield('script')
-    <script defer>
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
+    <script>
+        $(document).ready(function() {
+      $("#simpan_admin").click(function() {
+        alert("The paragraph was clicked.");
+      });
+    });
     </script>
-
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- inject:js -->
