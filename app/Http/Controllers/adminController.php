@@ -14,6 +14,7 @@ class adminController extends Controller
 {
     public function login_admin(Request $request) {
         // dd($request->all());
+        $jabatan = $request->jabatan;
         $request->validate([
             'username' => 'required',
             'password' => 'required',
@@ -23,9 +24,13 @@ class adminController extends Controller
         $credentials = $request->only('username', 'password', 'jabatan');
 
         if (Auth::attempt($credentials)) {
-            $users = User::where('jabatan', 'admin')->get();
-
-            return redirect()->intended('register_admin');
+            if($jabatan == 'admin'){
+                return redirect()->intended('harga_jasa');
+            }elseif($jabatan == 'kasir'){
+                return redirect()->intended('login_kasir');
+            }elseif($jabatan == 'kurir'){
+                return redirect()->intended('login_kurir');
+            }
         }
 
         return redirect('/')->with('error', 'Data yang anda masukkan salah!');

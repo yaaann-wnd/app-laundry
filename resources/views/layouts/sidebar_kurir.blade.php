@@ -46,7 +46,7 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="../../images/faces/face5.jpg" alt="profile" />
-                            <span class="nav-profile-name">Kasir</span>
+                            <span class="nav-profile-name">Kurir</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
