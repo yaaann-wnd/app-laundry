@@ -25,7 +25,7 @@ class adminController extends Controller
         if (Auth::attempt($credentials)) {
             $users = User::where('jabatan', 'admin')->get();
 
-            return redirect()->intended('register_admin');
+            return redirect()->intended('harga_jasa');
         }
 
         return redirect('/')->with('error', 'Data yang anda masukkan salah!');
@@ -63,7 +63,7 @@ class adminController extends Controller
 		);
         $ProdukJasa = ProdukJasa::find($id);
         $ProdukJasa->update($data);
-     
+
         return response()->json($data);
     }
     public function delete_jasa(Request $request) {
@@ -71,7 +71,7 @@ class adminController extends Controller
         $id = $request->id;
         $ProdukJasa = ProdukJasa::find($id);
         $ProdukJasa->delete();
-     
+
         return response()->json($id);
     }
     public function simpan_jasa(Request $request) {
