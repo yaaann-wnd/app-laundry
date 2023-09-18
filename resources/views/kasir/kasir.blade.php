@@ -467,10 +467,11 @@
                 <div class="card-body">
                   <h4 class="card-title">Kurir Tabel</h4>
                   <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="mytable_kurir">
                       <thead>
                         <tr>
                           <th>Nama</th>
+                          <th>Id Kurir</th>
                           <th>Alamat</th>
                           <th>Nomer Telepon</th>
                           <th>Status</th>
@@ -480,12 +481,13 @@
                       <tbody>
                         @foreach($users as $p)
                         <tr>
-                          <td>{{ $p->nama }}</td>
-                          <td>{{ $p->alamat }}</td>
-                          <td>{{ $p->no_telp }}</td>
-                          <td>{{ $p->status }}</td>
+                          <td class="nama">{{ $p->nama }}</td>
+                          <td class="id">{{ $p->id }}</td>
+                          <td class="alamat">{{ $p->alamat }}</td>
+                          <td class="no_telp">{{ $p->no_telp }}</td>
+                          <td class="status">{{ $p->status }}</td>
                           <td>
-                            <button type="button" class="btn btn-success alf edit_show">Detail</button>
+                            <button type="button" class="btn btn-success detail_show">Detail</button>
                           </td>
                         </tr>
                         @endforeach
@@ -538,6 +540,40 @@
 
       }
 
+    });
+    
+    $(".detail_show").click(function() {
+      nama = $(this).closest('tr').find('.nama').text();
+      id = $(this).closest('tr').find('.id').text();
+      $('#nama').val(nama);
+      $('#id').val(id);
+
+      // alert(jenis_jasa);
+    });
+    $("#tugaskan").click(function(e) {
+
+
+      e.preventDefault();
+
+      var id = $("#id").val();
+      var nama = $("#nama").val();
+      $.ajax({
+        url: "{{ route('tugaskan') }}",
+        type: "post",
+        dataType: 'JSON',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          nama: nama,
+          id: id
+        },
+        success: function(data) {
+          console.log(data);
+          $("#mytable_kurir").load("http://127.0.0.1:8000/login_kasir #mytable_kurir");
+          $('#nama').val('');
+          $('#id').val(''); 
+          location.reload();
+        }
+      });
     });
   </script>
   <!-- container-scroller -->
