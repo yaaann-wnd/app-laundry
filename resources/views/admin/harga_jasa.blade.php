@@ -343,7 +343,7 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form class="forms-sample" action="{{ route('simpan_jasa') }}" method="POST">
+                  <form class="forms-sample" action="{{ route('simpan_jasa') }}" method="POST" id="myform">
                     @csrf
                     <div class="form-group">
                       <label for="exampleInputName1">Nama Jasa</label>
@@ -351,7 +351,7 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Id</label>
-                      <input type="text" readonly="" class="form-control" name="id" id="id" placeholder="Harga Per KG">
+                      <input type="text" readonly="" class="form-control" name="id" id="id">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Harga Per KG</label>
@@ -360,7 +360,7 @@
                     <button type="submit" id="simpan_jasa" class="btn btn-primary mr-2">Submit</button>
                     <button type="button" id="edit_jasa" class="btn btn-primary mr-2">Edit</button>
                     <button type="button" id="delete_jasa" class="btn btn-primary mr-2">Delete</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <button type="button" id="cancel_jasa" class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
@@ -370,7 +370,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Striped Table</h4>
                   <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped " id="mytable">
                       <thead>
                         <tr>
                           <th>Id</th>
@@ -418,6 +418,9 @@
       }
 
     });
+    $('#cancel_jasa').click(function() {
+      $(this).closest('form').find("input[type=text], textarea").val("");
+    });
     $(".edit_show").click(function() {
       jenis_jasa = $(this).closest('tr').find('.jenis_jasa').text();
       harga_perkg = $(this).closest('tr').find('.harga_perkg').text();
@@ -429,7 +432,7 @@
       // alert(jenis_jasa);
     });
     $("#edit_jasa").click(function(e) {
-          
+
 
       e.preventDefault();
 
@@ -448,11 +451,16 @@
         },
         success: function(data) {
           console.log(data);
+          $("#mytable").load("http://127.0.0.1:8000/harga_jasa #mytable");
+          $('#jenis_jasa').val('');
+          $('#harga_perkg').val('');
+          $('#id').val(''); 
+          location.reload();
         }
       });
     });
     $("#delete_jasa").click(function(e) {
-          
+
 
       e.preventDefault();
 
@@ -467,6 +475,8 @@
         },
         success: function(data) {
           console.log(data);
+          $("#mytable").load("http://127.0.0.1:8000/harga_jasa #mytable");
+          $(this).closest('form').find("input[type=text], textarea").val("");
         }
       });
     });
