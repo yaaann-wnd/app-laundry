@@ -21,6 +21,7 @@
   <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <body>
@@ -358,6 +359,7 @@
                     </div>
                     <button type="submit" id="simpan_jasa" class="btn btn-primary mr-2">Submit</button>
                     <button type="button" id="edit_jasa" class="btn btn-primary mr-2">Edit</button>
+                    <button type="button" id="delete_jasa" class="btn btn-primary mr-2">Delete</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -407,6 +409,15 @@
   <!-- container-scroller -->
   <!-- base:js -->
   <script>
+    $.ajaxSetup({
+
+      headers: {
+
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+      }
+
+    });
     $(".edit_show").click(function() {
       jenis_jasa = $(this).closest('tr').find('.jenis_jasa').text();
       harga_perkg = $(this).closest('tr').find('.harga_perkg').text();
@@ -414,19 +425,47 @@
       $('#jenis_jasa').val(jenis_jasa);
       $('#harga_perkg').val(harga_perkg);
       $('#id').val(id);
-      
+
       // alert(jenis_jasa);
     });
-    $("#edit_jasa").click(function(){
+    $("#edit_jasa").click(function(e) {
+          
+
+      e.preventDefault();
+
       var id = $("#id").val();
       var jenis_jasa = $("#jenis_jasa").val();
       var harga_perkg = $("#harga_perkg").val();
       $.ajax({
         url: "{{ route('edit_jasa') }}",
         type: "post",
-        dataType:'JSON',
-        data: {jenis_jasa : jenis_jasa , harga_perkg : harga_perkg , id : id},
-        success : function(data){
+        dataType: 'JSON',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          jenis_jasa: jenis_jasa,
+          harga_perkg: harga_perkg,
+          id: id
+        },
+        success: function(data) {
+          console.log(data);
+        }
+      });
+    });
+    $("#delete_jasa").click(function(e) {
+          
+
+      e.preventDefault();
+
+      var id = $("#id").val();
+      $.ajax({
+        url: "{{ route('delete_jasa') }}",
+        type: "post",
+        dataType: 'JSON',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          id: id
+        },
+        success: function(data) {
           console.log(data);
         }
       });

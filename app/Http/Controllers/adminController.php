@@ -35,14 +35,23 @@ class adminController extends Controller
         $id = $request->id;
         $jenis_jasa = $request->jenis_jasa;
         $harga_perkg = $request->harga_perkg;
-        
+
 		$data = array(
 			'jenis_jasa' =>$jenis_jasa,
 			'harga_perkg' =>$harga_perkg,
 		);
-        $ProdukJasa = ProdukJasa::find($id)->update($data);
-
-		echo json_encode($data);
+        $ProdukJasa = ProdukJasa::find($id);
+        $ProdukJasa->update($data);
+     
+        return response()->json($data);
+    }
+    public function delete_jasa(Request $request) {
+        // dd($request->all());
+        $id = $request->id;
+        $ProdukJasa = ProdukJasa::find($id);
+        $ProdukJasa->delete();
+     
+        return response()->json($id);
     }
     public function simpan_jasa(Request $request) {
         // dd($request->all());
