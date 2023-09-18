@@ -317,15 +317,9 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login_kasir') }}">
+                        <a class="nav-link" href="{{ route('login_kurir') }}">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('kasir_data') }}">
-                            <i class="typcn typcn-device-desktop menu-icon"></i>
-                            <span class="menu-title">Data</span>
                         </a>
                     </li>
                 </ul>
