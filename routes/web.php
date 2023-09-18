@@ -39,6 +39,7 @@ Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('
 
 
 Route::get('login_kasir', [kasirController::class, 'login_kasir'])->name('login_kasir');
+Route::get('kasir_data', [kasirController::class, 'kasir_data'])->name('kasir_data');
 Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
 Route::post('tugaskan', [kasirController::class, 'tugaskan'])->name('tugaskan');
 
