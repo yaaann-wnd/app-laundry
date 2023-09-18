@@ -33,19 +33,19 @@
                             <form class="pt-3" action="{{ route('login_admin') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Username">
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"
+                                        placeholder="Username" name="username">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg"
-                                        id="exampleInputPassword1" placeholder="Password">
+                                        id="exampleInputPassword1" placeholder="Password" name="password">
                                 </div>
                                 <div class="form-group">
-                                    <select name="jabatan" class="form-control form-control-lg" id="jabatan">
-                                        <option value="">Pilih Jabatan</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="kurir">Kurir</option>
-                                        <option value="kasir">Kasir</option>
+                                    <select name="jabatan" class="form-control" id="jabatan">
+                                        <option class="text-dark" value="">Pilih Jabatan</option>
+                                        <option class="text-dark" value="admin">Admin</option>
+                                        <option class="text-dark" value="kurir">Kurir</option>
+                                        <option class="text-dark" value="kasir">Kasir</option>
                                     </select>
                                 </div>
                                 <div class="mt-3">
