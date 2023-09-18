@@ -36,6 +36,22 @@ class adminController extends Controller
         return redirect('/')->with('error', 'Data yang anda masukkan salah!');
     }
 
+    public function laporan_transaksi_masuk(Request $request) {
+        $users = DB::table('users')->where('jabatan', 'admin')->get();
+        return view('admin/laporan_transaksi_masuk',['users' => $users]);
+    }
+    public function laporan_transaksi_selesai(Request $request) {
+        $users = DB::table('users')->where('jabatan', 'admin')->get();
+        return view('admin/laporan_transaksi_selesai',['users' => $users]);
+    }
+    public function status_kurir(Request $request) {
+        $users = DB::table('users')->where('jabatan', 'admin')->get();
+        return view('admin/status_kurir',['users' => $users]);
+    }
+    public function data_member(Request $request) {
+        $users = DB::table('users')->get();
+        return view('admin/data_member',['users' => $users]);
+    }
     public function admin_home(Request $request) {
         $users = DB::table('users')->where('jabatan', 'admin')->get();
         return view('admin/register_admin',['users' => $users]);

@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/typicons/typicons.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <!-- endinject -->
@@ -26,7 +25,7 @@
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <body>
@@ -35,12 +34,9 @@
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
                 <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-                    <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}"
-                            alt="logo" /></a>
-                    <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
-                            src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
-                        data-toggle="minimize">
+                    <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="typcn typcn-th-menu"></span>
                     </button>
                 </div>
@@ -51,23 +47,21 @@
                         <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="../../images/faces/face5.jpg" alt="profile" />
                             @if (Auth::user()->jabatan == 'admin')
-                                <span class="nav-profile-name">Admin</span>
+                            <span class="nav-profile-name">Admin</span>
                             @elseif (Auth::user()->jabatan == 'kasir')
-                                <span class="nav-profile-name">Kasir</span>
+                            <span class="nav-profile-name">Kasir</span>
                             @elseif (Auth::user()->jabatan == 'kurir')
-                                <span class="nav-profile-name">Kurir</span>
+                            <span class="nav-profile-name">Kurir</span>
                             @else
-                                <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
+                            <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
                             @endif
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                            aria-labelledby="profileDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>
-                            <a class="dropdown-item"
-                                href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
+                            <a class="dropdown-item" href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
                                 <i class="typcn typcn-eject text-primary"></i>
                                 Logout
                             </a>
@@ -76,13 +70,11 @@
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown mr-0">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
-                            id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
                             <i class="typcn typcn-bell mx-0"></i>
                             <span class="count"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                             <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
@@ -126,15 +118,13 @@
                         </div>
                     </li>
                     <li class="nav-item nav-date dropdown">
-                        <a class="nav-link d-flex justify-content-center align-items-center"
-                            href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
+                        <a class="nav-link d-flex justify-content-center align-items-center" href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
                             <h6 class="date mb-0">Logout</h6>
                             <i class="bi bi-box-arrow-right"></i>
                         </a>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="typcn typcn-th-menu"></span>
                 </button>
             </div>
@@ -168,24 +158,19 @@
                 <i class="settings-close typcn typcn-times"></i>
                 <ul class="nav nav-tabs" id="setting-panel" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section"
-                            role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
-                            aria-controls="chats-section">CHATS</a>
+                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="setting-content">
-                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-                        aria-labelledby="todo-section">
+                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
                         <div class="add-items d-flex px-3 mb-0">
                             <form class="form w-100">
                                 <div class="form-group d-flex">
-                                    <input type="text" class="form-control todo-list-input"
-                                        placeholder="Add To-do">
-                                    <button type="submit" class="add btn btn-primary todo-list-add-btn"
-                                        id="add-task">Add</button>
+                                    <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                                    <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
                                 </div>
                             </form>
                         </div>
@@ -259,14 +244,12 @@
                     <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
                         <div class="d-flex align-items-center justify-content-between border-bottom">
                             <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                            <small
-                                class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
+                            <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
                                 All</small>
                         </div>
                         <ul class="chat-list">
                             <li class="list active">
-                                <div class="profile"><img src="../../images/faces/face1.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Thomas Douglas</p>
                                     <p>Available</p>
@@ -274,8 +257,7 @@
                                 <small class="text-muted my-auto">19 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face2.jpg" alt="image"><span
-                                        class="offline"></span></div>
+                                <div class="profile"><img src="../../images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <div class="wrapper d-flex">
                                         <p>Catherine</p>
@@ -286,8 +268,7 @@
                                 <small class="text-muted my-auto">23 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face3.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face3.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Daniel Russell</p>
                                     <p>Available</p>
@@ -295,8 +276,7 @@
                                 <small class="text-muted my-auto">14 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face4.jpg" alt="image"><span
-                                        class="offline"></span></div>
+                                <div class="profile"><img src="../../images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <p>James Richardson</p>
                                     <p>Away</p>
@@ -304,8 +284,7 @@
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face5.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face5.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Madeline Kennedy</p>
                                     <p>Available</p>
@@ -313,8 +292,7 @@
                                 <small class="text-muted my-auto">5 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face6.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face6.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Sarah Graves</p>
                                     <p>Available</p>
@@ -338,38 +316,31 @@
                         </a>
                     </li>
                     <li class="nav-item {{ Auth::user()->jabatan == 'admin' ? '' : 'd-none' }}">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="typcn typcn-document-text menu-icon"></i>
                             <span class="menu-title">Register</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_admin') }}">Admin</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_kasir') }}">Kasir</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_kurir') }}">Kurir</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('register_admin') }}">Admin</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('register_kasir') }}">Kasir</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('register_kurir') }}">Kurir</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item {{ !Auth::user()->jabatan ? 'd-none' : '' }}">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
+                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="typcn typcn-film menu-icon"></i>
                             <span class="menu-title">Laporan</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Transaksi Masuk</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Status Kurir</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Transaksi Selesai</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('laporan_transaksi_masuk') }}">Laporan Transaksi Masuk</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('status_kurir') }}">Laporan Status Kurir</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('laporan_transaksi_selesai') }}">Laporan Transaksi Selesai</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('data_member') }}">Data Member</a></li>
                             </ul>
                         </div>
                     </li>
@@ -391,8 +362,7 @@
     <!-- container-scroller -->
 
     <!-- base:js -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     @yield('script')
