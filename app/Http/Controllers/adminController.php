@@ -68,7 +68,7 @@ class adminController extends Controller
 		);
         $ProdukJasa = ProdukJasa::find($id);
         $ProdukJasa->update($data);
-     
+
         return response()->json($data);
     }
     public function delete_jasa(Request $request) {
@@ -76,7 +76,7 @@ class adminController extends Controller
         $id = $request->id;
         $ProdukJasa = ProdukJasa::find($id);
         $ProdukJasa->delete();
-     
+
         return response()->json($id);
     }
     public function delete_user_kasir(Request $request) {
