@@ -30,7 +30,8 @@ Route::get('harga_jasa', [adminController::class, 'harga_jasa'])->name('harga_ja
 Route::post('simpan_admin', [adminController::class, 'simpan_admin'])->name('simpan_admin');
 Route::post('edit_jasa', [adminController::class, 'edit_jasa'])->name('edit_jasa');
 Route::post('delete_jasa', [adminController::class, 'delete_jasa'])->name('delete_jasa');
-Route::post('delete_user', [adminController::class, 'delete_user'])->name('delete_user');
+Route::post('delete_user_kasir', [adminController::class, 'delete_user_kasir'])->name('delete_user_kasir');
+Route::post('delete_user_kurir', [adminController::class, 'delete_user_kurir'])->name('delete_user_kurir');
 Route::post('simpan_jasa', [adminController::class, 'simpan_jasa'])->name('simpan_jasa');
 Route::post('simpan_kasir', [adminController::class, 'simpan_kasir'])->name('simpan_kasir');
 Route::post('simpan_kurir', [adminController::class, 'simpan_kurir'])->name('simpan_kurir');

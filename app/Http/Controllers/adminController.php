@@ -74,6 +74,22 @@ class adminController extends Controller
      
         return response()->json($id);
     }
+    public function delete_user_kasir(Request $request) {
+        // dd($request->all());
+        $id = $request->id;
+        $user = User::find($id);
+        $user->delete();
+     
+        return redirect(route('register_kasir'));
+    }
+    public function delete_user_kurir(Request $request) {
+        // dd($request->all());
+        $id = $request->id;
+        $user = User::find($id);
+        $user->delete();
+     
+        return redirect(route('register_kurir'));
+    }
     public function simpan_jasa(Request $request) {
         // dd($request->all());
         ProdukJasa::create([
