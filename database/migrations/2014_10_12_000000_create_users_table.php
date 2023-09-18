@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('no_telp');
             $table->string('jabatan');
+            $table->string('status');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

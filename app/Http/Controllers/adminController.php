@@ -89,6 +89,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'password' => Hash::make($request->password),
             'username' => $request->username,
+            'status' => '',
             'jabatan' => 'admin',
         ]);
 
@@ -102,6 +103,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'password' => Hash::make($request->password),
             'username' => $request->username,
+            'status' => '',
             'jabatan' => 'kasir',
         ]);
 
@@ -115,6 +117,7 @@ class adminController extends Controller
             'no_telp' => $request->no_telp,
             'password' => Hash::make($request->password),
             'username' => $request->username,
+            'status' => '',
             'jabatan' => 'kurir',
         ]);
 
