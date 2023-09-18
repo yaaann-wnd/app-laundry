@@ -317,47 +317,16 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('harga_jasa') }}">
+                        <a class="nav-link" href="{{ route('login_kasir') }}">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
-                            <div class="badge badge-danger">new</div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="typcn typcn-document-text menu-icon"></i>
-                            <span class="menu-title">Register</span>
-                            <i class="menu-arrow"></i>
+                        <a class="nav-link" href="{{ route('kasir_data') }}">
+                            <i class="typcn typcn-device-desktop menu-icon"></i>
+                            <span class="menu-title">Data</span>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_admin') }}">Admin</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_kasir') }}">Kasir</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('register_kurir') }}">Kurir</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="typcn typcn-film menu-icon"></i>
-                            <span class="menu-title">Laporan</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Transaksi Masuk</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Status Kurir</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="../../pages/forms/basic_elements.html">Laporan Transaksi Selesai</a></li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </nav>
