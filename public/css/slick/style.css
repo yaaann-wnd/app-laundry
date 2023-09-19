@@ -1,0 +1,59 @@
+body {
+    overflow: hidden;
+}
+
+.promo .promo-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.promo img {
+    height: 45vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
+.promo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: #000000a2;
+}
+
+.teks-promo-wrapper {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.judul {
+    font-size: 3rem;
+}
+
+.tombol-wrapper {
+    margin-top: .5rem;
+}
+
+.teks-promo-wrapper .desc {
+    font-size: 1.5rem;
+}
+
+/* .produk {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, m);
+} */
+
+
+
+

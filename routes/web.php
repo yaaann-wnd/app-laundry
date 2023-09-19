@@ -53,11 +53,11 @@ Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
 
 // register member
-Route::get('register', [registerController::class, 'register'])->name('register');
+Route::get('register', [registerController::class, 'register'])->name('register')->middleware('guest');
 Route::post('registerProses', [registerController::class, 'registerProses'])->name('registerProses');
 
 // login member
-Route::get('login-member', [registerController::class, 'login'])->name('login');
+Route::get('login-member', [registerController::class, 'login'])->name('login')->middleware('guest');
 Route::post('login-member-proses', [registerController::class, 'loginProses'])->name('loginProses');
 
 // logout member
@@ -72,5 +72,3 @@ Route::middleware(['auth:member'])->group(function () {
         return view('member.home');
     });
 });
-
-// Route::middleware(['auth'])->group()->func

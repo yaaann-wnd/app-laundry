@@ -14,8 +14,9 @@ class registerController extends Controller
     {
         if (Auth::check()) {
             return redirect('/member/home');
+        } else {
+            return view('member.register');
         }
-        return view('member.register');
     }
 
 
@@ -46,8 +47,9 @@ class registerController extends Controller
     {
         if (Auth::check()) {
             return redirect('/member/home');
+        } else {
+            return view('member.login');
         }
-        return view('member.login');
     }
 
     public function loginProses(Request $request)
@@ -60,6 +62,7 @@ class registerController extends Controller
         $credentials2 = $request->only('nama', 'password');
 
         if (Auth::guard('member')->attempt($credentials2)) {
+            $request->session()->regenerate();
 
             return redirect()->intended('/member/home');
         }
