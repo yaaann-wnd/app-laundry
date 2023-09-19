@@ -18,6 +18,9 @@ class registerController extends Controller
         return view('member.register');
     }
 
+    public function profile(Request $request) {
+        return view('member/profile');
+    }
 
     public function registerProses(Request $request)
     {

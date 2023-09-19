@@ -52,6 +52,8 @@ Route::post('tugaskan', [kasirController::class, 'tugaskan'])->name('tugaskan');
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
 
+Route::get('profile', [registerController::class, 'profile'])->name('profile');
+
 // register member
 Route::get('register', [registerController::class, 'register'])->name('register');
 Route::post('registerProses', [registerController::class, 'registerProses'])->name('registerProses');
