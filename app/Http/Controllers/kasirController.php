@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class kasirController extends Controller
 {
@@ -28,5 +30,13 @@ class kasirController extends Controller
         $user->update($data);
      
         return response()->json($id);
+    }
+    
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return redirect('/');
     }
 }

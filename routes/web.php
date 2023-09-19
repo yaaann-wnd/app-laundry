@@ -27,6 +27,10 @@ Route::get('/login', function () {
 
 Route::post('login_admin', [adminController::class, 'login_admin'])->name('login_admin');
 Route::get('harga_jasa', [adminController::class, 'harga_jasa'])->name('harga_jasa');
+Route::get('laporan_transaksi_masuk', [adminController::class, 'laporan_transaksi_masuk'])->name('laporan_transaksi_masuk');
+Route::get('laporan_transaksi_selesai', [adminController::class, 'laporan_transaksi_selesai'])->name('laporan_transaksi_selesai');
+Route::get('status_kurir', [adminController::class, 'status_kurir'])->name('status_kurir');
+Route::get('data_member', [adminController::class, 'data_member'])->name('data_member');
 Route::post('simpan_admin', [adminController::class, 'simpan_admin'])->name('simpan_admin');
 Route::post('edit_jasa', [adminController::class, 'edit_jasa'])->name('edit_jasa');
 Route::post('delete_jasa', [adminController::class, 'delete_jasa'])->name('delete_jasa');

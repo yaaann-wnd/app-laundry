@@ -54,7 +54,7 @@
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">
+                            <a class="dropdown-item" href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
                                 <i class="typcn typcn-eject text-primary"></i>
                                 Logout
                             </a>
