@@ -67,6 +67,8 @@ Route::post('registerProses', [registerController::class, 'registerProses'])->na
 Route::get('login-member', [registerController::class, 'login'])->name('login')->middleware('guest');
 Route::post('login-member-proses', [registerController::class, 'loginProses'])->name('loginProses');
 
+Route::get('profile', [registerController::class, 'profile'])->name('profile');
+
 // logout member
 Route::get('logout', [registerController::class, 'logout'])->name('logout');
 

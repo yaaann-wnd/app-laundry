@@ -58,7 +58,7 @@
                             <li class="has-children">
                                 <a href="#about-section" class="nav-link"><strong>{{ Auth::user()->nama }}</strong></a>
                                 <ul class="dropdown arrow-top">
-                                    <li><a href="#team-section" class="nav-link">Profil</a></li>
+                                    <li><a href="{{ route('profile') }}" class="nav-link">Profil</a></li>
                                     <li class="text-danger"><a href="{{ route('logout') }}" class="nav-link">Logout</a>
                                     </li>
                                 </ul>
