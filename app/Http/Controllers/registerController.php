@@ -102,6 +102,43 @@ class registerController extends Controller
 
         // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
     }
+    public function order_member(Request $request)
+    {
+        dd($request->all());
+        $id = Auth::user()->id;
+        $nama = $request->nama;
+        $alamat = $request->alamat;
+        $no_telp = $request->no_telp;
+        $jasa = $request->jasa;
+        $harga_perkg = $request->harga_perkg;
+        $kg_order = $request->kg_order;
+        $total_harga = $request->total_harga;
+        $metode_pembayaran = $request->metode_pembayaran;
+        // $password_baru = $request->password_baru;
+        // // $data = array(
+        // // 	'status' =>'Ditugaskan',
+        // // );
+        // // $user = user::find($id);
+        // // $user->update($data);
+
+        // // return response()->json($id);
+
+            $data = array(
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'no_telp' => $no_telp,
+                'jasa' => $jasa,
+                'harga_perkg' => $harga_perkg,
+                'kg_order' => $kg_order,
+                'total_harga' => $total_harga,
+                'metode_pembayaran' => $metode_pembayaran,
+            );
+        //     $user = Member::find($id);
+        //     $user->update($data);
+        //     return redirect('profile');
+
+        // // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
+    }
     public function loginProses(Request $request)
     {
         $request->validate([

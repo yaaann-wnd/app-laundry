@@ -41,7 +41,7 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form action="" method="post">
+                        <form  method="POST">
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-6">
@@ -140,19 +140,20 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form action="" method="post">
+                <form action="{{ route('order_member') }}" method="post">
+                  @csrf
                   <div class="modal-body">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Nama</label>
-                          <input type="text" class="form-control" value="">
+                          <input type="text" name="nama" id="nama" class="form-control" value="{{ Auth::user()->nama }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Alamat</label>
-                          <input type="text" class="form-control" value="">
+                          <textarea name="alamat" id="alamat" class="form-control" >{{ Auth::user()->alamat }}</textarea>
                         </div>
                       </div>
                     </div>
@@ -160,7 +161,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Nomer Telepon</label>
-                          <input type="text" class="form-control" value="">
+                          <input type="text" name="no_telp" id="no_telp" class="form-control" value="{{ Auth::user()->no_telp }}">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -178,13 +179,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Harga Per KG</label>
-                          <input type="text" readonly id="harga_perkg" class="form-control" value="">
+                          <input type="text" readonly id="harga_perkg" name="harga_perkg" class="form-control" value="">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">KG Order</label>
-                          <input type="text" id="kg_order" class="form-control" value="">
+                          <input type="text" id="kg_order" name="kg_order" class="form-control" value="">
                         </div>
                       </div>
                     </div>
@@ -192,27 +193,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Total Harga</label>
-                          <input type="text" id="total_harga" class="form-control" value="">
+                          <input type="text" id="total_harga" name="total_harga" class="form-control" value="">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                          <input type="text" class="form-control" value="">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Pembayaran ( Nominal )</label>
-                          <input type="text" class="form-control" value="">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Status Pembayaran</label>
-                          <input type="text" class="form-control" value="">
+                          <input type="text" id="metode_pembayaran" name="metode_pembayaran" class="form-control" value="">
                         </div>
                       </div>
                     </div>
