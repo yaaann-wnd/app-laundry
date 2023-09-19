@@ -43,7 +43,7 @@ class kurirController extends Controller
                 'alamat' => $alamat,
                 'no_telp' => $no_telp,
                 'username' => $username,
-                'password_baru' => Hash::make($password_baru),
+                'password' => Hash::make($password_baru),
             );
             $user = user::find($id);
             $user->update($data);

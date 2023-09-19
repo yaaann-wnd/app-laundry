@@ -43,7 +43,7 @@ class registerController extends Controller
             return redirect(route('register'))->with('error', 'Registrasi Gagal!');
         }
 
-        return redirect(route('login'))->with('success', 'Berhasil membuat akun, silahkan Login!');
+        return redirect(route('login-member'))->with('success', 'Berhasil membuat akun, silahkan Login!');
     }
 
     public function login()
@@ -55,6 +55,34 @@ class registerController extends Controller
         }
     }
 
+    public function edit_profile_member(Request $request)
+    {
+        // dd(Auth::user()->id);
+        $id = Auth::user()->id;
+        $nama = $request->nama;
+        $alamat = $request->alamat;
+        $no_telp = $request->no_telp;
+        $password_baru = $request->password_baru;
+        // $data = array(
+        // 	'status' =>'Ditugaskan',
+        // );
+        // $user = user::find($id);
+        // $user->update($data);
+
+        // return response()->json($id);
+
+            $data = array(
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'no_telp' => $no_telp,
+                'password' => Hash::make($password_baru),
+            );
+            $user = Member::find($id);
+            $user->update($data);
+            return redirect('profile');
+
+        // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
+    }
     public function loginProses(Request $request)
     {
         $request->validate([
@@ -70,7 +98,7 @@ class registerController extends Controller
             return redirect()->intended('/member/home');
         }
 
-        return redirect(route('login'))->with('error', 'Nama atau Password yang anda masukkan salah!');
+        return redirect(route('login-member'))->with('error', 'Nama atau Password yang anda masukkan salah!');
     }
 
     public function logout()
@@ -78,6 +106,6 @@ class registerController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('/');
+        return redirect('login-member');
     }
 }

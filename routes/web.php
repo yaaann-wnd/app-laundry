@@ -78,4 +78,6 @@ Route::middleware(['auth:member'])->group(function () {
         return view('member.home');
     });
     Route::get('profile', [registerController::class, 'profile'])->name('profile');
+    Route::post('edit_profile_member', [registerController::class, 'edit_profile_member'])->name('edit_profile_member');
+
 });
