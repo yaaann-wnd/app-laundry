@@ -9,7 +9,18 @@
             <h4>Promo Cuy</h4>
         </div>
         <div class="promo">
-            <div class="swiper mySwiper">
+            <div class="autoplay">
+                <div>
+                    <img src="{{ asset('images/gambar-slider/1.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ asset('images/gambar-slider/2.jpg') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ asset('images/gambar-slider/3.jpg') }}" alt="">
+                </div>
+            </div>
+            {{-- <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="{{ asset('images/gambar-slider/1.jpg') }}" alt=""
@@ -26,7 +37,7 @@
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-            </div>
+            </div> --}}
             {{-- <div class="card">
                 <img src="{{ asset('images/gambar-slider/1.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
