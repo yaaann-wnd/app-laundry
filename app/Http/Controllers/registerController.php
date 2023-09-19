@@ -19,6 +19,9 @@ class registerController extends Controller
         }
     }
 
+    public function profile(Request $request) {
+        return view('member/profile');
+    }
 
     public function registerProses(Request $request)
     {
