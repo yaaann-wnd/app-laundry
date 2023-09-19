@@ -353,16 +353,17 @@
     <!-- container-scroller -->
 
     <!-- base:js -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> --}}
+    <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     @yield('script')
-    <script defer src="{{ asset('js/promo.js') }}"></script>
 
     <!-- endinject -->
     <!-- inject:js -->
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/off-canvas.js') }}"></script>
     <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('js/template.js') }}"></script>

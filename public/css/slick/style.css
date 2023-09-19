@@ -1,5 +1,6 @@
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    background-color: #f3f3f3 !important;
 }
 
 .promo .promo-wrapper {
@@ -49,10 +50,33 @@ body {
     font-size: 1.5rem;
 }
 
-/* .produk {
+.judul-produk h3 {
+    position: relative;
+}
+
+.judul-produk h3::before {
+    content: '';
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 8%;
+    width: 10%;
+    background-color: #007BFF;
+}
+
+.produk {
+    padding: 0 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, m);
-} */
+    gap: .5rem;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+}
+
+.kartu {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+}
 
 
 
