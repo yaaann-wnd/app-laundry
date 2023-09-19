@@ -79,6 +79,6 @@ Route::middleware(['auth:member'])->group(function () {
     });
     Route::get('profile', [registerController::class, 'profile'])->name('profile');
     Route::post('edit_profile_member', [registerController::class, 'edit_profile_member'])->name('edit_profile_member');
-
+    Route::post('data_jasa', [registerController::class, 'data_jasa'])->name('data_jasa');
     Route::get('transaksi', [registerController::class, 'transaksi'])->name('transaksi');
 });
