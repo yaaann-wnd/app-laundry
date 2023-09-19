@@ -11,29 +11,27 @@
           Profile Settings
         </p>
         <form class="forms-sample" action="{{ route('edit_profile_kasir') }}" method="POST" >
+        @csrf
           <div class="form-group">
             <label for="exampleInputUsername1">Nama</label>
-            <input type="text" class="form-control" id="exampleInputUsername1" value="{{ Auth::user()->nama }}">
+            <input type="hidden" class="form-control" id="id" name="id" value="{{ Auth::user()->id }}">
+            <input type="text" class="form-control" id="nama" name="nama" value="{{ Auth::user()->nama }}">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Alamat</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" value="{{ Auth::user()->alamat }}">
+            <input type="text" class="form-control" id="alamat" name="alamat" value="{{ Auth::user()->alamat }}">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Nomer Telepon</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="{{ Auth::user()->no_telp }}">
+            <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ Auth::user()->no_telp }}">
           </div>
           <div class="form-group">
             <label for="exampleInputConfirmPassword1">Username</label>
-            <input type="text" class="form-control" id="exampleInputConfirmPassword1" value="{{ Auth::user()->username }}">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password Lama</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password Lama">
+            <input type="text" class="form-control" id="username" name="username" value="{{ Auth::user()->username }}">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password Baru</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" id="password_baru" name="password_baru" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-primary mr-2">Edit Profile</button>
           <button class="btn btn-light">Cancel</button>

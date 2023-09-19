@@ -45,15 +45,7 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="../../images/faces/face5.jpg" alt="profile" />
-                            @if (Auth::user()->jabatan == 'admin')
-                            <span class="nav-profile-name">Admin</span>
-                            @elseif (Auth::user()->jabatan == 'kasir')
-                            <span class="nav-profile-name">Kasir</span>
-                            @elseif (Auth::user()->jabatan == 'kurir')
-                            <span class="nav-profile-name">Kurir</span>
-                            @else
                             <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
-                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">

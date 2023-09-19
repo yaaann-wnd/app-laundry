@@ -55,6 +55,7 @@ Route::post('edit_profile_kasir', [kasirController::class, 'edit_profile_kasir']
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
 Route::get('profile_kurir', [kurirController::class, 'profile_kurir'])->name('profile_kurir');
+Route::post('edit_profile_kurir', [kurirController::class, 'edit_profile_kurir'])->name('edit_profile_kurir');
 
 Route::get('profile', [registerController::class, 'profile'])->name('profile');
 

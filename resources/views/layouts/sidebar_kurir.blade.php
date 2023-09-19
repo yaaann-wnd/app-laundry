@@ -37,7 +37,7 @@
                             src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
                         data-toggle="minimize">
-                        <span class="typcn typcn-th-menu"></span>
+                            <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
                     </button>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="{{ route('profile_kurir') }}">
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>
