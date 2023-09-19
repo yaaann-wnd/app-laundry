@@ -29,7 +29,7 @@
                 <img src="{{ asset('images/logo-dark.svg') }}" alt="logo">
               </div>
               <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">profile</h6>
+              <h6 class="font-weight-light">Profile</h6>
               <form class="pt-3">
                 <div class="form-group">
                   <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">

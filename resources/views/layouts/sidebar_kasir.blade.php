@@ -50,7 +50,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="{{ route('profile_kasir') }}">
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>

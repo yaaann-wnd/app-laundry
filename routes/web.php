@@ -25,6 +25,7 @@ Route::get('/login', function () {
     return view('autenticate/login');
 });
 
+Route::get('profile_admin', [adminController::class, 'profile_admin'])->name('profile_admin');
 Route::post('login_admin', [adminController::class, 'login_admin'])->name('login_admin');
 Route::get('harga_jasa', [adminController::class, 'harga_jasa'])->name('harga_jasa');
 Route::get('laporan_transaksi_masuk', [adminController::class, 'laporan_transaksi_masuk'])->name('laporan_transaksi_masuk');
@@ -48,9 +49,12 @@ Route::get('login_kasir', [kasirController::class, 'login_kasir'])->name('login_
 Route::get('kasir_data', [kasirController::class, 'kasir_data'])->name('kasir_data');
 Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
 Route::post('tugaskan', [kasirController::class, 'tugaskan'])->name('tugaskan');
+Route::get('profile_kasir', [kasirController::class, 'profile_kasir'])->name('profile_kasir');
+Route::post('edit_profile_kasir', [kasirController::class, 'edit_profile_kasir'])->name('edit_profile_kasir');
 
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
+Route::get('profile_kurir', [kurirController::class, 'profile_kurir'])->name('profile_kurir');
 
 Route::get('profile', [registerController::class, 'profile'])->name('profile');
 
