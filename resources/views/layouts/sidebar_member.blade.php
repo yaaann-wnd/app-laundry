@@ -23,7 +23,14 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/slick/slick-theme.css') }}" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick/style.css') }}" />
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
     <title>ZEA LAUNDRY</title>
 </head>
 
@@ -66,8 +73,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="toggle-button d-inline-block d-lg-none"><a href="#"
-                        class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
+                <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Member;
 use App\Models\ProdukJasa;
 use Illuminate\Http\Request;
@@ -29,7 +30,17 @@ class registerController extends Controller
         }
     }
     public function transaksi(Request $request) {
-        return view('member/transaksi');
+        $produk_jasa = DB::table('produk_jasa')->get();
+        return view('member/transaksi',['produk_jasa' => $produk_jasa]);
+    }
+    public function data_jasa(Request $request) {
+        $jasa = $request->jasa;
+        $produk_jasa = DB::table('produk_jasa')->where('id', $jasa)->get();
+		$data['jasa'] = [];
+        foreach($produk_jasa as $value) {
+			array_push($data['jasa'], $value);
+		} 
+		echo json_encode($data);
     }
 
     public function registerProses(Request $request)
