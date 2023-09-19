@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\ProdukJasa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,7 @@ class registerController extends Controller
     }
 
     public function profile(Request $request) {
-        
+
         if (Auth::check()) {
             return view('member/profile');
         } else {
@@ -61,6 +62,13 @@ class registerController extends Controller
         } else {
             return view('member.login');
         }
+    }
+
+    public function beranda() {
+        $id_foto_random = rand(1, 3);
+        $paket = ProdukJasa::all();
+
+        return view('member.home', ['paket' => $paket, 'foto' => $id_foto_random]);
     }
 
     public function edit_profile_member(Request $request)

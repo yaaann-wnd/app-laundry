@@ -50,22 +50,6 @@ body {
     font-size: 1.5rem;
 }
 
-.judul-produk h3 {
-    position: relative;
-}
-
-.judul-produk h3::before {
-    content: '';
-    border-radius: 4px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 8%;
-    width: 10%;
-    background-color: #007BFF;
-}
-
 .produk {
     padding: 0 1rem;
     display: grid;
@@ -76,6 +60,12 @@ body {
 .kartu {
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
+}
+
+.nama-jasa-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
 }
 
 

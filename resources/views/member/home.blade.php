@@ -73,49 +73,20 @@
         <h3>Pilih Paket</h3>
     </div>
     <div class="produk mb-5">
-        <div class="card">
-            <img src="{{ asset('images/gambar-slider/2.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body kartu ">
-                <h5 class="card-title">Cuci Kering</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-                <div>
-                    <a href="#" class="btn btn-primary">Pesan</a>
+        @foreach ($paket as $pkt)
+            <div class="card">
+                <img src="{{ asset('images/gambar-slider/'. $foto .'.jpg') }}" class="card-img-top" alt="...">
+                <div class="card-body kartu ">
+                    <div class="nama-jasa-wrapper">
+                        <h5 class="card-title">{{ $pkt->jenis_jasa }}</h5>
+                        <span class="text-primary">@rupiah($pkt->harga_perkg)</span>
+                    </div>
+                    <p class="card-text">Proses cuci menggunakan teknologi AI dan ditenagai Nvidia RTX 7090 sehingga membuat pakaian Anda menjadi sangat bersih.</p>
+                    <div>
+                        <a href="#" class="btn btn-primary">Pesan</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('images/gambar-slider/2.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body kartu">
-                <h5 class="card-title">Cuci Kering + Setrika</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-                <div>
-                    <a href="#" class="btn btn-primary">Pesan</a>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('images/gambar-slider/2.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body kartu">
-                <h5 class="card-title">Cuci Premium + Setrika</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-                <div>
-                    <a href="#" class="btn btn-primary">Pesan</a>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('images/gambar-slider/2.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body kartu">
-                <h5 class="card-title">✨Cuci Paket Aesthetic✨</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-                <div>
-                    <a href="#" class="btn btn-primary">Pesan</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 @endsection

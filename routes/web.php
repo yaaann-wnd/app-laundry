@@ -74,9 +74,7 @@ Route::get('logout_user', [adminController::class, 'logout'])->name('logout_user
 
 // Autentikasi ketika user sudah login
 Route::middleware(['auth:member'])->group(function () {
-    Route::get('member/home', function () {
-        return view('member.home');
-    });
+    Route::get('member/home',[registerController::class, 'beranda'])->name('beranda');
     Route::get('profile', [registerController::class, 'profile'])->name('profile');
     Route::post('edit_profile_member', [registerController::class, 'edit_profile_member'])->name('edit_profile_member');
 
