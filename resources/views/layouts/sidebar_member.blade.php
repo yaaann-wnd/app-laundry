@@ -27,7 +27,7 @@
     <title>ZEA LAUNDRY</title>
 </head>
 
-<body>
+<body style="background-color: #0056b324;">
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -52,7 +52,7 @@
 
                         <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                             <li><a href="#home-section" class="nav-link">Home</a></li>
-                            <li><a href="#services-section" class="nav-link">Pesanan Saya</a></li>
+                            <li><a href="{{ route('transaksi') }}" class="nav-link">Pesanan Saya</a></li>
                             <li><a href="#about-section" class="nav-link">Tentang Kami</a></li>
                             <li><a href="#testimonials-section" class="nav-link">Testimoni</a></li>
                             <li class="has-children">

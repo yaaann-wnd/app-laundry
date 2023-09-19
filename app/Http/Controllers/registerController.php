@@ -20,7 +20,15 @@ class registerController extends Controller
     }
 
     public function profile(Request $request) {
-        return view('member/profile');
+        
+        if (Auth::check()) {
+            return view('member/profile');
+        } else {
+            return view('member.register');
+        }
+    }
+    public function transaksi(Request $request) {
+        return view('member/transaksi');
     }
 
     public function registerProses(Request $request)
