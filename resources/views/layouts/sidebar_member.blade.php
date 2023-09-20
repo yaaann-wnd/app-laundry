@@ -92,6 +92,8 @@
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-jdjG99xvk3PihD64"></script>
     <script src="{{ asset('js/midtrans.js') }}"></script>
 
+    @yield('ajax')
+
     <script>
         $('.promo').slick({
             accesibility: false,
