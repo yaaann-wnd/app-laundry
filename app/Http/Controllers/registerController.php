@@ -35,8 +35,9 @@ class registerController extends Controller
     {
         $produk_jasa = DB::table('produk_jasa')->get();
         $transaksi = DB::table('transaksi')
-        ->leftJoin('member', 'transaksi.id_member', '=', 'member.id')
-        ->select('transaksi.*', 'member.nama')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama', 'member.alamat', 'member.no_telp', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         return view('member/transaksi', ['produk_jasa' => $produk_jasa], ['transaksi' => $transaksi]);
     }
