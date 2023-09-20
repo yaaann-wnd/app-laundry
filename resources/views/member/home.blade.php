@@ -100,19 +100,20 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="" method="post">
+                        <form action="{{ route('order_member') }}" method="post">
+                            @csrf
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Nama</label>
-                                            <input type="text" class="form-control" value="">
+                                            <input type="text" class="form-control" name="nama_member" value="{{ Auth::user()->nama_member }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Alamat</label>
-                                            <input type="text" class="form-control" value="">
+                                            <input type="text" class="form-control" name="alamat_member" value="{{ Auth::user()->alamat_member }}">
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +121,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Nomer Telepon</label>
-                                            <input type="text" class="form-control" value="">
+                                            <input type="text" class="form-control" name="no_telp_member" value="{{ Auth::user()->no_telp_member }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -153,13 +154,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Total Harga</label>
-                                            <input type="text" id="total_harga" class="form-control" value="">
+                                            <input type="text" id="total_harga" name="total_harga" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                                            <input type="text" class="form-control" value="">
+                                            <input type="text" class="form-control" name="metode_pembayaran">
                                         </div>
                                     </div>
                                 </div>

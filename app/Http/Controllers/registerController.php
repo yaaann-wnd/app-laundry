@@ -31,7 +31,7 @@ class registerController extends Controller
             return view('member.register');
         }
     }
-    public function transaksi(Request $request)
+    public function transaksi()
     {
         $produk_jasa = DB::table('produk_jasa')->get();
         $transaksi = DB::table('transaksi')
@@ -39,7 +39,7 @@ class registerController extends Controller
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
-        return view('member/transaksi', ['produk_jasa' => $produk_jasa], ['transaksi' => $transaksi]);
+        return view('member/transaksi', ['produk_jasa' => $produk_jasa, 'transaksi' => $transaksi]);
     }
     public function data_jasa(Request $request)
     {
@@ -145,7 +145,7 @@ class registerController extends Controller
             'kg_order' => $kg_order,
             'total_harga' => $total_harga,
             'metode_pembayaran' => $metode_pembayaran,
-            'status_transaksi' => 'Tunggu',
+            'status_transaksi' => 'Belum Dibayar',
         ]);
         //     $user = Member::find($id);
         //     $user->update($data);
@@ -177,5 +177,46 @@ class registerController extends Controller
         Auth::logout();
 
         return redirect('login');
+    }
+
+    public function midtrans($id)
+    {
+        $pesanan = Transaksi::find($id);
+        $harga = $pesanan->total_harga;
+        $order_id = $pesanan->id;
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $order_id,
+                'gross_amount' => $harga,
+            )
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return json_encode($snapToken);
+    }
+
+    public function success(Request $request)
+    {
+        $json = json_decode($request->get('json'));
+        $order_id = $json->order_id;
+        $find_order = Transaksi::where('id', $order_id)->first();
+        $find_order_2 = Transaksi::find($find_order->id);
+
+        $find_order_2->update([
+            'status_transaksi' => 'Sudah Dibayar',
+            'status_pembayaran' => 'Lunas'
+        ]);
+
+        return redirect('/transaksi');
     }
 }

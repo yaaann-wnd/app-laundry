@@ -33,7 +33,7 @@ class adminController extends Controller
             }
         }
 
-        return redirect('/')->with('error', 'Data yang anda masukkan salah!');
+        return redirect('/login')->with('error', 'Data yang anda masukkan salah!');
     }
 
     public function laporan_transaksi_masuk(Request $request) {
@@ -100,7 +100,7 @@ class adminController extends Controller
         $id = $request->id;
         $user = User::find($id);
         $user->delete();
-     
+
         return redirect(route('register_kasir'));
     }
     public function delete_user_kurir(Request $request) {
@@ -108,7 +108,7 @@ class adminController extends Controller
         $id = $request->id;
         $user = User::find($id);
         $user->delete();
-     
+
         return redirect(route('register_kurir'));
     }
     public function simpan_jasa(Request $request) {
