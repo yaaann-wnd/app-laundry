@@ -51,6 +51,21 @@ class registerController extends Controller
         }
         echo json_encode($data);
     }
+    public function detail_transaksi(Request $request)
+    {
+        $id = $request->id;
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.id', '=', $id)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama', 'member.alamat', 'member.no_telp', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $data['transaksi'] = [];
+        foreach ($transaksi as $value) {
+            array_push($data['transaksi'], $value);
+        }
+        echo json_encode($data);
+    }
 
     public function registerProses(Request $request)
     {

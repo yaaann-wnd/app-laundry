@@ -26,7 +26,7 @@
             <tbody>
               <tr>
                 @foreach($transaksi as $t)
-                <td>{{ $t->id }}</td>
+                <td class="id">{{ $t->id }}</td>
                 <td>{{ $t->nama }}</td>
                 <td>{{ $t->jenis_jasa }}</td>
                 <td>{{ $t->total_harga }}</td>
@@ -162,24 +162,24 @@
           <table class="table table-bordered">
             <tr>
               <th>Jenis Jasa</th>
-              <td>Cuci + Setrika</td>
-              <td>15000</td>
+              <td id="jenis_jasa">Cuci + Setrika</td>
+              <td id="harga_perkg">15000</td>
             </tr>
             <tr>
               <th colspan="2">Jumlah</th>
-              <td>2 Kg</td>
+              <td id="kg_order">2 Kg</td>
             </tr>
             <tr>
               <th colspan="2">Total</th>
-              <td>30000</td>
+              <td id="total_harga">30000</td>
             </tr>
             <tr>
               <th colspan="2">Pembayaran</th>
-              <td>50000</td>
+              <td id="pembayaran">50000</td>
             </tr>
             <tr>
               <th colspan="2">Kembalian</th>
-              <td>20000</td>
+              <td id="kembalian">20000</td>
             </tr>
           </table>
         </form>
@@ -218,7 +218,25 @@
     });
   });
   $(".detail").click(function() {
-    alert("The paragraph was clicked.");
+    id = $(this).closest('tr').find('.id').text();
+    $.ajax({
+      url: "{{ route('detail_transaksi') }}",
+      type: "post",
+      dataType: 'JSON',
+      data: {
+        "_token": "{{ csrf_token() }}",
+        id: id
+      },
+      success: function(data) {
+        console.log();
+        $("#detail").show();
+        $('#id_transaksi').val(data.transaksi[0]['id']);
+        $('#nama_member').val(data.transaksi[0]['nama']);
+        $('#alamat').val(data.transaksi[0]['alamat']);
+        $('#no_telp').val(data.transaksi[0]['no_telp']);
+        $('#status_pembayaran').val(data.transaksi[0]['status_pembayaran']);
+      }
+    });
   });
 
   $("#kg_order").keyup(function() {

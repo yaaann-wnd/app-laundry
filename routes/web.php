@@ -78,5 +78,6 @@ Route::middleware(['auth:member'])->group(function () {
     Route::post('edit_profile_member', [registerController::class, 'edit_profile_member'])->name('edit_profile_member');
     Route::post('data_jasa', [registerController::class, 'data_jasa'])->name('data_jasa');
     Route::post('order_member', [registerController::class, 'order_member'])->name('order_member');
+    Route::post('detail_transaksi', [registerController::class, 'detail_transaksi'])->name('detail_transaksi');
     Route::get('transaksi', [registerController::class, 'transaksi'])->name('transaksi');
 });
