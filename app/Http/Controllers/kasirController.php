@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -13,8 +14,31 @@ class kasirController extends Controller
 {
     public function login_kasir(Request $request)
     {
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.status_transaksi', '=', 'Tunggu')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
         $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
-        return view('kasir/kasir', ['users' => $users]);
+        return view('kasir/kasir', ['users' => $users], ['transaksi' => $transaksi]);
+    }
+    public function proses_laundry(Request $request)
+    {
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.status_kurir', '=', 'antri')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_siap = DB::table('transaksi')
+            ->where('transaksi.status_transaksi', '=', 'dikerjakan')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
+        return view('kasir/proses_laundry', ['users' => $users,'transaksi' => $transaksi, 'transaksi_siap' => $transaksi_siap]);
     }
     public function profile_kasir(Request $request)
     {
@@ -23,21 +47,61 @@ class kasirController extends Controller
     }
     public function kasir_data(Request $request)
     {
+        $transaksi = DB::table('transaksi')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
         $users = DB::table('users')->where('jabatan', 'kurir')->get();
-        return view('kasir/kasir_data', ['users' => $users]);
+        return view('kasir/kasir_data', ['users' => $users], ['transaksi' => $transaksi]);
     }
 
     public function tugaskan(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id_kasir = $request->id_kasir;
+        $id_transaksi = $request->id_transaksi;
+        $id_kurir = $request->id_kurir;
+        $data2 = array(
+            'id_user_kasir' => $id_kasir,
+            'id_user_kurir' => $id_kurir,
+            'status_transaksi' => 'Diproses',
+        );
         $data = array(
             'status' => 'Ditugaskan',
         );
-        $user = user::find($id);
+        $transaksi = transaksi::find($id_transaksi);
+        $transaksi->update($data2);
+        $user = user::find($id_kurir);
         $user->update($data);
+        return redirect('login_kasir');
+    }
+    public function proses_laundry_kerja(Request $request)
+    {
+        // dd($request->all());
+        $id = $request->id;
 
-        return response()->json($id);
+        $data = array(
+            'status_kurir' => 'Tunggu',
+            'status_transaksi' => 'Dikerjakan',
+        );
+        $transaksi = Transaksi::find($id);
+        $transaksi->update($data);
+
+        echo json_encode($data);
+    }
+    public function proses_laundry_siap(Request $request)
+    {
+        // dd($request->all());
+        $id = $request->id;
+
+        $data = array(
+            'status_transaksi' => 'Siap',
+        );
+        $transaksi = Transaksi::find($id);
+        $transaksi->update($data);
+
+        echo json_encode($data);
     }
     public function edit_profile_kasir(Request $request)
     {
@@ -56,18 +120,33 @@ class kasirController extends Controller
 
         // return response()->json($id);
 
-            $data = array(
-                'nama' => $nama,
-                'alamat' => $alamat,
-                'no_telp' => $no_telp,
-                'username' => $username,
-                'password' => Hash::make($password_baru),
-            );
-            $user = user::find($id);
-            $user->update($data);
-            return redirect('profile_kasir');
+        $data = array(
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'no_telp' => $no_telp,
+            'username' => $username,
+            'password' => Hash::make($password_baru),
+        );
+        $user = user::find($id);
+        $user->update($data);
+        return redirect('profile_kasir');
 
         // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
+    }
+    public function proses_order(Request $request)
+    {
+        $id = $request->id;
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.id', '=', $id)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $data['transaksi'] = [];
+        foreach ($transaksi as $value) {
+            array_push($data['transaksi'], $value);
+        }
+        echo json_encode($data);
     }
 
     public function logout()
@@ -75,6 +154,6 @@ class kasirController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('/');
+        return redirect('login');
     }
 }
