@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_member')->constrained('member')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_user_kasir')->nullable()->constrained('member')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_user_kurir')->nullable()->constrained('member')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_jasa')->constrained('member')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('id_user_kasir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('id_user_kurir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('id_jasa')->constrained('produk_jasa')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('lokasi')->nullable();
             $table->integer('kg_order')->nullable();
             $table->integer('harga_perkg')->nullable();
