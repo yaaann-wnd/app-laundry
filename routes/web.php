@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\homeController;
 use App\Http\Controllers\kasirController;
 use App\Http\Controllers\kurirController;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+Route::get('/', [homeController::class, 'home'])->name('home');
 
 Route::get('/login', function () {
     return view('autenticate/login');
