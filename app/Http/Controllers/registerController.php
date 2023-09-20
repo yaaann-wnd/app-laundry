@@ -58,7 +58,7 @@ class registerController extends Controller
             ->where('transaksi.id', '=', $id)
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
-            ->select('transaksi.*', 'member.nama', 'member.alamat', 'member.no_telp', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $data['transaksi'] = [];
         foreach ($transaksi as $value) {
@@ -191,6 +191,6 @@ class registerController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('login');
+        return redirect('login-member');
     }
 }

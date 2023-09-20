@@ -37,7 +37,7 @@
                             src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
                         data-toggle="minimize">
-                            <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
+                        <span class="typcn typcn-th-menu"></span>
                     </button>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="../../images/faces/face5.jpg" alt="profile" />
-                            <span class="nav-profile-name">Kurir</span>
+                            <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
@@ -54,7 +54,7 @@
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">
+                            <a class="dropdown-item" href="{{ route('logout_user') }}">
                                 <i class="typcn typcn-eject text-primary"></i>
                                 Logout
                             </a>

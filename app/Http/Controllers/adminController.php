@@ -33,7 +33,7 @@ class adminController extends Controller
             }
         }
 
-        return redirect('/')->with('error', 'Data yang anda masukkan salah!');
+        return redirect('login')->with('error', 'Data yang anda masukkan salah!');
     }
 
     public function laporan_transaksi_masuk(Request $request) {
@@ -168,6 +168,6 @@ class adminController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('/');
+        return redirect('login');
     }
 }

@@ -8,25 +8,28 @@
         <h4 class="card-title">Transaksi Masuk</h4>
         <div class="table-responsive">
           <table class="table table-striped">
-            <thead>
+            <thead style="text-align: center;">
               <tr>
                 <th>Id Transaksi</th>
-                <th>Nama</th>
-                <th>Alamat</th>
-                <th>Nomer Telepon</th>
+                <th>Nama Member</th>
+                <th>Jenis Jasa</th>
+                <th>Total Harga</th>
+                <th>Metode Pembayaran</th>
                 <th>Tanggal Order</th>
                 <th>Status Transaksi</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
+              @foreach($transaksi as $t)
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="id">{{ $t->id }}</td>
+                <td>{{ $t->nama_member }}</td>
+                <td>{{ $t->jenis_jasa }}</td>
+                <td>{{ $t->total_harga }}</td>
+                <td>{{ $t->metode_pembayaran }}</td>
+                <td>{{ $t->created_at }}</td>
+                <td>{{ $t->status_transaksi }}</td>
                 <td>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -166,6 +169,7 @@
                   </div>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

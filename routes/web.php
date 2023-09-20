@@ -46,15 +46,24 @@ Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('
 
 Route::get('login_kasir', [kasirController::class, 'login_kasir'])->name('login_kasir');
 Route::get('kasir_data', [kasirController::class, 'kasir_data'])->name('kasir_data');
+Route::get('proses_laundry', [kasirController::class, 'proses_laundry'])->name('proses_laundry');
 Route::post('kasir', [kasirController::class, 'kasir'])->name('kasir');
 Route::post('tugaskan', [kasirController::class, 'tugaskan'])->name('tugaskan');
+Route::post('proses_order', [kasirController::class, 'proses_order'])->name('proses_order');
 Route::get('profile_kasir', [kasirController::class, 'profile_kasir'])->name('profile_kasir');
 Route::post('edit_profile_kasir', [kasirController::class, 'edit_profile_kasir'])->name('edit_profile_kasir');
+Route::post('proses_laundry_kerja', [kasirController::class, 'proses_laundry_kerja'])->name('proses_laundry_kerja');
+Route::post('proses_laundry_siap', [kasirController::class, 'proses_laundry_siap'])->name('proses_laundry_siap');
 
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
 Route::get('profile_kurir', [kurirController::class, 'profile_kurir'])->name('profile_kurir');
 Route::post('edit_profile_kurir', [kurirController::class, 'edit_profile_kurir'])->name('edit_profile_kurir');
+Route::post('ambil', [kurirController::class, 'ambil'])->name('ambil');
+Route::post('diambil', [kurirController::class, 'diambil'])->name('diambil');
+Route::post('antri', [kurirController::class, 'antri'])->name('antri');
+Route::post('diantar', [kurirController::class, 'diantar'])->name('diantar');
+Route::post('selesai', [kurirController::class, 'selesai'])->name('selesai');
 
 
 // register member

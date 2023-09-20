@@ -24,10 +24,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
                 @foreach($transaksi as $t)
+              <tr>
                 <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama }}</td>
+                <td>{{ $t->nama_member }}</td>
                 <td>{{ $t->jenis_jasa }}</td>
                 <td>{{ $t->total_harga }}</td>
                 <td>{{ $t->status_pembayaran }}</td>
@@ -58,13 +58,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Nama</label>
-                          <input type="text" name="nama_member" id="nama" class="form-control" value="{{ Auth::user()->nama_member }}">
+                          <input type="text" name="nama_member" id="nama_member" class="form-control" value="{{ Auth::user()->nama_member }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Alamat</label>
-                          <textarea name="alamat" id="alamat_member" class="form-control">{{ Auth::user()->alamat_member }}</textarea>
+                          <textarea name="alamat_member" id="alamat_member" class="form-control">{{ Auth::user()->alamat_member }}</textarea>
                         </div>
                       </div>
                     </div>
@@ -72,7 +72,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Nomer Telepon</label>
-                          <input type="text" name="no_telp_member" id="no_telp" class="form-control" value="{{ Auth::user()->no_telp_member }}">
+                          <input type="text" name="no_telp_member" id="no_telp_member" class="form-control" value="{{ Auth::user()->no_telp_member }}">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -144,42 +144,41 @@
           </div>
           <div class="form-group">
             <label for="exampleInputName1">Nama Member</label>
-            <input type="text" class="form-control" id="nama_member">
+            <input type="text" class="form-control" id="nama_member_detail">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail3">Alamat</label>
-            <input type="text" class="form-control" id="alamat">
+            <input type="text" class="form-control" id="alamat_member_detail">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword4">Nomer Telepon</label>
-            <input type="text" class="form-control" id="no_telp">
+            <input type="text" class="form-control" id="no_telp_member_detail">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword4">Status Pembayaran</label>
             <input type="text" readonly class="form-control" id="status_pembayaran">
           </div>
-          <button type="button" style="float: right;color:white;margin-bottom:20px" class="btn btn-warning" id="cancel_transaksi">Reset Transaksi</button>
           <table class="table table-bordered">
             <tr>
               <th>Jenis Jasa</th>
-              <td id="jenis_jasa">Cuci + Setrika</td>
-              <td id="harga_perkg">15000</td>
+              <td id="jenis_jasa_detail"></td>
+              <td id="harga_perkg_detail"></td>
             </tr>
             <tr>
               <th colspan="2">Jumlah</th>
-              <td id="kg_order">2 Kg</td>
+              <td id="kg_order_detail"></td>
             </tr>
             <tr>
-              <th colspan="2">Total</th>
-              <td id="total_harga">30000</td>
+              <th colspan="2">Total Harga</th>
+              <td id="total_harga_detail"></td>
             </tr>
             <tr>
               <th colspan="2">Pembayaran</th>
-              <td id="pembayaran">50000</td>
+              <td id="pembayaran_detail"></td>
             </tr>
             <tr>
               <th colspan="2">Kembalian</th>
-              <td id="kembalian">20000</td>
+              <td id="kembalian_detail"></td>
             </tr>
           </table>
         </form>
@@ -228,13 +227,17 @@
         id: id
       },
       success: function(data) {
-        console.log();
+        console.log(data);
         $("#detail").show();
         $('#id_transaksi').val(data.transaksi[0]['id']);
-        $('#nama_member').val(data.transaksi[0]['nama']);
-        $('#alamat').val(data.transaksi[0]['alamat']);
-        $('#no_telp').val(data.transaksi[0]['no_telp']);
+        $('#nama_member_detail').val(data.transaksi[0]['nama_member']);
+        $('#alamat_member_detail').val(data.transaksi[0]['alamat_member']);
+        $('#no_telp_member_detail').val(data.transaksi[0]['no_telp_member']);
         $('#status_pembayaran').val(data.transaksi[0]['status_pembayaran']);
+          $('#jenis_jasa_detail').html(data.transaksi[0]['jenis_jasa']);
+          $('#harga_perkg_detail').html(data.transaksi[0]['harga_perkg']);
+          $('#kg_order_detail').html(data.transaksi[0]['kg_order']);
+          $('#total_harga_detail').html(data.transaksi[0]['total_harga']);
       }
     });
   });

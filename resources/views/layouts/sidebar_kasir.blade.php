@@ -323,6 +323,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('proses_laundry') }}">
+                            <i class="typcn typcn-device-desktop menu-icon"></i>
+                            <span class="menu-title">Proses Laundry</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('kasir_data') }}">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
                             <span class="menu-title">Data</span>
