@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('member', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('alamat');
-            $table->string('no_telp');
+            $table->string('nama_member');
+            $table->string('alamat_member');
+            $table->string('no_telp_member');
             $table->string('password');
             $table->timestamps();
         });
