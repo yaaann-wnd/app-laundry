@@ -58,13 +58,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Nama</label>
-                          <input type="text" name="nama" id="nama" class="form-control" value="{{ Auth::user()->nama }}">
+                          <input type="text" name="nama_member" id="nama" class="form-control" value="{{ Auth::user()->nama_member }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Alamat</label>
-                          <textarea name="alamat" id="alamat" class="form-control">{{ Auth::user()->alamat }}</textarea>
+                          <textarea name="alamat" id="alamat_member" class="form-control">{{ Auth::user()->alamat_member }}</textarea>
                         </div>
                       </div>
                     </div>
@@ -72,7 +72,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Nomer Telepon</label>
-                          <input type="text" name="no_telp" id="no_telp" class="form-control" value="{{ Auth::user()->no_telp }}">
+                          <input type="text" name="no_telp_member" id="no_telp" class="form-control" value="{{ Auth::user()->no_telp_member }}">
                         </div>
                       </div>
                       <div class="col-md-6">
