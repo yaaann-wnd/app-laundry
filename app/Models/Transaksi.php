@@ -15,4 +15,7 @@ class Transaksi extends Model
     public function produk_jasa() {
         return $this->belongsTo(ProdukJasa::class);
     }
+    public function member() {
+        return $this->belongsTo(Member::class);
+    }
 }

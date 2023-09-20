@@ -15,4 +15,8 @@ class Member extends Autentikasi
 
     protected $table = 'member';
     protected $guarded = ['id'];
+    
+    public function transaksi() {
+        return $this->hasMany(Transaksi::class);
+    }
 }

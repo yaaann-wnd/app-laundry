@@ -15,7 +15,7 @@
               <tr>
                 <th>Id Transaksi</th>
                 <th>Nama</th>
-                <th>Total Pembayaran</th>
+                <th>Total Harga</th>
                 <th>Status Pembayaran</th>
                 <th>Tanggal Order</th>
                 <th>Status Transaksi</th>
@@ -24,12 +24,13 @@
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                @foreach($transaksi as $t)
+                <td>{{ $t->id }}</td>
+                <td>{{ $t->nama }}</td>
+                <td>{{ $t->total_harga }}</td>
+                <td>{{ $t->status_pembayaran }}</td>
+                <td>{{ $t->created_at }}</td>
+                <td>{{ $t->status_transaksi }}</td>
                 <td>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,7 +42,7 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form  method="POST">
+                        <form method="POST">
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-6">
@@ -127,6 +128,7 @@
                   </div>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
 
@@ -153,7 +155,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Alamat</label>
-                          <textarea name="alamat" id="alamat" class="form-control" >{{ Auth::user()->alamat }}</textarea>
+                          <textarea name="alamat" id="alamat" class="form-control">{{ Auth::user()->alamat }}</textarea>
                         </div>
                       </div>
                     </div>
@@ -199,7 +201,10 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                          <input type="text" id="metode_pembayaran" name="metode_pembayaran" class="form-control" value="">
+                          <select name="metode_pembayaran" class="form-control" id="metode_pembayaran">
+                            <option value="midtrans">Midtrans</option>
+                            <option value="cash">Cash</option>
+                          </select>
                         </div>
                       </div>
                     </div>
