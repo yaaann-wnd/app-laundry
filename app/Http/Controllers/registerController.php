@@ -37,7 +37,7 @@ class registerController extends Controller
         $transaksi = DB::table('transaksi')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
-            ->select('transaksi.*', 'member.nama', 'member.alamat', 'member.no_telp', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         return view('member/transaksi', ['produk_jasa' => $produk_jasa], ['transaksi' => $transaksi]);
     }
@@ -70,16 +70,16 @@ class registerController extends Controller
     public function registerProses(Request $request)
     {
         $request->validate([
-            'nama' => 'required|unique:member',
-            'alamat' => 'required|min:5',
-            'no_telp' => 'required|unique:member',
+            'nama_member' => 'required|unique:member',
+            'alamat_member' => 'required|min:5',
+            'no_telp_member' => 'required|unique:member',
             'password' => 'required|min:5'
         ]);
 
         $tambahMember = Member::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
+            'nama_member' => $request->nama_member,
+            'alamat_member' => $request->alamat_member,
+            'no_telp_member' => $request->no_telp_member,
             'password' => Hash::make($request->password)
         ]);
 
@@ -87,7 +87,7 @@ class registerController extends Controller
             return redirect(route('register'))->with('error', 'Registrasi Gagal!');
         }
 
-        return redirect(route('login-member'))->with('success', 'Berhasil membuat akun, silahkan Login!');
+        return redirect(route('login'))->with('success', 'Berhasil membuat akun, silahkan Login!');
     }
 
     public function login()
@@ -111,9 +111,9 @@ class registerController extends Controller
     {
         // dd(Auth::user()->id);
         $id = Auth::user()->id;
-        $nama = $request->nama;
-        $alamat = $request->alamat;
-        $no_telp = $request->no_telp;
+        $nama_member = $request->nama_member;
+        $alamat_member = $request->alamat_member;
+        $no_telp_member = $request->no_telp_member;
         $password_baru = $request->password_baru;
         // $data = array(
         // 	'status' =>'Ditugaskan',
@@ -124,9 +124,9 @@ class registerController extends Controller
         // return response()->json($id);
 
         $data = array(
-            'nama' => $nama,
-            'alamat' => $alamat,
-            'no_telp' => $no_telp,
+            'nama_member' => $nama_member,
+            'alamat_member' => $alamat_member,
+            'no_telp_member' => $no_telp_member,
             'password' => Hash::make($password_baru),
         );
         $user = Member::find($id);
@@ -171,11 +171,11 @@ class registerController extends Controller
     public function loginProses(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama_member' => 'required',
             'password' => 'required'
         ]);
 
-        $credentials2 = $request->only('nama', 'password');
+        $credentials2 = $request->only('nama_member', 'password');
 
         if (Auth::guard('member')->attempt($credentials2)) {
             $request->session()->regenerate();
@@ -183,7 +183,7 @@ class registerController extends Controller
             return redirect()->intended('/member/home');
         }
 
-        return redirect(route('login-member'))->with('error', 'Nama atau Password yang anda masukkan salah!');
+        return redirect(route('login'))->with('error', 'Nama atau Password yang anda masukkan salah!');
     }
 
     public function logout()
@@ -191,6 +191,6 @@ class registerController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('login-member');
+        return redirect('login');
     }
 }

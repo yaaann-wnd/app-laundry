@@ -16,15 +16,15 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="nama"
-                                        placeholder="Masukkan Nama" name="nama">
+                                        placeholder="Masukkan Nama" name="nama_member">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="alamat"
-                                        placeholder="Masukkan Alamat" name="alamat">
+                                        placeholder="Masukkan Alamat" name="alamat_member">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="Masukkan Nomor Telepon"
-                                        placeholder="Masukkan Nomor Telepon" name="no_telp">
+                                        placeholder="Masukkan Nomor Telepon" name="no_telp_member">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" id="Masukkan Password"

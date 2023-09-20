@@ -58,12 +58,12 @@
                     <nav class="site-navigation text-right ml-auto " role="navigation">
 
                         <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                            <li><a href="#home-section" class="nav-link">Home</a></li>
+                            <li><a href="{{ route('beranda') }}" class="nav-link">Home</a></li>
                             <li><a href="{{ route('transaksi') }}" class="nav-link">Pesanan Saya</a></li>
                             <li><a href="#about-section" class="nav-link">Tentang Kami</a></li>
                             <li><a href="#testimonials-section" class="nav-link">Testimoni</a></li>
                             <li class="has-children">
-                                <a href="#about-section" class="nav-link"><strong>{{ Auth::user()->nama }}</strong></a>
+                                <a href="#about-section" class="nav-link"><strong>{{ Auth::user()->nama_member }}</strong></a>
                                 <ul class="dropdown arrow-top">
                                     <li><a href="{{ route('profile') }}" class="nav-link">Profil</a></li>
                                     <li class="text-danger"><a href="{{ route('logout') }}" class="nav-link">Logout</a>
