@@ -20,7 +20,7 @@ class kasirController extends Controller
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
-        $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->get();
         return view('kasir/kasir', ['users' => $users], ['transaksi' => $transaksi]);
     }
     public function proses_laundry(Request $request)

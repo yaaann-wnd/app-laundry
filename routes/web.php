@@ -64,6 +64,9 @@ Route::post('diambil', [kurirController::class, 'diambil'])->name('diambil');
 Route::post('antri', [kurirController::class, 'antri'])->name('antri');
 Route::post('diantar', [kurirController::class, 'diantar'])->name('diantar');
 Route::post('selesai', [kurirController::class, 'selesai'])->name('selesai');
+Route::post('aktif', [kurirController::class, 'aktif'])->name('aktif');
+Route::post('nonaktif', [kurirController::class, 'nonaktif'])->name('nonaktif');
+Route::post('status_kurir', [kurirController::class, 'status_kurir'])->name('status_kurir');
 
 
 // register member

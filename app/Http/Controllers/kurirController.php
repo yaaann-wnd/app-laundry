@@ -107,6 +107,42 @@ class kurirController extends Controller
         // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
     }
 
+    public function aktif(Request $request)
+    {
+        // dd($request->all());
+        $id = $request->id;
+
+        $data = array(
+            'status' => 'aktif',
+        );
+        $user = user::find($id);
+        $user->update($data);
+
+        echo json_encode($data);
+    }
+    public function nonaktif(Request $request)
+    {
+        // dd($request->all());
+        $id = $request->id;
+
+        $data = array(
+            'status' => '',
+        );
+        $user = user::find($id);
+        $user->update($data);
+
+        echo json_encode($data);
+    }
+    public function status_kurir(Request $request)
+    {
+        $id_user_kurir = $request->id_user_kurir;
+        $user = DB::table('users')->where('id', $id_user_kurir)->get();
+        $data['kurir'] = [];
+        foreach ($user as $value) {
+            array_push($data['kurir'], $value);
+        }
+        echo json_encode($data);
+    }
     public function ambil(Request $request)
     {
         // dd($request->all());

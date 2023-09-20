@@ -22,7 +22,7 @@
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <body>
@@ -31,12 +31,9 @@
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
                 <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-                    <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}"
-                            alt="logo" /></a>
-                    <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
-                            src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
-                        data-toggle="minimize">
+                    <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="typcn typcn-th-menu"></span>
                     </button>
                 </div>
@@ -48,8 +45,7 @@
                             <img src="../../images/faces/face5.jpg" alt="profile" />
                             <span class="nav-profile-name">{{ Auth::user()->nama }}</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                            aria-labelledby="profileDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item" href="{{ route('profile_kurir') }}">
                                 <i class="typcn typcn-cog-outline text-primary"></i>
                                 Settings
@@ -63,13 +59,11 @@
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown mr-0">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
-                            id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
                             <i class="typcn typcn-bell mx-0"></i>
                             <span class="count"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                             <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
@@ -112,15 +106,17 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item nav-date dropdown">
-                        <a class="nav-link d-flex justify-content-center align-items-center" href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
-                            <h6 class="date mb-0">Logout</h6>
-                            <i class="bi bi-box-arrow-right"></i>
+                    <li class="nav-item nav-date dropdown" id="tombolhide">
+                        <input type="hidden" id="id_user_kurir" value="{{ Auth::user()->id }}">
+                        <a type="button" id="aktif" class="nav-link d-flex justify-content-center align-items-center" href="">
+                            <h6 class="date mb-0">Aktifkan</h6>
+                        </a>
+                        <a type="button" id="nonaktif" class="nav-link d-flex justify-content-center align-items-center" href="">
+                            <h6 class="date mb-0">Nonaktifkan</h6>
                         </a>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="typcn typcn-th-menu"></span>
                 </button>
             </div>
@@ -154,24 +150,19 @@
                 <i class="settings-close typcn typcn-times"></i>
                 <ul class="nav nav-tabs" id="setting-panel" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section"
-                            role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
-                            aria-controls="chats-section">CHATS</a>
+                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="setting-content">
-                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-                        aria-labelledby="todo-section">
+                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
                         <div class="add-items d-flex px-3 mb-0">
                             <form class="form w-100">
                                 <div class="form-group d-flex">
-                                    <input type="text" class="form-control todo-list-input"
-                                        placeholder="Add To-do">
-                                    <button type="submit" class="add btn btn-primary todo-list-add-btn"
-                                        id="add-task">Add</button>
+                                    <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                                    <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
                                 </div>
                             </form>
                         </div>
@@ -245,14 +236,12 @@
                     <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
                         <div class="d-flex align-items-center justify-content-between border-bottom">
                             <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                            <small
-                                class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
+                            <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
                                 All</small>
                         </div>
                         <ul class="chat-list">
                             <li class="list active">
-                                <div class="profile"><img src="../../images/faces/face1.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Thomas Douglas</p>
                                     <p>Available</p>
@@ -260,8 +249,7 @@
                                 <small class="text-muted my-auto">19 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face2.jpg" alt="image"><span
-                                        class="offline"></span></div>
+                                <div class="profile"><img src="../../images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <div class="wrapper d-flex">
                                         <p>Catherine</p>
@@ -272,8 +260,7 @@
                                 <small class="text-muted my-auto">23 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face3.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face3.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Daniel Russell</p>
                                     <p>Available</p>
@@ -281,8 +268,7 @@
                                 <small class="text-muted my-auto">14 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face4.jpg" alt="image"><span
-                                        class="offline"></span></div>
+                                <div class="profile"><img src="../../images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <p>James Richardson</p>
                                     <p>Away</p>
@@ -290,8 +276,7 @@
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face5.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face5.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Madeline Kennedy</p>
                                     <p>Available</p>
@@ -299,8 +284,7 @@
                                 <small class="text-muted my-auto">5 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="../../images/faces/face6.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="../../images/faces/face6.jpg" alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Sarah Graves</p>
                                     <p>Available</p>
@@ -342,10 +326,55 @@
     <!-- base:js -->
     <script>
         $(document).ready(function() {
-      $("#simpan_admin").click(function() {
-        alert("The paragraph was clicked.");
-      });
-    });
+            var id_user_kurir = $("#id_user_kurir").val();
+            $.ajax({
+                url: "{{ route('status_kurir') }}",
+                type: "post",
+                dataType: 'JSON',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id_user_kurir: id_user_kurir
+                },
+                success: function(data) {
+                    console.log(data);
+            $("#tombolhide").hide();
+                }
+            });
+        });
+        $("#aktif").click(function(e) {
+            e.preventDefault();
+            var id_user_kurir = $("#id_user_kurir").val();
+            $.ajax({
+                url: "{{ route('aktif') }}",
+                type: "post",
+                dataType: 'JSON',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id_user_kurir: id_user_kurir
+                },
+                success: function(data) {
+                    console.log(data);
+                    location.reload();
+                }
+            });
+        });
+        $("#nonaktif").click(function(e) {
+            e.preventDefault();
+            var id_user_kurir = $("#id_user_kurir").val();
+            $.ajax({
+                url: "{{ route('nonaktif') }}",
+                type: "post",
+                dataType: 'JSON',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id: id
+                },
+                success: function(data) {
+                    console.log(data);
+                    location.reload();
+                }
+            });
+        });
     </script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
