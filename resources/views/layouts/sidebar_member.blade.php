@@ -89,6 +89,8 @@
     <script src="{{ asset('navbar-assets/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/slick/slick.js') }}"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-jdjG99xvk3PihD64"></script>
+    <script src="{{ asset('js/midtrans.js') }}"></script>
 
     <script>
         $('.promo').slick({

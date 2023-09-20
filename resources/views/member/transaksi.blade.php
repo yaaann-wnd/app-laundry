@@ -41,15 +41,78 @@
             </tbody>
           </table>
 
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#order">Order</button>
-          <div class="modal fade" id="order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Order</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                        <button type="button" class="btn btn-success" data-toggle="modal"
+                            data-target="#order">Order</button>
+                        <div class="modal fade" id="order" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Order</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 grid-margin stretch-card" style="padding: 10px 50px;" id="detail">
+                        <div class="card" style="box-shadow: 5px 5px 5px 5px #c4c0c0;">
+                            <div class="card-body">
+                                <h4 class="card-title">Data Transaksi</h4>
+                                <form class="forms-sample">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Id Transaksi</label>
+                                        <input type="text" class="form-control" readonly id="id_transaksi">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Nama Member</label>
+                                        <input type="text" class="form-control" id="nama_member">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Nomer Telepon</label>
+                                        <input type="text" class="form-control" id="no_telp">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Status Pembayaran</label>
+                                        <input type="text" readonly class="form-control" id="status_pembayaran">
+                                    </div>
+                                    <button type="button" style="float: right;color:white;margin-bottom:20px"
+                                        class="btn btn-warning" id="cancel_transaksi">Reset
+                                        Transaksi</button>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Jenis Jasa</th>
+                                            <td id="jenis_jasa">Cuci + Setrika</td>
+                                            <td id="harga_perkg">15000</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Jumlah</th>
+                                            <td id="kg_order">2 Kg</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Total</th>
+                                            <td id="total_harga">30000</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Pembayaran</th>
+                                            <td id="pembayaran">50000</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Kembalian</th>
+                                            <td id="kembalian">20000</td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <form action="{{ route('order_member') }}" method="post">
                   @csrf
@@ -128,9 +191,7 @@
                 </form>
               </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
   </div>
   <div class="col-12 grid-margin stretch-card" style="padding: 10px 50px;" id="detail">

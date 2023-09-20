@@ -86,10 +86,12 @@ Route::get('logout_user', [adminController::class, 'logout'])->name('logout_user
 // Autentikasi ketika user sudah login
 Route::middleware(['auth:member'])->group(function () {
     Route::get('member/home',[registerController::class, 'beranda'])->name('beranda');
+    Route::get('transaksi', [registerController::class, 'transaksi'])->name('transaksi');
     Route::get('profile', [registerController::class, 'profile'])->name('profile');
+    Route::get('/midtrans/{id}', [registerController::class, 'midtrans'])->name('midtrans');
     Route::post('edit_profile_member', [registerController::class, 'edit_profile_member'])->name('edit_profile_member');
     Route::post('data_jasa', [registerController::class, 'data_jasa'])->name('data_jasa');
     Route::post('order_member', [registerController::class, 'order_member'])->name('order_member');
+    Route::post('success', [registerController::class, 'success'])->name('success');
     Route::post('detail_transaksi', [registerController::class, 'detail_transaksi'])->name('detail_transaksi');
-    Route::get('transaksi', [registerController::class, 'transaksi'])->name('transaksi');
 });
