@@ -45,6 +45,7 @@ class kurirController extends Controller
                 'username' => $username,
                 'password' => Hash::make($password_baru),
             );
+            
             $user = user::find($id);
             $user->update($data);
             return redirect('profile_kurir');

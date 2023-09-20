@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
 use App\Models\ProdukJasa;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,8 @@ class registerController extends Controller
         }
     }
 
-    public function profile(Request $request) {
+    public function profile(Request $request)
+    {
 
         if (Auth::check()) {
             return view('member/profile');
@@ -29,18 +31,24 @@ class registerController extends Controller
             return view('member.register');
         }
     }
-    public function transaksi(Request $request) {
+    public function transaksi(Request $request)
+    {
         $produk_jasa = DB::table('produk_jasa')->get();
-        return view('member/transaksi',['produk_jasa' => $produk_jasa]);
+        $transaksi = DB::table('transaksi')
+        ->leftJoin('member', 'transaksi.id_member', '=', 'member.id')
+        ->select('transaksi.*', 'member.nama')
+            ->get();
+        return view('member/transaksi', ['produk_jasa' => $produk_jasa], ['transaksi' => $transaksi]);
     }
-    public function data_jasa(Request $request) {
+    public function data_jasa(Request $request)
+    {
         $jasa = $request->jasa;
         $produk_jasa = DB::table('produk_jasa')->where('id', $jasa)->get();
-		$data['jasa'] = [];
-        foreach($produk_jasa as $value) {
-			array_push($data['jasa'], $value);
-		} 
-		echo json_encode($data);
+        $data['jasa'] = [];
+        foreach ($produk_jasa as $value) {
+            array_push($data['jasa'], $value);
+        }
+        echo json_encode($data);
     }
 
     public function registerProses(Request $request)
@@ -75,7 +83,8 @@ class registerController extends Controller
         }
     }
 
-    public function beranda() {
+    public function beranda()
+    {
         $id_foto_random = rand(1, 3);
         $paket = ProdukJasa::all();
 
@@ -98,25 +107,22 @@ class registerController extends Controller
 
         // return response()->json($id);
 
-            $data = array(
-                'nama' => $nama,
-                'alamat' => $alamat,
-                'no_telp' => $no_telp,
-                'password' => Hash::make($password_baru),
-            );
-            $user = Member::find($id);
-            $user->update($data);
-            return redirect('profile');
+        $data = array(
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'no_telp' => $no_telp,
+            'password' => Hash::make($password_baru),
+        );
+        $user = Member::find($id);
+        $user->update($data);
+        return redirect('profile');
 
         // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
     }
     public function order_member(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $id = Auth::user()->id;
-        $nama = $request->nama;
-        $alamat = $request->alamat;
-        $no_telp = $request->no_telp;
         $jasa = $request->jasa;
         $harga_perkg = $request->harga_perkg;
         $kg_order = $request->kg_order;
@@ -131,19 +137,18 @@ class registerController extends Controller
 
         // // return response()->json($id);
 
-            $data = array(
-                'nama' => $nama,
-                'alamat' => $alamat,
-                'no_telp' => $no_telp,
-                'jasa' => $jasa,
-                'harga_perkg' => $harga_perkg,
-                'kg_order' => $kg_order,
-                'total_harga' => $total_harga,
-                'metode_pembayaran' => $metode_pembayaran,
-            );
+        Transaksi::create([
+            'id_member' => $id,
+            'id_jasa' => $jasa,
+            'harga_perkg' => $harga_perkg,
+            'kg_order' => $kg_order,
+            'total_harga' => $total_harga,
+            'metode_pembayaran' => $metode_pembayaran,
+            'status_transaksi' => 'Tunggu',
+        ]);
         //     $user = Member::find($id);
         //     $user->update($data);
-        //     return redirect('profile');
+        return redirect('transaksi');
 
         // // return redirect(route('profile_kasir'))->with('error', 'Password lama tidak sama ');
     }
