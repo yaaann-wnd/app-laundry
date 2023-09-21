@@ -38,6 +38,7 @@
             height: 100%;
         }
     </style>
+    
     <title>ZEA LAUNDRY</title>
 </head>
 
