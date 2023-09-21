@@ -143,7 +143,6 @@ class registerController extends Controller
         $harga_perkg = $request->harga_perkg;
         $kg_order = $request->kg_order;
         $total_harga = $request->total_harga;
-        $metode_pembayaran = $request->metode_pembayaran;
         // $password_baru = $request->password_baru;
         // // $data = array(
         // // 	'status' =>'Ditugaskan',
@@ -159,8 +158,9 @@ class registerController extends Controller
             'harga_perkg' => $harga_perkg,
             'kg_order' => $kg_order,
             'total_harga' => $total_harga,
-            'metode_pembayaran' => $metode_pembayaran,
-            'status_transaksi' => 'Belum Dibayar',
+            'metode_pembayaran' => '',
+            'status_pembayaran' => 'Belum Dibayar',
+            'status_transaksi' => 'Tunggu',
         ]);
         //     $user = Member::find($id);
         //     $user->update($data);
@@ -228,8 +228,8 @@ class registerController extends Controller
         $find_order_2 = Transaksi::find($find_order->id);
 
         $find_order_2->update([
-            'status_transaksi' => 'Sudah Dibayar',
-            'status_pembayaran' => 'Lunas'
+            'status_pembayaran' => 'Lunas',
+            'metode_pembayaran' => 'Midtrans'
         ]);
 
         return redirect('/transaksi');

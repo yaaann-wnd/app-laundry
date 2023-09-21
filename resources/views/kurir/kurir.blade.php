@@ -31,7 +31,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" id="ambil">Ambil</button>
+                  <button type="button" class="btn btn-success ambil" id="">Ambil</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -178,7 +178,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" id="diambil">Diambil</button>
+                  <button type="button" class="btn btn-success diambil" id="">Diambil</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -325,7 +325,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" id="antri">Antri</button>
+                  <button type="button" class="btn btn-success antri" id="">Antri</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -764,7 +764,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" id="diantar">Antar</button>
+                  <button type="button" class="btn btn-success diantar" id="">Antar</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -911,7 +911,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" id="selesai">Selesai</button>
+                  <button type="button" class="btn btn-success selesai">Selesai</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -1033,10 +1033,11 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Data Transaksi</h4>
-        <form class="forms-sample">
+        <form class="forms-sample" action="{{ route('transaksi_selesai') }}" method="POST">
+          @csrf
           <div class="form-group">
             <label for="exampleInputName1">Id Transaksi</label>
-            <input type="text" class="form-control" readonly id="id_transaksi">
+            <input type="text" class="form-control" name="id_transaksi" readonly id="id_transaksi">
           </div>
           <div class="form-group">
             <label for="exampleInputName1">Nama Member</label>
@@ -1051,38 +1052,47 @@
             <input type="text" class="form-control" id="no_telp">
           </div>
           <div class="form-group">
+            <label for="exampleInputPassword4">Jenis Jasa</label>
+            <input type="text" class="form-control" id="jenis_jasa">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Total Pembayaran</label>
+            <input type="text" class="form-control" id="total_harga">
+          </div>
+          <div class="form-group">
             <label for="exampleInputPassword4">Status Pembayaran</label>
-            <input type="text" readonly class="form-control" id="status_pembayaran">
+            <input type="text" readonly class="form-control" id="status_pembayaran_akhir">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword4">Pembayaran ( jika Cash / Belum Lunas )</label>
-            <input type="text" class="form-control" id="status_pembayaran">
+            <input type="text" class="form-control" id="pembayaran">
           </div>
-          <button type="button" style="float: right;color:white;margin-bottom:20px" class="btn btn-warning" id="cancel_transaksi">Reset Transaksi</button>
-          <table class="table table-bordered">
+          <button type="submit" style="float: right;color:white;margin-bottom:20px" class="btn btn-success" id="transaksi_selesai">Selesai</button>
+          <button type="button" style="float: right;color:white;margin-bottom:20px" class="btn btn-primary" id="bayar">Bayar</button>
+          <!-- <table class="table table-bordered">
             <tr>
               <th>Jenis Jasa</th>
-              <td>Cuci + Setrika</td>
-              <td>15000</td>
+              <td id="jenis_jasa_akhir"></td>
+              <td id="harga_perkg"></td>
             </tr>
             <tr>
-              <th colspan="2">Jumlah</th>
-              <td>2 Kg</td>
+              <th colspan="2">Order</th>
+              <td id="kg_order"></td>
             </tr>
             <tr>
               <th colspan="2">Total</th>
-              <td>30000</td>
+              <td id="total_harga"></td>
             </tr>
             <tr>
               <th colspan="2">Pembayaran</th>
-              <td>50000</td>
+              <td id="pembayaran"></td>
             </tr>
             <tr>
               <th colspan="2">Kembalian</th>
-              <td>20000</td>
+              <td id="kembalian"></td>
             </tr>
-          </table>
-          </form>
+          </table> -->
+        </form>
       </div>
     </div>
   </div>
@@ -1105,7 +1115,7 @@
 
     // alert('cancel klik');
   });
-  $("#ambil").click(function(e) {
+  $(".ambil").click(function(e) {
     e.preventDefault();
     id = $(this).closest('tr').find('.id').text();
     $.ajax({
@@ -1122,7 +1132,7 @@
       }
     });
   });
-  $("#diambil").click(function(e) {
+  $(".diambil").click(function(e) {
     e.preventDefault();
     id = $(this).closest('tr').find('.id').text();
     $.ajax({
@@ -1139,7 +1149,7 @@
       }
     });
   });
-  $("#antri").click(function(e) {
+  $(".antri").click(function(e) {
     e.preventDefault();
     id = $(this).closest('tr').find('.id').text();
     $.ajax({
@@ -1156,7 +1166,7 @@
       }
     });
   });
-  $("#diantar").click(function(e) {
+  $(".diantar").click(function(e) {
     e.preventDefault();
     id = $(this).closest('tr').find('.id').text();
     $.ajax({
@@ -1173,7 +1183,32 @@
       }
     });
   });
-  $("#selesai").click(function(e) {
+  $("#bayar").click(function(e) {
+    e.preventDefault();
+    var id_transaksi = $("#id_transaksi").val();
+    var pembayaran = $("#pembayaran").val();
+    var total_harga = $("#total_harga").val();
+    if (pembayaran >= total_harga) {
+      $.ajax({
+        url: "{{ route('bayar_kurir') }}",
+        type: "post",
+        dataType: 'JSON',
+        data: {
+          "_token": "{{ csrf_token() }}",
+          id: id,
+          pembayaran: pembayaran
+        },
+        success: function(data_transaksi) {
+        console.log(data_transaksi);
+          $('#status_pembayaran_akhir').val(data_transaksi.transaksi[0]['status_pembayaran']);
+        }
+      });
+    }
+    else{
+      alert('Pembayaran Kurang');
+    }
+  });
+  $(".selesai").click(function(e) {
     e.preventDefault();
     id = $(this).closest('tr').find('.id').text();
     $.ajax({
@@ -1184,9 +1219,16 @@
         "_token": "{{ csrf_token() }}",
         id: id
       },
-      success: function(data) {
-        console.log(data);
-        location.reload();
+      success: function(data_transaksi) {
+        console.log(data_transaksi);
+        $('#id_transaksi').val(data_transaksi.transaksi[0]['id']);
+        $('#nama_member').val(data_transaksi.transaksi[0]['nama_member']);
+        $('#alamat').val(data_transaksi.transaksi[0]['alamat_member']);
+        $('#no_telp').val(data_transaksi.transaksi[0]['no_telp_member']);
+        $('#status_pembayaran_akhir').val(data_transaksi.transaksi[0]['status_pembayaran']);
+        $('#jenis_jasa').val(data_transaksi.transaksi[0]['jenis_jasa']);
+        $('#total_harga').val(data_transaksi.transaksi[0]['total_harga']);
+
       }
     });
   });

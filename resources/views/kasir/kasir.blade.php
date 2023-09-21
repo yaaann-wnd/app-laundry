@@ -31,7 +31,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" id="proses" class="btn btn-success">Proses</button>
+                  <button type="button" id="" class="btn btn-success proses">Proses</button>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
                   <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -243,7 +243,7 @@
 
     // alert(jenis_jasa);
   });
-  $("#proses").click(function() {
+  $(".proses").click(function() {
     id = $(this).closest('tr').find('.id').text();
     $.ajax({
       url: "{{ route('proses_order') }}",

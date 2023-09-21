@@ -23,6 +23,25 @@ class kasirController extends Controller
         $users = DB::table('users')->where('jabatan', 'kurir')->get();
         return view('kasir/kasir', ['users' => $users], ['transaksi' => $transaksi]);
     }
+    public function transaksi_data_selesai(Request $request)
+    {
+        $transaksi_cash = DB::table('transaksi')
+            ->where('transaksi.status_transaksi', '=', 'selesai')
+            ->where('transaksi.metode_pembayaran', '=', 'Cash')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_midtrans = DB::table('transaksi')
+            ->where('transaksi.status_transaksi', '=', 'selesai')
+            ->where('transaksi.metode_pembayaran', '=', 'Midtrans')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->get();
+        return view('kasir/transaksi_data_selesai', ['users' => $users, 'transaksi_cash' => $transaksi_cash, 'transaksi_midtrans' => $transaksi_midtrans]);
+    }
     public function proses_laundry(Request $request)
     {
         $transaksi = DB::table('transaksi')
@@ -38,7 +57,7 @@ class kasirController extends Controller
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
-        return view('kasir/proses_laundry', ['users' => $users,'transaksi' => $transaksi, 'transaksi_siap' => $transaksi_siap]);
+        return view('kasir/proses_laundry', ['users' => $users, 'transaksi' => $transaksi, 'transaksi_siap' => $transaksi_siap]);
     }
     public function profile_kasir(Request $request)
     {

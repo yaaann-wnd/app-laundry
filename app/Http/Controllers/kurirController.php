@@ -17,7 +17,7 @@ class kurirController extends Controller
         $id = Auth::user()->id;
         $transaksi = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
-            ->where('transaksi.status_kurir', '=', '')
+            ->where('transaksi.status_kurir', '=', null)
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
@@ -70,6 +70,28 @@ class kurirController extends Controller
         return view('kurir/kurir', ['users' => $users, 'transaksi_mengambil' => $transaksi_mengambil, 'transaksi' => $transaksi, 'transaksi_diambil' => $transaksi_diambil, 'transaksi_antri' => $transaksi_antri, 'transaksi_tunggu' => $transaksi_tunggu, 'transaksi_diantar' => $transaksi_diantar, 'transaksi_siap' => $transaksi_siap]);
     }
 
+    public function transaksi_data_selesai_kurir(Request $request)
+    {
+        $id = Auth::user()->id;
+        $transaksi_cash = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_transaksi', '=', 'selesai')
+            ->where('transaksi.metode_pembayaran', '=', 'Cash')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_midtrans = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_transaksi', '=', 'selesai')
+            ->where('transaksi.metode_pembayaran', '=', 'Midtrans')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->get();
+        return view('kurir/transaksi_data_selesai_kurir', ['users' => $users, 'transaksi_cash' => $transaksi_cash, 'transaksi_midtrans' => $transaksi_midtrans]);
+    }
     public function profile_kurir(Request $request)
     {
         $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
@@ -200,14 +222,63 @@ class kurirController extends Controller
         // dd($request->all());
         $id = $request->id;
 
+        $transaksi_data = DB::table('transaksi')
+            ->where('transaksi.id', '=', $id)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $data_transaksi['transaksi'] = [];
+        foreach ($transaksi_data as $value) {
+            array_push($data_transaksi['transaksi'], $value);
+        }
+        // $data = array(
+        //     'status_kurir' => 'Selesai',
+        //     'status_transaksi' => 'Selesai',
+        // );
+        // $transaksi = Transaksi::find($id);
+        // $transaksi->update($data);
+
+        echo json_encode($data_transaksi);
+    }
+    public function bayar_kurir(Request $request)
+    {
+        // dd($request->all());
+
+        $id = $request->id;
+        $pembayaran = $request->pembayaran;
+        $data = array(
+            'pembayaran' => $pembayaran,
+            'status_pembayaran' => 'Lunas',
+            'metode_pembayaran' => 'Cash',
+        );
+        $transaksi = Transaksi::find($id);
+        $transaksi->update($data);
+        $transaksi_data = DB::table('transaksi')
+            ->where('transaksi.id', '=', $id)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $data_transaksi['transaksi'] = [];
+        foreach ($transaksi_data as $value) {
+            array_push($data_transaksi['transaksi'], $value);
+        }
+
+
+        echo json_encode($data_transaksi);
+    }
+    public function transaksi_selesai(Request $request)
+    {
+        // dd(Auth::user()->id);
+        $id = $request->id_transaksi;
         $data = array(
             'status_kurir' => 'Selesai',
             'status_transaksi' => 'Selesai',
         );
         $transaksi = Transaksi::find($id);
         $transaksi->update($data);
-
-        echo json_encode($data);
+        return redirect('login_kurir');
     }
     public function logout()
     {

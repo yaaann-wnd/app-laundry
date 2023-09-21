@@ -306,6 +306,12 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('transaksi_data_selesai_kurir') }}">
+                            <i class="typcn typcn-device-desktop menu-icon"></i>
+                            <span class="menu-title">Transaksi Selesai</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->

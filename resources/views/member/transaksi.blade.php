@@ -105,15 +105,6 @@
                                                     <input type="text" id="total_harga" name="total_harga" class="form-control" value="">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                                                    <select name="metode_pembayaran" class="form-control" id="metode_pembayaran">
-                                                        <option value="midtrans">Midtrans</option>
-                                                        <option value="cash">Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Lokasi</label>

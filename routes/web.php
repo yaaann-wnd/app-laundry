@@ -54,6 +54,7 @@ Route::get('profile_kasir', [kasirController::class, 'profile_kasir'])->name('pr
 Route::post('edit_profile_kasir', [kasirController::class, 'edit_profile_kasir'])->name('edit_profile_kasir');
 Route::post('proses_laundry_kerja', [kasirController::class, 'proses_laundry_kerja'])->name('proses_laundry_kerja');
 Route::post('proses_laundry_siap', [kasirController::class, 'proses_laundry_siap'])->name('proses_laundry_siap');
+Route::get('transaksi_data_selesai', [kasirController::class, 'transaksi_data_selesai'])->name('transaksi_data_selesai');
 
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
@@ -67,7 +68,9 @@ Route::post('selesai', [kurirController::class, 'selesai'])->name('selesai');
 Route::post('aktif', [kurirController::class, 'aktif'])->name('aktif');
 Route::post('nonaktif', [kurirController::class, 'nonaktif'])->name('nonaktif');
 Route::post('status_kurir', [kurirController::class, 'status_kurir'])->name('status_kurir');
-
+Route::post('transaksi_selesai', [kurirController::class, 'transaksi_selesai'])->name('transaksi_selesai');
+Route::post('bayar_kurir', [kurirController::class, 'bayar_kurir'])->name('bayar_kurir');
+Route::get('transaksi_data_selesai_kurir', [kurirController::class, 'transaksi_data_selesai_kurir'])->name('transaksi_data_selesai_kurir');
 
 // register member
 Route::get('register', [registerController::class, 'register'])->name('register')->middleware('guest');
