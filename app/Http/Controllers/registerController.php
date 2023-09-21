@@ -143,6 +143,8 @@ class registerController extends Controller
         $harga_perkg = $request->harga_perkg;
         $kg_order = $request->kg_order;
         $total_harga = $request->total_harga;
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
         // $password_baru = $request->password_baru;
         // // $data = array(
         // // 	'status' =>'Ditugaskan',
@@ -158,6 +160,8 @@ class registerController extends Controller
             'harga_perkg' => $harga_perkg,
             'kg_order' => $kg_order,
             'total_harga' => $total_harga,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
             'metode_pembayaran' => '',
             'status_pembayaran' => 'Belum Dibayar',
             'status_transaksi' => 'Tunggu',

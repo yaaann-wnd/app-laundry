@@ -241,6 +241,30 @@ class kurirController extends Controller
 
         echo json_encode($data_transaksi);
     }
+    public function detail_map(Request $request)
+    {
+        // dd($request->all());
+        $id = $request->id;
+
+        $transaksi_data = DB::table('transaksi')
+            ->where('transaksi.id', '=', $id)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $data_transaksi['transaksi'] = [];
+        foreach ($transaksi_data as $value) {
+            array_push($data_transaksi['transaksi'], $value);
+        }
+        // $data = array(
+        //     'status_kurir' => 'Selesai',
+        //     'status_transaksi' => 'Selesai',
+        // );
+        // $transaksi = Transaksi::find($id);
+        // $transaksi->update($data);
+
+        echo json_encode($data_transaksi);
+    }
     public function bayar_kurir(Request $request)
     {
         // dd($request->all());

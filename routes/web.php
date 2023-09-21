@@ -71,6 +71,7 @@ Route::post('status_kurir', [kurirController::class, 'status_kurir'])->name('sta
 Route::post('transaksi_selesai', [kurirController::class, 'transaksi_selesai'])->name('transaksi_selesai');
 Route::post('bayar_kurir', [kurirController::class, 'bayar_kurir'])->name('bayar_kurir');
 Route::get('transaksi_data_selesai_kurir', [kurirController::class, 'transaksi_data_selesai_kurir'])->name('transaksi_data_selesai_kurir');
+Route::post('detail_map', [kurirController::class, 'detail_map'])->name('detail_map');
 
 // register member
 Route::get('register', [registerController::class, 'register'])->name('register')->middleware('guest');

@@ -17,6 +17,7 @@
                                 <th>Status Pembayaran</th>
                                 <th>Tanggal Order</th>
                                 <th>Status Transaksi</th>
+                                <th>Status Kurir</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -30,6 +31,7 @@
                                 <td>{{ $t->status_pembayaran }}</td>
                                 <td>{{ $t->created_at }}</td>
                                 <td>{{ $t->status_transaksi }}</td>
+                                <td>{{ $t->status_kurir }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success detail">Detail</button>
                                     <button type="button" onclick="bayar({{ $t->id }})" class="btn btn-primary">Bayar</button>
