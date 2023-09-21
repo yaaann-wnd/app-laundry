@@ -14,6 +14,13 @@
 
     <link rel="stylesheet" href="{{ asset('navbar-assets/css/owl.carousel.min.css') }}">
 
+    
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('navbar-assets/css/bootstrap.min.css') }}">
 
@@ -34,7 +41,7 @@
     <title>ZEA LAUNDRY</title>
 </head>
 
-<body style="background-color: #0056b324;">
+<body style="background-color: #0056b324;" id="markers-on-the-map">
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
