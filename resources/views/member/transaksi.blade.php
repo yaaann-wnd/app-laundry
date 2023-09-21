@@ -26,15 +26,17 @@
                             <tr>
                                 <td class="id">{{ $t->id }}</td>
                                 <td>{{ $t->nama_member }}</td>
-                                <td>{{ $t->jenis_jasa }}</td>
+                                <td><span style="white-space: nowrap;">{{ $t->jenis_jasa }}</span></td>
                                 <td>{{ $t->total_harga }}</td>
                                 <td>{{ $t->status_pembayaran }}</td>
                                 <td>{{ $t->created_at }}</td>
                                 <td>{{ $t->status_transaksi }}</td>
                                 <td>{{ $t->status_kurir }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success detail">Detail</button>
-                                    <button type="button" onclick="bayar({{ $t->id }})" class="btn btn-primary">Bayar</button>
+                                    <div class="d-flex" style="column-gap: .6rem !important;">
+                                        <button type="button" class="btn btn-success detail">Detail</button>
+                                        <button type="button" onclick="bayar('{{ $t->kode_pembayaran }}')" class="btn {{ $t->status_pembayaran == 'Lunas' ? 'btn-secondary disabled' : 'btn-primary' }}" {{ $t->status_pembayaran == 'Lunas' ? 'disabled' : '' }}>Bayar</button>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

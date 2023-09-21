@@ -38,6 +38,7 @@ class registerController extends Controller
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->where('id_member', Auth::user()->id)
             ->get();
         return view('member/transaksi', ['produk_jasa' => $produk_jasa, 'transaksi' => $transaksi]);
     }
@@ -155,6 +156,7 @@ class registerController extends Controller
         // // return response()->json($id);
 
         Transaksi::create([
+            'kode_pembayaran' => str_replace(' ', '', Auth::user()->nama_member) . '-' . substr(str_shuffle(MD5(microtime())), 0, 25) . '-ZEALAUNDRY',
             'id_member' => $id,
             'id_jasa' => $jasa,
             'harga_perkg' => $harga_perkg,
@@ -200,9 +202,9 @@ class registerController extends Controller
 
     public function midtrans($id)
     {
-        $pesanan = Transaksi::find($id);
+        $pesanan = Transaksi::where('kode_pembayaran', $id)->first();
         $harga = $pesanan->total_harga;
-        $order_id = $pesanan->id;
+        $order_id = $pesanan->kode_pembayaran;
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -228,10 +230,10 @@ class registerController extends Controller
     {
         $json = json_decode($request->get('json'));
         $order_id = $json->order_id;
-        $find_order = Transaksi::where('id', $order_id)->first();
-        $find_order_2 = Transaksi::find($find_order->id);
+        $find_order = Transaksi::where('kode_pembayaran', $order_id)->first();
+        // $find_order_2 = Transaksi::find($find_order->id);
 
-        $find_order_2->update([
+        $find_order->update([
             'status_pembayaran' => 'Lunas',
             'metode_pembayaran' => 'Midtrans'
         ]);
