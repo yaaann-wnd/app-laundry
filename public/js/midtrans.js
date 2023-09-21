@@ -4,8 +4,6 @@ function bayar(id) {
         url: "midtrans/" + id,
         dataType: "json",
         success: function (response) {
-
-            // console.log(response);
             snap.pay(response, {
                 // Optional
                 onSuccess: function (result) {

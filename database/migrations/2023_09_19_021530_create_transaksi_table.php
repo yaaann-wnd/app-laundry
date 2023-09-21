@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('id_user_kasir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_user_kurir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_jasa')->constrained('produk_jasa')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->text('lokasi')->nullable();
+            $table->text('longitude')->nullable();
+            $table->text('latitude')->nullable();
             $table->integer('kg_order')->nullable();
             $table->integer('harga_perkg')->nullable();
             $table->integer('total_harga')->nullable();
