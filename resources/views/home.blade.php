@@ -157,7 +157,7 @@
                 </div>
             </div>
         </div>
-        <div class="judul-produk text-center my-5">
+        <div class="judul-produk text-center my-md-5 my-3">
             <h3>Pilih Paket</h3>
         </div>
         <div class="produk mb-5">
@@ -186,9 +186,8 @@
     </div>
 
     <div class="copyright">
-        <div>
-            <p>Copyright ZEA LAUNDRY 2023. Made with Love by Aftiyan & Timo</p>
-        </div>
+        <span><strong>&copy; ZEA LAUNDRY 2023. All Rights Reserved.</strong></span>
+        <span>Made With ❤️ by <strong>Aftiyan & Timo</strong></span>
     </div>
 
     <script src="{{ asset('navbar-assets/js/jquery-3.3.1.min.js') }}"></script>
