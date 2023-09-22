@@ -187,10 +187,6 @@
                         <th colspan="2">Pembayaran</th>
                         <td id="pembayaran_detail"></td>
                     </tr>
-                    <tr>
-                        <th colspan="2">Kembalian</th>
-                        <td id="kembalian_detail"></td>
-                    </tr>
                 </table>
             </form>
         </div>
@@ -255,6 +251,7 @@
                 $('#harga_perkg_detail').html(data.transaksi[0]['harga_perkg']);
                 $('#kg_order_detail').html(data.transaksi[0]['kg_order']);
                 $('#total_harga_detail').html(data.transaksi[0]['total_harga']);
+                $('#pembayaran_detail').html(data.transaksi[0]['pembayaran']);
             }
         });
     });
