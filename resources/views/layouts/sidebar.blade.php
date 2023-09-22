@@ -38,7 +38,8 @@
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
                 <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-                    <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo" /></a>
+                    <a class="navbar-brand brand-logo" href="../../index.html">
+                        <h4 style="color:white">ZEA LAUNDRY</h4></a>
                     <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="typcn typcn-th-menu"></span>
@@ -323,21 +324,6 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('register_kasir') }}">Kasir</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('register_kurir') }}">Kurir</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('laundry.index') }}">Laundry</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item {{ !Auth::user()->jabatan ? 'd-none' : '' }}">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                            <i class="typcn typcn-film menu-icon"></i>
-                            <span class="menu-title">Laporan</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('laporan_transaksi_masuk') }}">Laporan Transaksi Masuk</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('status_kurir') }}">Laporan Status Kurir</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('laporan_transaksi_selesai') }}">Laporan Transaksi Selesai</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('data_member') }}">Data Member</a></li>
                             </ul>
                         </div>
                     </li>
