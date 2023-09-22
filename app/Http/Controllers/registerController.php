@@ -70,12 +70,23 @@ class registerController extends Controller
 
     public function registerProses(Request $request)
     {
-        $request->validate([
-            'nama_member' => 'required|unique:member',
-            'alamat_member' => 'required|min:5',
-            'no_telp_member' => 'required|unique:member',
-            'password' => 'required|min:5'
-        ]);
+        $request->validate(
+            [
+                'nama_member' => 'required',
+                'alamat_member' => 'required|min:5',
+                'no_telp_member' => 'required|unique:member',
+                'password' => 'required|min:5'
+            ],
+            [
+                'nama_member.required' => 'Nama tidak boleh kosong!',
+                'alamat_member.required' => 'Alamat tidak boleh kosong!',
+                'alamat_member.min' => 'Alamat harus lebih dari 5 karakter!',
+                'no_telp_member.required' => 'Nomor Telepon tidak boleh kosong!',
+                'no_telp_member.unique' => 'Nomor Telepon sudah digunakan!',
+                'password.required' => 'Password tidak boleh kosong!',
+                'password.min' => 'Password harus lebih dari 5 karakter!',
+            ]
+        );
 
         $tambahMember = Member::create([
             'nama_member' => $request->nama_member,
@@ -176,10 +187,16 @@ class registerController extends Controller
     }
     public function loginProses(Request $request)
     {
-        $request->validate([
-            'nama_member' => 'required',
-            'password' => 'required'
-        ]);
+        $request->validate(
+            [
+                'nama_member' => 'required',
+                'password' => 'required'
+            ],
+            [
+                'nama_member.required' => 'Nama tidak boleh kosong',
+                'password.required' => 'Password tidak boleh kosong',
+            ]
+        );
 
         $credentials2 = $request->only('nama_member', 'password');
 

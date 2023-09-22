@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="{{ asset('navbar-assets/css/owl.carousel.min.css') }}">
 
-    
+
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
@@ -38,7 +38,7 @@
             height: 100%;
         }
     </style>
-    
+
     <title>ZEA LAUNDRY</title>
 </head>
 
@@ -90,6 +90,8 @@
     <div class="isi">
         @yield('content')
     </div>
+
+    @yield('copyright')
 
     <script src="{{ asset('navbar-assets/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/popper.min.js') }}"></script>

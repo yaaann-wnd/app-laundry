@@ -68,6 +68,67 @@ body {
     align-items: start;
 }
 
+.copyright {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23007BFF" fill-opacity="1" d="M0,96L40,96C80,96,160,96,240,85.3C320,75,400,53,480,53.3C560,53,640,75,720,96C800,117,880,139,960,128C1040,117,1120,75,1200,48C1280,21,1360,11,1400,5.3L1440,0L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>');
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    background-position: bottom;
+    background-size: cover;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+.copyright span {
+    color: white;
+    font-size: .8rem;
+}
+
+@media screen and (max-width: 400px) {
+    .site-navbar {
+        padding: 2rem .1rem;
+    }
+
+    .site-logo a {
+        font-size: 1.7rem !important;
+    }
+
+    .judul {
+        font-size: 1.5rem;
+    }
+
+    .desc {
+        font-size: .8rem !important;
+    }
+
+    .tombol-wrapper button {
+        font-size: .8rem !important;
+    }
+
+    .judul-produk h3 {
+        font-size: 1.5rem;
+    }
+
+    h5.card-title {
+        font-size: 1.2rem;
+    }
+
+    .kartu p.card-text {
+        font-size: .8rem;
+    }
+
+    button[data-toggle="modal"] {
+        font-size: .8rem !important ;
+    }
+
+    .copyright span {
+        font-size: .55rem
+    }
+}
+
 
 
 

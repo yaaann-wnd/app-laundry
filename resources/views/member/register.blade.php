@@ -15,20 +15,32 @@
                             <form class="pt-3" action="{{ route('registerProses') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="nama"
+                                    <input type="text" class="form-control form-control-lg @error('nama_member') is-invalid @enderror" id="nama"
                                         placeholder="Masukkan Nama" name="nama_member">
+                                    @error('nama_member')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="alamat"
+                                    <input type="text" class="form-control form-control-lg @error('alamat_member') is-invalid @enderror" id="alamat"
                                         placeholder="Masukkan Alamat" name="alamat_member">
+                                        @error('alamat_member')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="Masukkan Nomor Telepon"
+                                    <input type="text" class="form-control form-control-lg @error('no_telp_member') is-invalid @enderror" id="Masukkan Nomor Telepon"
                                         placeholder="Masukkan Nomor Telepon" name="no_telp_member">
+                                        @error('no_telp_member')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="Masukkan Password"
+                                    <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" id="Masukkan Password"
                                         placeholder="Masukkan Password" name="password">
+                                        @error('password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"

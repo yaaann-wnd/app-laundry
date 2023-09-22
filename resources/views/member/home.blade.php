@@ -93,3 +93,10 @@
         @endforeach
     </div>
 @endsection
+
+@section('copyright')
+    <div class="copyright">
+        <span><strong>&copy; ZEA LAUNDRY 2023. All Rights Reserved.</strong></span>
+        <span>Made With ❤️ by <strong>Aftiyan & Timo</strong></span>
+    </div>
+@endsection

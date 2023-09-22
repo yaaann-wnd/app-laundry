@@ -12,15 +12,21 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="exampleInputName1">Nama</label>
-                                    <input type="text" class="form-control" name="nama_laundry" id="nama-laundry"
-                                        placeholder="Nama Laundry">
+                                    <input type="text" class="form-control @error('nama_laundry') is-invalid @enderror"
+                                        name="nama_laundry" id="nama-laundry" placeholder="Nama Laundry">
+                                    @error('nama_laundry')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="exampleInputEmail3">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat_laundry" id="alamat-laundry"
-                                        placeholder="Alamat Laundry">
+                                    <input type="text" class="form-control @error('alamat_laundry') is-invalid @enderror"
+                                        name="alamat_laundry" id="alamat-laundry" placeholder="Alamat Laundry">
+                                    @error('alamat_laundry')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -33,15 +39,21 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="longitude_laundry">Longitude</label>
-                                    <input type="text" class="form-control" readonly name="longitude_laundry_tambah"
-                                        id="longitude_laundry">
+                                    <input type="text" class="form-control @error('longitude_laundry') is-invalid @enderror" readonly name="longitude_laundry"
+                                        id="longitude_laundry_tambah">
+                                    @error('longitude_laundry')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="latitude_laundry">Latitude</label>
-                                    <input type="text" class="form-control" name="latitude_laundry"
+                                    <input type="text" class="form-control @error('latitude_laundry') is-invalid @enderror" name="latitude_laundry"
                                         id="latitude_laundry_tambah" readonly>
+                                    @error('latitude_laundry')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
