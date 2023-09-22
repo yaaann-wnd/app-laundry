@@ -32,114 +32,7 @@
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
                   <button type="button" id="" class="btn btn-success proses_laundry_kerja">Proses</button>
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
-                  <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Detail Transaksi</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form action="" method="post">
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Transaksi</label>
-                                  <input type="text" readonly class="form-control"  value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Member</label>
-                                  <input type="text" readonly class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Alamat</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nomer Telepon</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Jasa</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Harga Per KG</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">KG Order</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Total Harga</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Pembayaran ( Nominal )</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Status Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleFormControlInput1">Lokasi</label>
-
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <!-- <button type="submit" class="btn btn-primary">Tidak Terkirim</button> -->
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                  <button type="button" class="btn btn-success detail_map">Detail</button>
                 </td>
               </tr>
               @endforeach
@@ -179,114 +72,7 @@
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
                   <button type="button" id="" class="btn btn-success proses_laundry_siap">Siap</button>
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
-                  <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Detail Transaksi</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form action="" method="post">
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Transaksi</label>
-                                  <input type="text" readonly class="form-control"  value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Member</label>
-                                  <input type="text" readonly class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Alamat</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nomer Telepon</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Jasa</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Harga Per KG</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">KG Order</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Total Harga</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Pembayaran ( Nominal )</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Status Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleFormControlInput1">Lokasi</label>
-
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <!-- <button type="submit" class="btn btn-primary">Tidak Terkirim</button> -->
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                  <button type="button" class="btn btn-success detail_map">Detail</button>
                 </td>
               </tr>
               @endforeach
@@ -357,6 +143,29 @@
       success: function(data) {
         console.log(data);
         location.reload();
+      }
+    });
+  });
+  $(".detail_map").click(function(e) {
+    e.preventDefault();
+    id = $(this).closest('tr').find('.id').text();
+    $.ajax({
+      url: "{{ route('detail_map') }}",
+      type: "post",
+      dataType: 'JSON',
+      data: {
+        "_token": "{{ csrf_token() }}",
+        id: id
+      },
+      success: function(data_transaksi) {
+        console.log(data_transaksi);
+        $('#id_transaksi').val(data_transaksi.transaksi[0]['id']);
+        $('#nama_member').val(data_transaksi.transaksi[0]['nama_member']);
+        $('#alamat').val(data_transaksi.transaksi[0]['alamat_member']);
+        $('#no_telp').val(data_transaksi.transaksi[0]['no_telp_member']);
+        // $('#status_pembayaran_akhir').val(data_transaksi.transaksi[0]['status_pembayaran']);
+        // $('#jenis_jasa').val(data_transaksi.transaksi[0]['jenis_jasa']);
+        // $('#total_harga').val(data_transaksi.transaksi[0]['total_harga']);
       }
     });
   });

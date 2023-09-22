@@ -293,6 +293,33 @@
      * of the location pressed.
      * @param  {H.Map} map      A HERE Map instance within the application
      */
+
+    function markerlaundry(lat, lng) {
+        var icon = new H.map.Icon("{{ asset('images/laundry.png') }}");
+        $.ajax({
+            url: "{{ route('laundry_alamat') }}",
+            type: "post",
+            dataType: 'JSON',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            },
+            success: function(data) {
+                console.log(data);
+                console.log(data.laundry[0]['latitude_laundry']);
+                for (var i = 0; i < data.laundry.length; i++) {
+                    var laundrymarker = new H.map.Marker({
+                        lat: data.laundry[i]['latitude_laundry'],
+                        lng: data.laundry[i]['longitude_laundry']
+                    }, {
+                        icon: icon
+                    });
+                    map.addObject(laundrymarker);
+                }
+            }
+        });
+
+    }
+
     var marker_satu = new H.map.Marker({
         lat: -7.983908,
         lng: 112.621391
@@ -381,5 +408,6 @@
 
 
     setUpClickListener(map);
+    markerlaundry(map);
 </script>
 @endsection

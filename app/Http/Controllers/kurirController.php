@@ -67,7 +67,8 @@ class kurirController extends Controller
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
-        return view('kurir/kurir', ['users' => $users, 'transaksi_mengambil' => $transaksi_mengambil, 'transaksi' => $transaksi, 'transaksi_diambil' => $transaksi_diambil, 'transaksi_antri' => $transaksi_antri, 'transaksi_tunggu' => $transaksi_tunggu, 'transaksi_diantar' => $transaksi_diantar, 'transaksi_siap' => $transaksi_siap]);
+        $laundry = DB::table('laundry')->get();
+        return view('kurir/kurir', ['users' => $users, 'transaksi_mengambil' => $transaksi_mengambil, 'transaksi' => $transaksi, 'transaksi_diambil' => $transaksi_diambil, 'transaksi_antri' => $transaksi_antri, 'transaksi_tunggu' => $transaksi_tunggu, 'transaksi_diantar' => $transaksi_diantar, 'transaksi_siap' => $transaksi_siap, 'laundry' => $laundry]);
     }
 
     public function transaksi_data_selesai_kurir(Request $request)
@@ -162,6 +163,15 @@ class kurirController extends Controller
         $data['kurir'] = [];
         foreach ($user as $value) {
             array_push($data['kurir'], $value);
+        }
+        echo json_encode($data);
+    }
+    public function laundry_alamat(Request $request)
+    {
+        $laundry_data = DB::table('laundry')->get();
+        $data['laundry'] = [];
+        foreach ($laundry_data as $value) {
+            array_push($data['laundry'], $value);
         }
         echo json_encode($data);
     }
