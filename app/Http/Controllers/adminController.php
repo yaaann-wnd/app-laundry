@@ -159,6 +159,22 @@ class adminController extends Controller
     }
     public function simpan_kasir(Request $request)
     {
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required|unique:users',
+            'password' => 'required',
+            'username' => 'required|unique:users',
+        ],
+        [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'alamat.required' => 'Alamat tidak boleh kosong',
+            'no_telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'no_telp.unique' => 'Nomor Telepon sudah digunakan',
+            'password.required' => 'Password tidak boleh kosong',
+            'username.required' => 'Username tidak boleh kosong',
+            'username.unique' => 'Username sudah digunakan',
+        ]);
         // dd($request->all());
         User::create([
             'nama' => $request->nama,

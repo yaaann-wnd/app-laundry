@@ -13,23 +13,38 @@
                     @csrf
                     <div class="form-group">
                         <label for="exampleInputName1">Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Name">
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Name">
+                        @error('nama')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail3">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Alamat">
+                        @error('alamat')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Nomer Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" id="no_telp" placeholder="Nomer Telepon">
+                        <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" placeholder="Nomer Telepon">
+                        @error('no_telp')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username">
+                        @error('username')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password">
+                        @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                     </div>
                     <button type="submit" id="simpan_kasir" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
