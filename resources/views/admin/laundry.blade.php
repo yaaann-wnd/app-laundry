@@ -40,8 +40,8 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="latitude_laundry">Latitude</label>
-                                    <input type="text" class="form-control" name="latitude_laundry" id="latitude_laundry_tambah"
-                                        readonly>
+                                    <input type="text" class="form-control" name="latitude_laundry"
+                                        id="latitude_laundry_tambah" readonly>
                                 </div>
                             </div>
                         </div>
@@ -69,34 +69,15 @@
                                         <td>{{ $l->nama_laundry }}</td>
                                         <td>{{ $l->alamat_laundry }}</td>
                                         <td>
-                                            <div>
-                                                <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                                    data-target="#modalLaundry{{ $l->id }}">Edit</button>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </div>
+                                            <form action="{{ route('laundry.destroy', $l->id) }}" method="POST"
+                                                style="display: inline-block">
+                                                @csrf
+                                                @method('delete')
+                                                <a href="#" onclick="return confirm('Yakin hapus Data ?')">
+                                                    <button class="btn btn-danger btn-sm">Hapus</button> </a>
+                                            </form>
                                         </td>
                                     </tr>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="modalLaundry{{ $l->id }}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Laundry</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div>
-                                        </div>
                                 @endforeach
                             </tbody>
                         </table>

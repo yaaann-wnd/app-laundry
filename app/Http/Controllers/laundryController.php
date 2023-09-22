@@ -75,6 +75,10 @@ class laundryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $laundry = Laundry::find($id);
+
+        $laundry->delete();
+
+        return redirect(route('laundry.index'));
     }
 }
