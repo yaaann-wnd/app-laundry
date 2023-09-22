@@ -92,13 +92,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">Harga Per KG</label>
-                                                    <input type="text" readonly id="harga_perkg" name="harga_perkg" class="form-control" value="">
+                                                    <input type="text" readonly id="harga_perkg" name="harga_perkg" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">KG Order</label>
-                                                    <input type="text" id="kg_order" name="kg_order" class="form-control" value="">
+                                                    <input type="text" required id="kg_order" name="kg_order" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -106,7 +106,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">Total Harga</label>
-                                                    <input type="text" id="total_harga" name="total_harga" class="form-control" value="">
+                                                    <input type="text" id="total_harga" name="total_harga" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -119,13 +119,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">Latitude</label>
-                                                    <input type="text" readonly id="latitude" name="latitude" class="form-control" value="">
+                                                    <input type="text" readonly id="latitude" name="latitude" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">Longitude</label>
-                                                    <input type="text" readonly id="longitude" name="longitude" class="form-control" value="">
+                                                    <input type="text" readonly id="longitude" name="longitude" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -293,17 +293,47 @@
      * of the location pressed.
      * @param  {H.Map} map      A HERE Map instance within the application
      */
+    var marker_satu = new H.map.Marker({
+        lat: -7.983908,
+        lng: 112.621391
+    });
+    var markerarray = [];
+
     function setUpClickListener(map) {
         // Attach an event listener to map display
         // obtain the coordinates and display in an alert box.
         map.addEventListener('tap', function(evt) {
             var coord = map.screenToGeo(evt.currentPointer.viewportX,
                 evt.currentPointer.viewportY);
-                $('#latitude').val(coord.lat);
-                $('#longitude').val(coord.lng);
+            $('#latitude').val(coord.lat);
+            $('#longitude').val(coord.lng);
+            // map.removeObjects(marker_satu);
+            marker_satu.setVisibility(false);
+            addMarkersToMap({
+                lat: coord.lat,
+                lng: coord.lng
+            })
+
         });
     }
 
+    function addMarkersToMap(koordinat) {
+        var marker = new H.map.Marker({
+            lat: koordinat.lat,
+            lng: koordinat.lng
+        });
+        marker_satu = marker;
+        map.addObject(marker_satu);
+        // markerarray.push(marker);
+        // for (var i = markerarray.length - 1; i < markerarray.length; i++){
+        //     map.addObject(markerarray[i]);
+        // }
+        //     console.log(markerarray);
+        // for(var j = 0; j < markerarray.length-1; j++){
+        //     console.log(markerarray[j]);
+
+        // }
+    }
 
 
     /**

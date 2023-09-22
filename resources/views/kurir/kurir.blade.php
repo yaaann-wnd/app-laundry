@@ -32,7 +32,7 @@
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
                   <button type="button" class="btn btn-success ambil" id="">Ambil</button>
-                  <button type="button" class="btn btn-success detail_map" >Detail</button>
+                  <button type="button" class="btn btn-success detail_map">Detail</button>
                 </td>
               </tr>
               @endforeach
@@ -1020,7 +1020,15 @@
         $('#status_pembayaran_akhir').val(data_transaksi.transaksi[0]['status_pembayaran']);
         $('#jenis_jasa').val(data_transaksi.transaksi[0]['jenis_jasa']);
         $('#total_harga').val(data_transaksi.transaksi[0]['total_harga']);
-        addMarkersToMap({lat:data_transaksi.transaksi[0]['latitude'],lng:data_transaksi.transaksi[0]['longitude']})
+        addInfoBubble({
+          lat: data_transaksi.transaksi[0]['latitude'],
+          lng: data_transaksi.transaksi[0]['longitude']
+        }, {
+          id: data_transaksi.transaksi[0]['id'],
+          nama_member: data_transaksi.transaksi[0]['nama_member'],
+          alamat_member: data_transaksi.transaksi[0]['alamat_member'],
+          no_telp_member: data_transaksi.transaksi[0]['no_telp_member'],
+        })
 
       }
     });
@@ -1051,59 +1059,96 @@
   });
 </script>
 <script>
+  /**
+   * Adds markers to the map highlighting the locations of the captials of
+   * France, Italy, Germany, Spain and the United Kingdom.
+   *
+   * @param  {H.Map} map      A HERE Map instance within the application
+   */
+  var marker_satu = new H.map.Marker({
+    lat: -7.983908,
+    lng: 112.621391
+  });
 
+  function addMarkerToGroup(group, koordinat, html) {
+    var marker = new H.map.Marker(koordinat);
+    marker.setData(html);
+    marker_satu = marker;
+    group.addObject(marker);
+    map.setCenter(koordinat);
+    map.setZoom(15);
+  }
 
-/**
- * Adds markers to the map highlighting the locations of the captials of
- * France, Italy, Germany, Spain and the United Kingdom.
- *
- * @param  {H.Map} map      A HERE Map instance within the application
- */
-function addMarkersToMap(koordinat) {
-    var marker = new H.map.Marker({lat:koordinat.lat, lng:koordinat.lng});
-    map.addObject(marker);
-}
+  function addInfoBubble(koordinat, identitas) {
+    marker_satu.setVisibility(false);
+    var group = new H.map.Group();
 
-// function addMarker(coords){
-//   			console.log(coords.nama);
-//   			var marker = new google.maps.Marker({
-//   				position:{lat:coords.lat,lng:coords.lng},
-//   				title: coords.nama,
-//   				map:map,
-//   			});
-//   		}
-/**
- * Boilerplate map initialization code starts below:
- */
+    map.addObject(group);
 
-//Step 1: initialize communication with the platform
-// In your own code, replace variable window.apikey with your own apikey
-var platform = new H.service.Platform({
-  apikey: 'ETTutWrmcsi3Ojr3lfh1qNDwuHKZoaF4O_PMSGRXnEk'
-});
-var defaultLayers = platform.createDefaultLayers();
+    // add 'tap' event listener, that opens info bubble, to the group
+    group.addEventListener('tap', function(evt) {
+      // event target is the marker itself, group is a parent event target
+      // for all objects that it contains
+      var bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
+        // read custom data
+        content: evt.target.getData()
+      });
+      // show info bubble
+      ui.addBubble(bubble);
+    }, false);
 
-//Step 2: initialize a map - this map is centered over Europe
-var map = new H.Map(document.getElementById('map'),
-  defaultLayers.vector.normal.map,{
-  center: {lat:-7.995728689820596, lng:112.61954804522718},
-  zoom: 16,
-  pixelRatio: window.devicePixelRatio || 1
-});
-// add a resize listener to make sure that the map occupies the whole container
-window.addEventListener('resize', () => map.getViewPort().resize());
+    addMarkerToGroup(group, {
+        lat: koordinat.lat,
+        lng: koordinat.lng
+      },
+      '<div>' + identitas.id + '</div>' +
+      '<div>' + identitas.nama_member + '</div>' +
+      '<div>' + identitas.alamat_member + '</div>' +
+      '<div>' + identitas.no_telp_member + '</div>');
+  }
+  // function addMarker(coords){
+  //   			console.log(coords.nama);
+  //   			var marker = new google.maps.Marker({
+  //   				position:{lat:coords.lat,lng:coords.lng},
+  //   				title: coords.nama,
+  //   				map:map,
+  //   			});
+  //   		}
+  /**
+   * Boilerplate map initialization code starts below:
+   */
 
-//Step 3: make the map interactive
-// MapEvents enables the event system
-// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
-var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  //Step 1: initialize communication with the platform
+  // In your own code, replace variable window.apikey with your own apikey
+  var platform = new H.service.Platform({
+    apikey: 'ETTutWrmcsi3Ojr3lfh1qNDwuHKZoaF4O_PMSGRXnEk'
+  });
+  var defaultLayers = platform.createDefaultLayers();
 
-// Create the default UI components
-var ui = H.ui.UI.createDefault(map, defaultLayers);
+  //Step 2: initialize a map - this map is centered over Europe
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.vector.normal.map, {
+      center: {
+        lat: -7.995728689820596,
+        lng: 112.61954804522718
+      },
+      zoom: 16,
+      pixelRatio: window.devicePixelRatio || 1
+    });
+  // add a resize listener to make sure that the map occupies the whole container
+  window.addEventListener('resize', () => map.getViewPort().resize());
 
-// Now use the map as required...
-window.onload = function () {
-  addMarkersToMap(map);
-}
+  //Step 3: make the map interactive
+  // MapEvents enables the event system
+  // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+  // Create the default UI components
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  // Now use the map as required...
+  window.onload = function() {
+    addInfoBubble(map);
+  }
 </script>
 @endsection
