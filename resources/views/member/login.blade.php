@@ -24,7 +24,7 @@
                         @endif
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="{{ asset('images/logo-dark.svg') }}" alt="logo">
+                                <h4 class="text-primary">ZEA LAUNDRY</h4>
                             </div>
                             <h4>Halo, Selamat Datang!</h4>
                             <h6 class="font-weight-light">Silahkan login untuk melanjutkan!</h6>
