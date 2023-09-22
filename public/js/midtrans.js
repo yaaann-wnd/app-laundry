@@ -1,3 +1,4 @@
+
 function bayar(id) {
     $.ajax({
         type: "get",
@@ -7,7 +8,6 @@ function bayar(id) {
             snap.pay(response, {
                 // Optional
                 onSuccess: function (result) {
-                    // console.log(result);
                     send_response(result);
                 },
                 // Optional

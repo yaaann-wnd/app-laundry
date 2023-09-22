@@ -5,6 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\kasirController;
 use App\Http\Controllers\kurirController;
+use App\Http\Controllers\laundryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::get('/login', function () {
     return view('autenticate/login');
 });
 
+// halaman ADMIN
 Route::get('profile_admin', [adminController::class, 'profile_admin'])->name('profile_admin');
 Route::post('login_admin', [adminController::class, 'login_admin'])->name('login_admin');
 Route::get('harga_jasa', [adminController::class, 'harga_jasa'])->name('harga_jasa');
@@ -42,8 +44,9 @@ Route::post('simpan_kurir', [adminController::class, 'simpan_kurir'])->name('sim
 Route::get('register_admin', [adminController::class, 'register_admin'])->name('register_admin');
 Route::get('register_kasir', [adminController::class, 'register_kasir'])->name('register_kasir');
 Route::get('register_kurir', [adminController::class, 'register_kurir'])->name('register_kurir');
+Route::resource('laundry', laundryController::class);
 
-
+// halaman KASIR
 Route::get('login_kasir', [kasirController::class, 'login_kasir'])->name('login_kasir');
 Route::get('kasir_data', [kasirController::class, 'kasir_data'])->name('kasir_data');
 Route::get('proses_laundry', [kasirController::class, 'proses_laundry'])->name('proses_laundry');
@@ -56,6 +59,7 @@ Route::post('proses_laundry_kerja', [kasirController::class, 'proses_laundry_ker
 Route::post('proses_laundry_siap', [kasirController::class, 'proses_laundry_siap'])->name('proses_laundry_siap');
 Route::get('transaksi_data_selesai', [kasirController::class, 'transaksi_data_selesai'])->name('transaksi_data_selesai');
 
+// halaman KURIR
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');
 Route::post('kurir', [kurirController::class, 'kurir'])->name('kurir');
 Route::get('profile_kurir', [kurirController::class, 'profile_kurir'])->name('profile_kurir');
