@@ -327,21 +327,6 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item {{ !Auth::user()->jabatan ? 'd-none' : '' }}">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                            <i class="typcn typcn-film menu-icon"></i>
-                            <span class="menu-title">Laporan</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('laporan_transaksi_masuk') }}">Laporan Transaksi Masuk</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('status_kurir') }}">Laporan Status Kurir</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('laporan_transaksi_selesai') }}">Laporan Transaksi Selesai</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('data_member') }}">Data Member</a></li>
-                            </ul>
-                        </div>
-                    </li>
                 </ul>
             </nav>
             <!-- partial -->
