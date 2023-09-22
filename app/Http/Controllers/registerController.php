@@ -156,7 +156,7 @@ class registerController extends Controller
         // // return response()->json($id);
 
         Transaksi::create([
-            'kode_pembayaran' => str_replace(' ', '', Auth::user()->nama_member) . '-' . substr(str_shuffle(MD5(microtime())), 0, 25) . '-ZEALAUNDRY',
+            'kode_pembayaran' => 'ZEALAUNDRY-' . substr(str_shuffle(MD5(microtime())), 0, 30),
             'id_member' => $id,
             'id_jasa' => $jasa,
             'harga_perkg' => $harga_perkg,
@@ -203,8 +203,12 @@ class registerController extends Controller
     public function midtrans($id)
     {
         $pesanan = Transaksi::where('kode_pembayaran', $id)->first();
+        $jasa = ProdukJasa::where('id', $pesanan->id_jasa)->first();
+        $member = Member::where('id', $pesanan->id_member)->first();
+
         $harga = $pesanan->total_harga;
         $order_id = $pesanan->kode_pembayaran;
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -214,12 +218,28 @@ class registerController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-        $params = array(
-            'transaction_details' => array(
+        $params = [
+            'transaction_details' => [
                 'order_id' => $order_id,
                 'gross_amount' => $harga,
-            )
-        );
+            ],
+            [
+                'item_details' => [
+                    "id" => $pesanan->id_jasa,
+                    "price" => $pesanan->total_harga,
+                    "name" => $jasa->jenis_jasa
+                ]
+            ],
+            'customer_details' => [
+                "first_name" => $member->nama_member,
+                "phone" => $member->no_telp_member,
+                "billing_address" => [
+                    "first_name" => $member->nama_member,
+                    "phone" => $member->no_telp_member,
+                    "address" => $member->alamat_member
+                ]
+            ]
+        ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
@@ -231,7 +251,6 @@ class registerController extends Controller
         $json = json_decode($request->get('json'));
         $order_id = $json->order_id;
         $find_order = Transaksi::where('kode_pembayaran', $order_id)->first();
-        // $find_order_2 = Transaksi::find($find_order->id);
 
         $find_order->update([
             'status_pembayaran' => 'Lunas',

@@ -23,6 +23,11 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
@@ -317,6 +322,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('register_admin') }}">Admin</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('register_kasir') }}">Kasir</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('register_kurir') }}">Kurir</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('laundry.index') }}">Laundry</a></li>
                             </ul>
                         </div>
                     </li>
@@ -358,6 +364,10 @@
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 
     @yield('script')
 
