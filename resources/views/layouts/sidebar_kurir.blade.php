@@ -115,13 +115,10 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item nav-date dropdown" id="tombolhide">
-                        <input type="hidden" id="id_user_kurir" value="{{ Auth::user()->id }}">
-                        <a type="button" id="aktif" class="nav-link d-flex justify-content-center align-items-center" href="">
-                            <h6 class="date mb-0">Aktifkan</h6>
-                        </a>
-                        <a type="button" id="nonaktif" class="nav-link d-flex justify-content-center align-items-center" href="">
-                            <h6 class="date mb-0">Nonaktifkan</h6>
+                    <li class="nav-item nav-date dropdown">
+                        <a class="nav-link d-flex justify-content-center align-items-center" href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
+                            <h6 class="date mb-0">Logout</h6>
+                            <i class="bi bi-box-arrow-right"></i>
                         </a>
                     </li>
                 </ul>

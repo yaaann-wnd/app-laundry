@@ -113,7 +113,7 @@
                         </div>
                     </li>
                     <li class="nav-item nav-date dropdown">
-                        <a class="nav-link d-flex justify-content-center align-items-center" href="javascript:;">
+                        <a class="nav-link d-flex justify-content-center align-items-center" href="{{ route(!Auth::check() || Auth::user()->jabatan == 'admin' || Auth::user()->jabatan == 'kasir' || Auth::user()->jabatan == 'kurir' ? 'logout_user' : 'logout') }}">
                             <h6 class="date mb-0">Logout</h6>
                             <i class="bi bi-box-arrow-right"></i>
                         </a>

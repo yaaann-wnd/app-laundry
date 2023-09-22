@@ -31,142 +31,7 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
-                  <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Detail Transaksi</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form action="" method="post">
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Transaksi</label>
-                                  <input type="text" readonly class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Member</label>
-                                  <input type="text" readonly class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Alamat</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nomer Telepon</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Jasa</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Harga Per KG</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">KG Order</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Total Harga</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Pembayaran ( Nominal )</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Status Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama Kasir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Id Kasir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama Kurir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Id Kurir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleFormControlInput1">Lokasi</label>
-
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <!-- <button type="submit" class="btn btn-primary">Tidak Terkirim</button> -->
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                <button type="button" class="btn btn-success detail_map">Detail</button>
                 </td>
               </tr>
               @endforeach
@@ -205,148 +70,78 @@
                 <td>{{ $t->created_at }}</td>
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaldelete">Detail</button>
-                  <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Detail Transaksi</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form action="" method="post">
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Transaksi</label>
-                                  <input type="text" readonly class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Id Member</label>
-                                  <input type="text" readonly class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Alamat</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nomer Telepon</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Jasa</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Harga Per KG</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">KG Order</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Total Harga</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Metode Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Pembayaran ( Nominal )</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Status Pembayaran</label>
-                                  <input type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama Kasir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Id Kasir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Nama Kurir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Id Kurir</label>
-                                  <input readonly type="text" class="form-control" value="">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleFormControlInput1">Lokasi</label>
-
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <!-- <button type="submit" class="btn btn-primary">Tidak Terkirim</button> -->
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                  <button type="button" class="btn btn-success detail_map">Detail</button>
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Data Transaksi</h4>
+        <form class="forms-sample" action="{{ route('transaksi_selesai') }}" method="POST">
+          @csrf
+          <div class="form-group">
+            <label for="exampleInputName1">Id Transaksi</label>
+            <input type="text" class="form-control" name="id_transaksi" readonly id="id_transaksi">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName1">Nama Member</label>
+            <input type="text" class="form-control" id="nama_member">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail3">Alamat</label>
+            <input type="text" class="form-control" id="alamat">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Nomer Telepon</label>
+            <input type="text" class="form-control" id="no_telp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Jenis Jasa</label>
+            <input type="text" class="form-control" id="jenis_jasa">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Total Pembayaran</label>
+            <input type="text" class="form-control" id="total_harga">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Status Pembayaran</label>
+            <input type="text" readonly class="form-control" id="status_pembayaran_akhir">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Pembayaran ( jika Cash / Belum Lunas )</label>
+            <input type="text" class="form-control" id="pembayaran">
+          </div>
+           <!-- <table class="table table-bordered">
+            <tr>
+              <th>Jenis Jasa</th>
+              <td id="jenis_jasa_akhir"></td>
+              <td id="harga_perkg"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Order</th>
+              <td id="kg_order"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Total</th>
+              <td id="total_harga"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Pembayaran</th>
+              <td id="pembayaran"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Kembalian</th>
+              <td id="kembalian"></td>
+            </tr>
+          </table> -->
+        </form>
       </div>
     </div>
   </div>
@@ -362,6 +157,31 @@
 
   });
 
+  $(".detail_map").click(function(e) {
+    e.preventDefault();
+    id = $(this).closest('tr').find('.id').text();
+    $.ajax({
+      url: "{{ route('detail_map') }}",
+      type: "post",
+      dataType: 'JSON',
+      data: {
+        "_token": "{{ csrf_token() }}",
+        id: id
+      },
+      success: function(data_transaksi) {
+        console.log(data_transaksi);
+        $('#id_transaksi').val(data_transaksi.transaksi[0]['id']);
+        $('#nama_member').val(data_transaksi.transaksi[0]['nama_member']);
+        $('#alamat').val(data_transaksi.transaksi[0]['alamat_member']);
+        $('#no_telp').val(data_transaksi.transaksi[0]['no_telp_member']);
+        $('#status_pembayaran_akhir').val(data_transaksi.transaksi[0]['status_pembayaran']);
+        $('#jenis_jasa').val(data_transaksi.transaksi[0]['jenis_jasa']);
+        $('#total_harga').val(data_transaksi.transaksi[0]['total_harga']);
+        $('#pembayaran').val(data_transaksi.transaksi[0]['pembayaran']);
+
+      }
+    });
+  });
   $(".detail_show").click(function() {
     nama = $(this).closest('tr').find('.nama').text();
     id = $(this).closest('tr').find('.id').text();
