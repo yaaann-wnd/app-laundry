@@ -30,12 +30,20 @@ class laundryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_laundry' => 'required',
-            'alamat_laundry' => 'required',
-            'longitude_laundry' => 'required',
-            'latitude_laundry' => 'required',
-        ]);
+        $request->validate(
+            [
+                'nama_laundry' => 'required',
+                'alamat_laundry' => 'required',
+                'longitude_laundry' => 'required',
+                'latitude_laundry' => 'required',
+            ],
+            [
+                'nama_laundry.required' => 'Nama Laundry tidak boleh kosong!',
+                'alamat_laundry.required' => 'Alamat tidak boleh kosong!',
+                'longitude_laundry.required' => 'Pilih lokasi laundry di Map!',
+                'latitude_laundry.required' => 'Pilih lokasi laundry di Map!',
+            ]
+        );
 
         $laundry = Laundry::create($request->all());
 

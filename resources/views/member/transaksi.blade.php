@@ -1,7 +1,7 @@
 @extends('layouts.sidebar_member')
 
 @section('content')
-<div class="row">
+<div class="row" style="height: 50vh !important;">
     <div class="col-lg-12 grid-margin stretch-card" style="padding: 10px 50px;">
         <div class="card" style="box-shadow: 5px 5px 5px 5px #c4c0c0;">
             <div class="card-body">
@@ -144,8 +144,8 @@
         </div>
     </div>
 </div>
-<div class="col-12 grid-margin stretch-card" style="padding: 10px 50px;" id="detail">
-    <div class="card" style="box-shadow: 5px 5px 5px 5px #c4c0c0;">
+<div class="col-12 grid-margin stretch-card" style="padding: 10px 50px; height: 50vh !important; " id="detail">
+    <div class="card" style="box-shadow: 5px 5px 5px 5px #c4c0c0; position: static !important;">
         <div class="card-body">
             <h4 class="card-title">Data Transaksi</h4>
             <form class="forms-sample">
