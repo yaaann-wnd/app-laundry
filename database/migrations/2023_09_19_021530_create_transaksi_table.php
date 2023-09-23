@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('id_user_kasir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_user_kurir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_jasa')->constrained('produk_jasa')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('nama_transaksi')->nullable();
+            $table->string('no_telp_transaksi')->nullable();
             $table->string('alamat_transaksi')->nullable();
             $table->text('longitude')->nullable();
             $table->text('latitude')->nullable();
