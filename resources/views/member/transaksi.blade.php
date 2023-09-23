@@ -25,7 +25,7 @@
                             @foreach ($transaksi as $t)
                             <tr>
                                 <td class="id">{{ $t->id }}</td>
-                                <td>{{ $t->nama_member }}</td>
+                                <td>{{ $t->nama_transaksi }}</td>
                                 <td><span style="white-space: nowrap;">{{ $t->jenis_jasa }}</span></td>
                                 <td>{{ $t->total_harga }}</td>
                                 <td>{{ $t->status_pembayaran }}</td>
