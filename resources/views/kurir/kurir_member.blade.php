@@ -24,7 +24,7 @@
               @foreach($transaksi as $t)
               <tr>
                 <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
+                <td>{{ $t->nama_transaksi }}</td>
                 <td>{{ $t->jenis_jasa }}</td>
                 <td>{{ $t->total_harga }}</td>
                 <td>{{ $t->metode_pembayaran }}</td>
@@ -32,244 +32,6 @@
                 <td>{{ $t->status_transaksi }}</td>
                 <td>
                   <button type="button" class="btn btn-success ambil" id="">Ambil</button>
-                  <button type="button" class="btn btn-success detail_map">Detail</button>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Transaksi Proses Ambil</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead style="text-align: center;">
-              <tr>
-                <th>Id Transaksi</th>
-                <th>Nama Member</th>
-                <th>Jenis Jasa</th>
-                <th>Total Harga</th>
-                <th>Metode Pembayaran</th>
-                <th>Tanggal Order</th>
-                <th>Status Transaksi</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($transaksi_mengambil as $t)
-              <tr>
-                <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
-                <td>{{ $t->jenis_jasa }}</td>
-                <td>{{ $t->total_harga }}</td>
-                <td>{{ $t->metode_pembayaran }}</td>
-                <td>{{ $t->created_at }}</td>
-                <td>{{ $t->status_transaksi }}</td>
-                <td>
-                  <button type="button" class="btn btn-success diambil" id="">Diambil</button>
-                  <button type="button" class="btn btn-success detail_map">Detail</button>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Transaksi Diambil</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead style="text-align: center;">
-              <tr>
-                <th>Id Transaksi</th>
-                <th>Nama Member</th>
-                <th>Jenis Jasa</th>
-                <th>Total Harga</th>
-                <th>Metode Pembayaran</th>
-                <th>Tanggal Order</th>
-                <th>Status Transaksi</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($transaksi_diambil as $t)
-              <tr>
-                <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
-                <td>{{ $t->jenis_jasa }}</td>
-                <td>{{ $t->total_harga }}</td>
-                <td>{{ $t->metode_pembayaran }}</td>
-                <td>{{ $t->created_at }}</td>
-                <td>{{ $t->status_transaksi }}</td>
-                <td>
-                  <button type="button" class="btn btn-success antri" id="">Antri</button>
-                  <button type="button" class="btn btn-success detail_map">Detail</button>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Transaksi Antri</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead style="text-align: center;">
-              <tr>
-                <th>Id Transaksi</th>
-                <th>Nama Member</th>
-                <th>Jenis Jasa</th>
-                <th>Total Harga</th>
-                <th>Metode Pembayaran</th>
-                <th>Tanggal Order</th>
-                <th>Status Transaksi</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($transaksi_antri as $t)
-              <tr>
-                <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
-                <td>{{ $t->jenis_jasa }}</td>
-                <td>{{ $t->total_harga }}</td>
-                <td>{{ $t->metode_pembayaran }}</td>
-                <td>{{ $t->created_at }}</td>
-                <td>{{ $t->status_transaksi }}</td>
-                <td>
-                <button type="button" class="btn btn-success detail_map">Detail</button>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Transaksi Tunggu</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead style="text-align: center;">
-              <tr>
-                <th>Id Transaksi</th>
-                <th>Nama Member</th>
-                <th>Jenis Jasa</th>
-                <th>Total Harga</th>
-                <th>Metode Pembayaran</th>
-                <th>Tanggal Order</th>
-                <th>Status Transaksi</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($transaksi_tunggu as $t)
-              <tr>
-                <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
-                <td>{{ $t->jenis_jasa }}</td>
-                <td>{{ $t->total_harga }}</td>
-                <td>{{ $t->metode_pembayaran }}</td>
-                <td>{{ $t->created_at }}</td>
-                <td>{{ $t->status_transaksi }}</td>
-                <td>
-                  <button type="button" class="btn btn-success detail_map">Detail</button>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Transaksi Siap</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead style="text-align: center;">
-              <tr>
-                <th>Id Transaksi</th>
-                <th>Nama Member</th>
-                <th>Jenis Jasa</th>
-                <th>Total Harga</th>
-                <th>Metode Pembayaran</th>
-                <th>Tanggal Order</th>
-                <th>Status Transaksi</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($transaksi_siap as $t)
-              <tr>
-                <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
-                <td>{{ $t->jenis_jasa }}</td>
-                <td>{{ $t->total_harga }}</td>
-                <td>{{ $t->metode_pembayaran }}</td>
-                <td>{{ $t->created_at }}</td>
-                <td>{{ $t->status_transaksi }}</td>
-                <td>
-                  <button type="button" class="btn btn-success diantar" id="">Antar</button>
-                  <button type="button" class="btn btn-success detail_map">Detail</button>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Transaksi Diantar</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead style="text-align: center;">
-              <tr>
-                <th>Id Transaksi</th>
-                <th>Nama Member</th>
-                <th>Jenis Jasa</th>
-                <th>Total Harga</th>
-                <th>Metode Pembayaran</th>
-                <th>Tanggal Order</th>
-                <th>Status Transaksi</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($transaksi_diantar as $t)
-              <tr>
-                <td class="id">{{ $t->id }}</td>
-                <td>{{ $t->nama_member }}</td>
-                <td>{{ $t->jenis_jasa }}</td>
-                <td>{{ $t->total_harga }}</td>
-                <td>{{ $t->metode_pembayaran }}</td>
-                <td>{{ $t->created_at }}</td>
-                <td>{{ $t->status_transaksi }}</td>
-                <td>
-                  <button type="button" class="btn btn-success selesai">Selesai</button>
                   <button type="button" class="btn btn-success detail_map">Detail</button>
                 </td>
               </tr>
@@ -309,6 +71,10 @@
           <div class="form-group">
             <label for="exampleInputPassword4">Nomer Telepon</label>
             <input type="text" class="form-control" id="no_telp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">KG Order</label>
+            <input type="text" class="form-control" id="kg_order">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword4">Jenis Jasa</label>
@@ -480,9 +246,9 @@
       success: function(data_transaksi) {
         console.log(data_transaksi);
         $('#id_transaksi').val(data_transaksi.transaksi[0]['id']);
-        $('#nama_member').val(data_transaksi.transaksi[0]['nama_member']);
-        $('#alamat').val(data_transaksi.transaksi[0]['alamat_member']);
-        $('#no_telp').val(data_transaksi.transaksi[0]['no_telp_member']);
+        $('#nama_member').val(data_transaksi.transaksi[0]['nama_transaksi']);
+        $('#alamat').val(data_transaksi.transaksi[0]['alamat_transaksi']);
+        $('#no_telp').val(data_transaksi.transaksi[0]['no_telp_transaksi']);
         $('#status_pembayaran_akhir').val(data_transaksi.transaksi[0]['status_pembayaran']);
         $('#jenis_jasa').val(data_transaksi.transaksi[0]['jenis_jasa']);
         $('#total_harga').val(data_transaksi.transaksi[0]['total_harga']);

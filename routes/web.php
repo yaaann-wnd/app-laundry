@@ -58,6 +58,7 @@ Route::post('edit_profile_kasir', [kasirController::class, 'edit_profile_kasir']
 Route::post('proses_laundry_kerja', [kasirController::class, 'proses_laundry_kerja'])->name('proses_laundry_kerja');
 Route::post('proses_laundry_siap', [kasirController::class, 'proses_laundry_siap'])->name('proses_laundry_siap');
 Route::get('transaksi_data_selesai', [kasirController::class, 'transaksi_data_selesai'])->name('transaksi_data_selesai');
+Route::get('kasir_member_offline', [kasirController::class, 'kasir_member_offline'])->name('kasir_member_offline');
 
 // halaman KURIR
 Route::get('login_kurir', [kurirController::class, 'login_kurir'])->name('login_kurir');

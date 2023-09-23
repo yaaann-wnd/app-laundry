@@ -70,7 +70,36 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications Order Onilne</p>
+                            @foreach($online as $o)
+                            <form action="">
+                                <input type="hidden" value="{{ $o->id }}">
+                                <button type="submit" class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-info">
+                                            <i class="typcn typcn-user mx-0"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <h6 class="preview-subject font-weight-normal">{{ $o->nama_transaksi }}</h6>
+                                        <p class="font-weight-light small-text mb-0 text-muted">
+                                        {{ $o->order_user }}
+                                        </p>
+                                    </div>
+                                </button>
+                            </form>
+                            @endforeach
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown mr-0">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
+                            id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <i class="typcn typcn-bell mx-0"></i>
+                            <span class="count"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="notificationDropdown">
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications Order Offline</p>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-success">
@@ -338,6 +367,12 @@
                         <a class="nav-link" href="{{ route('transaksi_data_selesai') }}">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
                             <span class="menu-title">Data Selesai</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('kasir_member_offline') }}">
+                            <i class="typcn typcn-device-desktop menu-icon"></i>
+                            <span class="menu-title">Kasir Member Offline</span>
                         </a>
                     </li>
                 </ul>

@@ -91,18 +91,28 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <label for="exampleFormControlInput1">Aroma Parfum</label>
+                                                    <select name="aroma_parfum" class="form-control" id="aroma_parfum">
+                                                        @foreach ($aroma_parfum as $p)
+                                                        <option value="{{ $p->id }}">{{ $p->aroma_parfum }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
                                                     <label for="exampleFormControlInput1">Harga Per KG</label>
                                                     <input type="text" readonly id="harga_perkg" name="harga_perkg" class="form-control">
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">KG Order</label>
                                                     <input type="text" id="kg_order" name="kg_order" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleFormControlInput1">Total Harga</label>

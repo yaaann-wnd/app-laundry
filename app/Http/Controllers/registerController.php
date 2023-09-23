@@ -34,13 +34,14 @@ class registerController extends Controller
     public function transaksi()
     {
         $produk_jasa = DB::table('produk_jasa')->get();
+        $aroma_parfum = DB::table('aroma_parfum')->get();
         $transaksi = DB::table('transaksi')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->where('id_member', Auth::user()->id)
             ->get();
-        return view('member/transaksi', ['produk_jasa' => $produk_jasa, 'transaksi' => $transaksi]);
+        return view('member/transaksi', ['produk_jasa' => $produk_jasa, 'transaksi' => $transaksi, 'aroma_parfum' => $aroma_parfum]);
     }
     public function data_jasa(Request $request)
     {
@@ -152,6 +153,7 @@ class registerController extends Controller
         // dd($request->all());
         $id = Auth::user()->id;
         $jasa = $request->jasa;
+        $aroma_parfum = $request->aroma_parfum;
         $nama_transaksi = $request->nama_member;
         $no_telp_transaksi = $request->no_telp_member;
         $alamat_transaksi = $request->alamat_member;
@@ -176,6 +178,7 @@ class registerController extends Controller
             'nama_transaksi' => $nama_transaksi,
             'no_telp_transaksi' => $no_telp_transaksi,
             'alamat_transaksi' => $alamat_transaksi,
+            'aroma_parfum' => $aroma_parfum,
             'harga_perkg' => $harga_perkg,
             'kg_order' => $kg_order,
             'total_harga' => $total_harga,
@@ -184,6 +187,7 @@ class registerController extends Controller
             'metode_pembayaran' => '',
             'status_pembayaran' => 'Belum Dibayar',
             'status_transaksi' => 'Tunggu',
+            'order_user' => 'Member',
         ]);
         //     $user = Member::find($id);
         //     $user->update($data);

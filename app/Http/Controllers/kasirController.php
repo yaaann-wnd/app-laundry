@@ -42,6 +42,42 @@ class kasirController extends Controller
         $users = DB::table('users')->where('jabatan', 'kurir')->get();
         return view('kasir/transaksi_data_selesai', ['users' => $users, 'transaksi_cash' => $transaksi_cash, 'transaksi_midtrans' => $transaksi_midtrans]);
     }
+    public function kasir_member_offline(Request $request)
+    {
+        $online = DB::table('transaksi')
+            ->where('transaksi.order_user', '=', 'Member')
+            ->where('transaksi.status_kurir', '=', 'antri')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.status_transaksi', '=', 'Tunggu')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->get();
+        return view('kasir/kasir_member_offline', ['users' => $users, 'transaksi' => $transaksi, 'online' => $online]);
+    }
+    public function kasir_member_online(Request $request)
+    {
+        $online = DB::table('transaksi')
+            ->where('transaksi.order_user', '=', 'Member')
+            ->where('transaksi.status_kurir', '=', 'antri')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.status_transaksi', '=', 'Tunggu')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->get();
+        return view('kasir/kasir_member_offline', ['users' => $users, 'transaksi' => $transaksi, 'online' => $online]);
+    }
     public function proses_laundry(Request $request)
     {
         $transaksi = DB::table('transaksi')

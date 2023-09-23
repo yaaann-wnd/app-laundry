@@ -86,9 +86,9 @@
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-normal">{{ $t->nama_member }}</h6>
+                                        <h6 class="preview-subject font-weight-normal">{{ $t->nama_transaksi }}</h6>
                                         <p class="font-weight-light small-text mb-0 text-muted">
-                                            2 days ago
+                                        {{ $t->order_user }}
                                         </p>
                                     </div>
                                 </button>
