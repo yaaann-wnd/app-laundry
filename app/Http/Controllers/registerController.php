@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Session;
 
 class registerController extends Controller
 {
+    public function kode_pembayaran_generator()
+    {
+        return 'ZEALAUNDRY-' . substr(str_shuffle(MD5(microtime())), 0, 30);
+    }
+
     public function register()
     {
         if (Auth::check()) {
@@ -250,21 +255,23 @@ class registerController extends Controller
                 'order_id' => $order_id,
                 'gross_amount' => $harga,
             ],
-            [
-                'item_details' => [
-                    "id" => $pesanan->id_jasa,
-                    "price" => $pesanan->total_harga,
-                    "name" => $jasa->jenis_jasa
+            'item_details' => [[
+                'id' => $pesanan->id_jasa,
+                'price' => $pesanan->total_harga,
+                'name' => $jasa->jenis_jasa,
+                'quantity' => $pesanan->kg_order,
+            ]],
+            'customer_details' => [
+                'first_name' => $member->nama_member,
+                'phone' => $member->no_telp_member,
+                'billing_address' => [
+                    'first_name' => $member->nama_member,
+                    'phone' => $member->no_telp_member,
+                    'address' => $member->alamat_member
                 ]
             ],
-            'customer_details' => [
-                "first_name" => $member->nama_member,
-                "phone" => $member->no_telp_member,
-                "billing_address" => [
-                    "first_name" => $member->nama_member,
-                    "phone" => $member->no_telp_member,
-                    "address" => $member->alamat_member
-                ]
+            'enabled_payments' => [
+                'gopay'
             ]
         ];
 
@@ -282,6 +289,20 @@ class registerController extends Controller
         $find_order->update([
             'status_pembayaran' => 'Lunas',
             'metode_pembayaran' => 'Midtrans'
+        ]);
+
+        return redirect('/transaksi');
+    }
+
+    public function pending(Request $request)
+    {
+        $json = json_decode($request->get('json_pending'));
+        $order_id = $json->order_id;
+        $find_order = Transaksi::where('kode_pembayaran', $order_id)->first();
+
+        $find_order->update([
+            'status_pembayaran' => 'Belum Dibayar',
+            'kode_pembayaran' => $this->kode_pembayaran_generator()
         ]);
 
         return redirect('/transaksi');

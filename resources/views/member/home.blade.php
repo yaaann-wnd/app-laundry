@@ -95,8 +95,18 @@
 @endsection
 
 @section('copyright')
-    <div class="copyright">
+    <div class="ocean-wrapper">
+        <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+    {{-- <form action="/pending" method="post" id="submit_form_pending">
+        @csrf
+        <input type="hidden" name="json_pending" id="call_json_pending">
+    </form> --}}
+    {{-- <div class="copyright">
         <span><strong>&copy; ZEA LAUNDRY 2023. All Rights Reserved.</strong></span>
         <span>Made With ❤️ by <strong>Aftiyan & Timo</strong></span>
-    </div>
+    </div> --}}
 @endsection
