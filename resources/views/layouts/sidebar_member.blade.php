@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick/slick.css') }}" />
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/slick/slick-theme.css') }}" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick/style.css') }}" />
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-jdjG99xvk3PihD64"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -99,7 +100,6 @@
     <script src="{{ asset('navbar-assets/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('navbar-assets/js/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/slick/slick.js') }}"></script>
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-jdjG99xvk3PihD64"></script>
     <script src="{{ asset('js/midtrans.js') }}"></script>
 
     @yield('ajax')

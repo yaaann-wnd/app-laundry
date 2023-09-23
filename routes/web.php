@@ -105,5 +105,6 @@ Route::middleware(['auth:member'])->group(function () {
     Route::post('data_jasa', [registerController::class, 'data_jasa'])->name('data_jasa');
     Route::post('order_member', [registerController::class, 'order_member'])->name('order_member');
     Route::post('success', [registerController::class, 'success'])->name('success');
+    Route::post('pending', [registerController::class, 'pending'])->name('pending');
     Route::post('detail_transaksi', [registerController::class, 'detail_transaksi'])->name('detail_transaksi');
 });
