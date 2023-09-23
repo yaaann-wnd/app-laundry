@@ -71,6 +71,122 @@ class kurirController extends Controller
         return view('kurir/kurir', ['users' => $users, 'transaksi_mengambil' => $transaksi_mengambil, 'transaksi' => $transaksi, 'transaksi_diambil' => $transaksi_diambil, 'transaksi_antri' => $transaksi_antri, 'transaksi_tunggu' => $transaksi_tunggu, 'transaksi_diantar' => $transaksi_diantar, 'transaksi_siap' => $transaksi_siap, 'laundry' => $laundry]);
     }
 
+    public function kurir_kasir(Request $request)
+    {
+        $id = Auth::user()->id;
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', null)
+            ->where('transaksi.status_kurir', '=', null)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_mengambil = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Mengambil')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_diambil = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Diambil')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_antri = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Antri')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_tunggu = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Tunggu')
+            ->where('transaksi.status_transaksi', '=', 'Dikerjakan')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_siap = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Tunggu')
+            ->where('transaksi.status_transaksi', '=', 'Siap')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_diantar = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Diantar')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
+        $laundry = DB::table('laundry')->get();
+        return view('kurir/kurir_kasir', ['users' => $users, 'transaksi_mengambil' => $transaksi_mengambil, 'transaksi' => $transaksi, 'transaksi_diambil' => $transaksi_diambil, 'transaksi_antri' => $transaksi_antri, 'transaksi_tunggu' => $transaksi_tunggu, 'transaksi_diantar' => $transaksi_diantar, 'transaksi_siap' => $transaksi_siap, 'laundry' => $laundry]);
+    }
+    public function kurir_member(Request $request)
+    {
+        $id = Auth::user()->id;
+        $transaksi = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', null)
+            ->where('transaksi.status_kurir', '=', null)
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_mengambil = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Mengambil')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_diambil = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Diambil')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_antri = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Antri')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_tunggu = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Tunggu')
+            ->where('transaksi.status_transaksi', '=', 'Dikerjakan')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_siap = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Tunggu')
+            ->where('transaksi.status_transaksi', '=', 'Siap')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $transaksi_diantar = DB::table('transaksi')
+            ->where('transaksi.id_user_kurir', '=', $id)
+            ->where('transaksi.status_kurir', '=', 'Diantar')
+            ->join('member', 'transaksi.id_member', '=', 'member.id')
+            ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
+            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->get();
+        $users = DB::table('users')->where('jabatan', 'kurir')->where('status', '')->get();
+        $laundry = DB::table('laundry')->get();
+        return view('kurir/kurir_member', ['users' => $users, 'transaksi_mengambil' => $transaksi_mengambil, 'transaksi' => $transaksi, 'transaksi_diambil' => $transaksi_diambil, 'transaksi_antri' => $transaksi_antri, 'transaksi_tunggu' => $transaksi_tunggu, 'transaksi_diantar' => $transaksi_diantar, 'transaksi_siap' => $transaksi_siap, 'laundry' => $laundry]);
+    }
     public function transaksi_data_selesai_kurir(Request $request)
     {
         $id = Auth::user()->id;

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_user_kasir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_user_kurir')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_jasa')->constrained('produk_jasa')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('alamat_transaksi')->nullable();
             $table->text('longitude')->nullable();
             $table->text('latitude')->nullable();
             $table->integer('kg_order')->nullable();
@@ -28,8 +29,9 @@ return new class extends Migration
             $table->string('status_transaksi')->nullable();
             $table->string('status_pembayaran')->nullable();
             $table->string('status_kurir')->nullable();
-            $table->string('konfirmasi')->nullable();
-            $table->text('bukti_kurir')->nullable();
+            $table->string('id_promo')->nullable();
+            $table->text('id_parfum')->nullable();
+            $table->text('order_user')->nullable();
             $table->timestamps();
         });
     }

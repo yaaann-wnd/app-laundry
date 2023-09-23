@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('jabatan');
             $table->string('status');
             $table->string('password');
+            $table->string('id_lokasi')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

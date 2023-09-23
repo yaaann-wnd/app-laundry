@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\AromaParfum;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ProdukJasaSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(AromaParfumSeeder::class);
         $this->call(MemberSeeder::class);
         $this->call(LaundrySeeder::class);
     }

@@ -152,6 +152,7 @@ class registerController extends Controller
         // dd($request->all());
         $id = Auth::user()->id;
         $jasa = $request->jasa;
+        $alamat_transaksi = $request->alamat_transaksi;
         $harga_perkg = $request->harga_perkg;
         $kg_order = $request->kg_order;
         $total_harga = $request->total_harga;
@@ -170,6 +171,7 @@ class registerController extends Controller
             'kode_pembayaran' => 'ZEALAUNDRY-' . substr(str_shuffle(MD5(microtime())), 0, 30),
             'id_member' => $id,
             'id_jasa' => $jasa,
+            'alamat_transaksi' => $alamat_transaksi,
             'harga_perkg' => $harga_perkg,
             'kg_order' => $kg_order,
             'total_harga' => $total_harga,
