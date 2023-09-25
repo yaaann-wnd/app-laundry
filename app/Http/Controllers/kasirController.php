@@ -21,7 +21,7 @@ class kasirController extends Controller
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $users = DB::table('users')->where('jabatan', 'kurir')->get();
-        return view('kasir/kasir', ['users' => $users], ['transaksi' => $transaksi]);
+        return view('kasir/kasir', ['users' => $users, 'transaksi' => $transaksi]);
     }
     public function transaksi_data_selesai(Request $request)
     {
@@ -87,7 +87,7 @@ class kasirController extends Controller
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $transaksi_siap = DB::table('transaksi')
-            ->where('transaksi.status_transaksi', '=', 'dikerjakan')
+            ->where('transaksi.status_transaksi', '=', 'Sedang Dicuci')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
@@ -121,6 +121,7 @@ class kasirController extends Controller
             'id_user_kasir' => $id_kasir,
             'id_user_kurir' => $id_kurir,
             'status_transaksi' => 'Diproses',
+            'status_kurir' => 'Kurir akan mengambil pesanan'
         );
         $data = array(
             'status' => 'Ditugaskan',
@@ -134,11 +135,11 @@ class kasirController extends Controller
     public function proses_laundry_kerja(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id = intval($request->id);
 
         $data = array(
-            'status_kurir' => 'Tunggu',
-            'status_transaksi' => 'Dikerjakan',
+            'status_kurir' => 'Menunggu Cucian',
+            'status_transaksi' => 'Sedang Dicuci',
         );
         $transaksi = Transaksi::find($id);
         $transaksi->update($data);
@@ -148,11 +149,12 @@ class kasirController extends Controller
     public function proses_laundry_siap(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id = intval($request->id);
 
         $data = array(
             'status_transaksi' => 'Siap',
-        );
+            'status_kurir' => 'Cucian Selesai'
+        ); 
         $transaksi = Transaksi::find($id);
         $transaksi->update($data);
 

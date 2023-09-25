@@ -12,16 +12,17 @@ use Illuminate\Support\Facades\Session;
 
 class kurirController extends Controller
 {
-    public function login_kurir(Request $request)
+    public function login_kurir()
     {
         $id = Auth::user()->id;
         $transaksi = DB::table('transaksi')
-            ->where('transaksi.id_user_kurir', '=', $id)
-            ->where('transaksi.status_kurir', '=', null)
+            ->where('transaksi.status_kurir', '=', '-')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
-            ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
+            ->select('transaksi.id as id_transaksi', 'transaksi.nama_transaksi', 'transaksi.order_user', 'transaksi.metode_pembayaran', 'transaksi.created_at', 'transaksi.total_harga', 'transaksi.status_transaksi', 'member.nama_member', 'produk_jasa.jenis_jasa')
             ->get();
+
+        // dd($transaksi);
         $transaksi_mengambil = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
             ->where('transaksi.status_kurir', '=', 'Mengambil')
@@ -29,6 +30,7 @@ class kurirController extends Controller
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
+
         $transaksi_diambil = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
             ->where('transaksi.status_kurir', '=', 'Diambil')
@@ -45,16 +47,16 @@ class kurirController extends Controller
             ->get();
         $transaksi_tunggu = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
-            ->where('transaksi.status_kurir', '=', 'Tunggu')
-            ->where('transaksi.status_transaksi', '=', 'Dikerjakan')
+            ->where('transaksi.status_kurir', '=', 'Menunggu Cucian')
+            ->where('transaksi.status_transaksi', '=', 'Sedang Dicuci')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $transaksi_siap = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
-            ->where('transaksi.status_kurir', '=', 'Tunggu')
-            ->where('transaksi.status_transaksi', '=', 'Siap')
+            ->where('transaksi.status_kurir', '=', 'Cucian Selesai')
+            ->where('transaksi.status_transaksi', '=', 'Siap')  
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
@@ -104,8 +106,8 @@ class kurirController extends Controller
             ->get();
         $transaksi_tunggu = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
-            ->where('transaksi.status_kurir', '=', 'Tunggu')
-            ->where('transaksi.status_transaksi', '=', 'Dikerjakan')
+            ->where('transaksi.status_kurir', '=', 'Menunggu Cucian')
+            ->where('transaksi.status_transaksi', '=', 'Sedang Dicuci')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
@@ -162,8 +164,8 @@ class kurirController extends Controller
             ->get();
         $transaksi_tunggu = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
-            ->where('transaksi.status_kurir', '=', 'Tunggu')
-            ->where('transaksi.status_transaksi', '=', 'Dikerjakan')
+            ->where('transaksi.status_kurir', '=', 'Menunggu Cucian')
+            ->where('transaksi.status_transaksi', '=', 'Sedang Dicuci')
             ->join('member', 'transaksi.id_member', '=', 'member.id')
             ->join('produk_jasa', 'transaksi.id_jasa', '=', 'produk_jasa.id')
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
@@ -190,6 +192,9 @@ class kurirController extends Controller
     public function transaksi_data_selesai_kurir(Request $request)
     {
         $id = Auth::user()->id;
+
+        $transaksi = $this->login_kurir()->transaksi;
+
         $transaksi_cash = DB::table('transaksi')
             ->where('transaksi.id_user_kurir', '=', $id)
             ->where('transaksi.status_transaksi', '=', 'selesai')
@@ -207,7 +212,7 @@ class kurirController extends Controller
             ->select('transaksi.*', 'member.nama_member', 'member.alamat_member', 'member.no_telp_member', 'produk_jasa.jenis_jasa', 'produk_jasa.harga_perkg')
             ->get();
         $users = DB::table('users')->where('jabatan', 'kurir')->get();
-        return view('kurir/transaksi_data_selesai_kurir', ['users' => $users, 'transaksi_cash' => $transaksi_cash, 'transaksi_midtrans' => $transaksi_midtrans]);
+        return view('kurir/transaksi_data_selesai_kurir', ['users' => $users, 'transaksi_cash' => $transaksi_cash, 'transaksi_midtrans' => $transaksi_midtrans, 'transaksi' => $transaksi]);
     }
     public function profile_kurir(Request $request)
     {
@@ -293,10 +298,11 @@ class kurirController extends Controller
     }
     public function ambil(Request $request)
     {
-        // dd($request->all());
-        $id = $request->id;
+        // dd(intval($request->id));
+        $id = intval($request->id);
 
         $data = array(
+            'id_user_kurir' => Auth::user()->id,
             'status_kurir' => 'Mengambil',
         );
         $transaksi = Transaksi::find($id);
@@ -307,7 +313,7 @@ class kurirController extends Controller
     public function diambil(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id = intval($request->id);
 
         $data = array(
             'status_kurir' => 'Diambil',
@@ -320,7 +326,7 @@ class kurirController extends Controller
     public function antri(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id = intval($request->id);
 
         $data = array(
             'status_kurir' => 'Antri',
@@ -333,7 +339,7 @@ class kurirController extends Controller
     public function diantar(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id = intval($request->id);
 
         $data = array(
             'status_kurir' => 'Diantar',
@@ -346,7 +352,7 @@ class kurirController extends Controller
     public function selesai(Request $request)
     {
         // dd($request->all());
-        $id = $request->id;
+        $id = intval($request->id);
 
         $transaksi_data = DB::table('transaksi')
             ->where('transaksi.id', '=', $id)

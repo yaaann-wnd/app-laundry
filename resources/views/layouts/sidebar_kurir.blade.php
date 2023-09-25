@@ -78,7 +78,7 @@
                             <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                             @foreach($transaksi as $t)
                             <form action="">
-                                <input type="hidden" value="{{ $t->id }}">
+                                <input type="hidden" value="{{ $t->id_transaksi }}">
                                 <button type="submit" class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-info">

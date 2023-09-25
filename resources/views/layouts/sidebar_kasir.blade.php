@@ -71,9 +71,9 @@
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="notificationDropdown">
                             <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications Order Onilne</p>
-                            @foreach($online as $o)
+                            {{-- @foreach($online as $o) --}}
                             <form action="">
-                                <input type="hidden" value="{{ $o->id }}">
+                                <input type="hidden" value="">
                                 <button type="submit" class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-info">
@@ -81,14 +81,14 @@
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-normal">{{ $o->nama_transaksi }}</h6>
+                                        <h6 class="preview-subject font-weight-normal"></h6>
                                         <p class="font-weight-light small-text mb-0 text-muted">
-                                        {{ $o->order_user }}
+                                        {{-- {{ $o->order_user }} --}}
                                         </p>
                                     </div>
                                 </button>
                             </form>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </div>
                     </li>
                     <li class="nav-item dropdown mr-0">

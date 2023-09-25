@@ -193,6 +193,7 @@ class registerController extends Controller
             'status_pembayaran' => 'Belum Dibayar',
             'status_transaksi' => 'Tunggu',
             'order_user' => 'Member',
+            'status_kurir' => '-'
         ]);
         //     $user = Member::find($id);
         //     $user->update($data);
